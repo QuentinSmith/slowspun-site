@@ -69,6 +69,6 @@ Allow: /
 
 # Bytedance
 User-agent: Bytespider
-Allow: /
+Disallow: /
 
 Sitemap: https://slowspun.app/sitemap.xml

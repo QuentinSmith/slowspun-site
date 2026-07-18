@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EULA — Slowspun</title>
+<meta name="description" content="End User License Agreement (EULA) for Slowspun — a cozy knitting companion.">
+<meta name="robots" content="index, follow">
+<style>
+@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+  /* ---- Oat & Sage palette ---- */
+  :root{
+    --paper:#EBE5D9; --paper-deep:#E4DED1; --card:#F8F3EA; --card2:#F1EBDF;
+    --ink:#3C3833; --ink-soft:#837A6C; --ink-faint:#A89D8C;
+    --sage:#6F8B79; --sage-soft:#9BB4A4; --sage-deep:#56705F; --wash:#E7EEE9;
+    --line:#DCCFBB; --line-soft:#E7DDCC; --gold:#E6C142; --clay:#B5715A; --clay-deep:#965A45;
+    --pine:#33413A; --pine-deep:#2A362F; --cream:#F7F2E4; --cream-soft:#C9CFC2; --sage-mist:#A8BCA4;
+    --panel:var(--sage); --on-accent:#FFFFFF; --on-panel-soft:var(--wash); --foot-bg:#3C3833; --warn2:#AB8540;
+    --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:'Spline Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono:'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --wrap:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  /* ---- Lamplight: warm dark (espresso ground, cream text) ---- */
+  [data-theme="lamplight"]{
+    --paper:#221F1B; --paper-deep:#1D1A16; --card:#2B2722; --card2:#342F29;
+    --ink:#E4DCCC; --ink-soft:#AEA390; --ink-faint:#897F70;
+    --sage:#87A691; --sage-soft:#5E7967; --sage-deep:#87A691; --wash:#2E3A33;
+    --line:#39322A; --line-soft:#322C25; --gold:#C49F4E; --clay:#C28166; --clay-deep:#9C6045;
+    --cream:#F0E8D6; --cream-soft:#C9BFA9;
+    --panel:#2E3A33; --on-accent:#221F1B; --on-panel-soft:#C6BCA6; --foot-bg:#1A1815; --warn2:#D9B36A;
+    --cta-hover-bg:#F0E8D6; --cta-hover-ink:#221F1B;
+  }
+  [data-theme="lamplight"] .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%23E4DCCC' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E")}
+  [data-theme="lamplight"] .tex-dots{background-image:radial-gradient(circle at center, rgba(228,220,204,.05) 1px, transparent 1.7px)}
+  [data-theme="lamplight"] .flip-front,[data-theme="lamplight"] .flip-back{border-color:rgba(228,220,204,.13)}
+  [data-theme="lamplight"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2387A691' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+  [data-theme="lamplight"] .phone{background:#0F0D0A}
+  /* ---- Colorblind Safe: blue + amber, higher-contrast lines ---- */
+  [data-theme="cbsafe"]{
+    --paper:#F2EFE9; --paper-deep:#EAE6DC; --card:#FBF9F4; --card2:#F0EDE6;
+    --ink:#2B2A28; --ink-soft:#5A5853; --ink-faint:#6E6B63;
+    --sage:#2C6E9A; --sage-soft:#79A6C4; --sage-deep:#255C81; --wash:#DEEAF1;
+    --line:#837D6D; --line-soft:#DDD8CE; --gold:#8A5E08; --clay:#B0561F; --clay-deep:#8E4517;
+    --cream:#FFFFFF; --cream-soft:#D5E2EC;
+    --on-accent:#FFFFFF; --on-panel-soft:#D5E2EC; --foot-bg:#2B2A28; --warn2:#8A5E08;
+  }
+  [data-theme="cbsafe"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C6E9A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  a{color:var(--sage);text-decoration:none}
+  a:hover{color:var(--clay)}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-0.012em;text-wrap:balance;overflow-wrap:break-word}
+  p{text-wrap:pretty}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage)}
+  .muted{color:var(--ink-soft)}
+
+
+  /* ---- nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--panel) 94%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--cream);cursor:pointer;user-select:none}
+  .brand:hover{color:#fff}
+  .brand img{width:60px;height:60px}
+  .nav-links{display:none;gap:32px;font-size:.95rem;font-weight:600}
+  .nav-links a{color:var(--cream-soft);transition:color .2s;white-space:nowrap}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{flex:none;white-space:nowrap;background:var(--card);color:var(--ink);font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:999px;transition:background .2s}
+  .nav-cta:hover{background:var(--cta-hover-bg,#fff);color:var(--cta-hover-ink,#3C3833)}
+  @media(min-width:860px){.nav-links{display:flex}}
+  .nav-burger{display:none;flex:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(247,242,228,.35);background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
+  .nav-burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--cream)}
+  @media(max-width:859px){.nav-burger{display:flex}.nav-in .nav-cta{display:none}html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;display:none}}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(42,54,47,.5);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:98}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px}
+  .drawer.open{transform:none}
+  .drawer .brand{margin-bottom:16px}
+  .drawer a.dlink{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:12px;color:var(--cream);font-weight:600;font-size:1.05rem}
+  .drawer a.dlink:hover{background:rgba(247,242,228,.12);color:#fff}
+  .drawer .nav-cta{margin-top:auto;text-align:center;padding:14px 20px}
+
+
+  /* footer */
+  footer{background:var(--foot-bg);color:#D8CDB8;padding:48px 0 36px;font-size:.9rem}
+  .foot-top{display:flex;flex-wrap:wrap;gap:28px 60px;justify-content:space-between;align-items:center}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-size:1.3rem;color:#FBF7EE;cursor:pointer;user-select:none}
+  .foot-brand:hover{color:#fff}
+  .foot-brand img{width:62px;height:62px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center}
+  .foot-links a{color:#D8CDB8;font-weight:600;transition:color .2s}
+  .foot-links a:hover{color:#fff}
+  .foot-fine{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#A99C84;font-size:.78rem;line-height:1.7}
+
+
+  /* motion */
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes bob{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-2%) scaleY(1.008)}}
+  .brand img,.foot-brand img{transform-origin:50% 100%;animation:bob 6.5s ease-in-out infinite}
+  /* rocking logo (sloth_button port) */
+  .rock-wrap{position:relative;display:inline-flex;flex:none}
+  .rock-wrap img{transform-origin:50% 80%;animation:none}
+  .rock-ring{position:absolute;left:50%;top:50%;width:110%;aspect-ratio:1;border-radius:50%;border:2px solid var(--cream);opacity:.55;transform:translate(-50%,-50%) scale(.45);animation:rockRing .75s ease-out forwards;pointer-events:none}
+  @keyframes rockRing{60%{opacity:.5}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+  /* theme picker */
+  .theme-dots{display:flex;gap:7px;align-items:center;margin-top:3px}
+  .tdot{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(247,242,228,.55);cursor:pointer;padding:0;flex:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .tdot:hover{transform:scale(1.2)}
+  .tdot[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1.5px rgba(230,193,66,.4)}
+  .brand-col{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+  /* theme iris reveal (view transitions) */
+  ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-old(root){z-index:1}
+  ::view-transition-new(root){z-index:2147483646}
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  :focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:6px}
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    .badge,.step,.fcard,.flip-inner,.drawer,.drawer-backdrop{transition:none}
+    .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl{animation:none!important}
+    .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
+  }
+
+/* doc */
+.doc{padding:54px 0 72px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sage-deep);margin-bottom:14px}
+.doc h1{font-family:var(--font-display);font-weight:600;line-height:1.08;
+  letter-spacing:-0.01em;font-size:clamp(2rem,5vw,2.7rem);color:var(--ink);
+  text-wrap:balance}
+.updated{margin-top:14px;display:inline-block;font-size:.82rem;font-weight:700;
+  color:var(--clay-deep);background:var(--card2);border:1px solid var(--line);
+  padding:5px 12px;border-radius:999px}
+.rule{height:1px;background:var(--line);margin:30px 0 4px}
+
+.doc h2{font-family:var(--font-display);font-weight:600;line-height:1.18;
+  letter-spacing:-0.005em;font-size:1.42rem;color:var(--ink);
+  margin:42px 0 12px;text-wrap:balance}
+.doc h3{font-family:var(--font-display);font-weight:600;font-size:1.12rem;
+  color:var(--ink);margin:26px 0 8px}
+.doc p{margin:0 0 16px;color:var(--ink);text-wrap:pretty}
+.doc ul,.doc ol{margin:0 0 18px;padding-left:1.3em}
+.doc li{margin:0 0 9px;padding-left:.2em}
+.doc li::marker{color:var(--clay)}
+.doc strong{font-weight:800;color:var(--ink)}
+.doc a{font-weight:700;word-break:break-word}
+.doc hr{border:0;height:1px;background:var(--line);margin:34px 0}
+
+/* the plain-language summary blockquote -> soft callout card */
+.doc blockquote{background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--sage);border-radius:14px;
+  padding:20px 22px;margin:0 0 28px;color:var(--ink);
+  box-shadow:0 1px 0 rgba(60,56,51,.03)}
+.doc blockquote p{margin:0 0 10px}
+.doc blockquote p:last-child{margin:0}
+.doc blockquote strong{color:var(--sage-deep)}
+
+
+
+/* doc page fit-ins */
+.doc .wrap{max-width:760px}
+.foot-links a.here{color:var(--gold)}
+[data-theme="lamplight"] .updated{color:var(--clay)}
+.brand-name{color:inherit}
+.brand-name:hover{color:#fff}
+.foot-brand .brand-name:hover{color:#fff}
+/* keep the Back button on mobile — it's the only way home */
+@media(max-width:859px){.nav-in .nav-cta{display:inline-block;padding:9px 15px;font-size:.82rem;white-space:nowrap}}
+</style>
+<script>try{var __t=localStorage.getItem('ss-theme');if(__t)document.documentElement.setAttribute('data-theme',__t)}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Colour theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
+    <a class="nav-cta" href="index.html">&larr; Back to Slowspun</a>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">License terms</p>
+    <h1>End User License Agreement (EULA)</h1>
+    <span class="updated">Last updated 07 / 16 / 2026</span>
+    <div class="rule"></div>
+    <p>This End User License Agreement ("Agreement") is between you ("you") and Quentin Smith ("we," "us," "our") for the Slowspun software application, including updates and accompanying documentation ("the App"). By installing or using the App, you agree to this Agreement.</p>
+<h2>1. License grant</h2>
+<p>Slowspun is an application for iOS and Android mobile devices; it is not a website or a desktop/computer program. We grant you a personal, limited, non-exclusive, non-transferable, revocable license to download and use the App on iOS or Android mobile devices that you own or control, for your personal and craft use (including making items you may sell), subject to this Agreement and any applicable app-store rules. <strong>We license the App to you; we do not sell it.</strong> You must also meet the minimum age requirement set out in our Terms of Use to use the App.</p>
+<h2>2. Restrictions</h2>
+<p>Except as permitted by law, you may not:</p>
+<ul>
+<li>copy (other than ordinary use), modify, adapt, translate, or create derivative works of the App;</li>
+<li>distribute, sell, rent, lease, lend, sublicense, or otherwise transfer the App;</li>
+<li>reverse engineer, decompile, or disassemble the App, or attempt to derive its source code;</li>
+<li>remove, obscure, or alter any proprietary notices;</li>
+<li>use the App to build a competing product by copying it.</li>
+</ul>
+<h2>3. Ownership</h2>
+<p>The App and all intellectual property rights in it (other than third-party components, AI-generated components, and your own content) are and remain owned by Quentin Smith. This Agreement grants you no rights other than the limited license in Section 1. The App includes third-party and open-source components that are licensed under their own terms; those licenses are listed within the App.</p>
+<h2>4. Your content</h2>
+<p>Any data you enter, and any patterns or items you create or make using the App, belong to you. We claim no ownership over your inputs, your saved patterns, or the things you knit.</p>
+<h2>5. Updates</h2>
+<p>We may provide updates, which are covered by this Agreement unless a separate license accompanies them. We are not obligated to provide updates or support.</p>
+<h2>6. Apple App Store — additional terms</h2>
+<p>If you obtained the App from the Apple App Store, the following also apply (Apple requires custom EULAs to include at least these protections):</p>
+<ul>
+<li>This Agreement is between you and Quentin Smith only, <strong>not</strong> with Apple. Apple is not responsible for the App or its content.</li>
+<li>Your license to use the App is limited to a non-transferable license to use it on any Apple-branded device you own or control, as permitted by the Usage Rules in the Apple Media Services Terms.</li>
+<li>Apple has <strong>no obligation</strong> to provide maintenance or support for the App. Quentin Smith is solely responsible for any such maintenance and support.</li>
+<li>Quentin Smith is solely responsible for any product warranties, whether express or implied by law, to the extent they are not effectively disclaimed. <strong>In the event the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price of the App to you (if any). To the maximum extent permitted by applicable law, Apple will have no other warranty obligation whatsoever with respect to the App.</strong></li>
+<li>Quentin Smith, <strong>not Apple</strong>, is responsible for addressing any claims that the App or your use of it infringes intellectual property rights, fails to conform to legal requirements, or violates consumer-protection law.</li>
+<li>Apple and its subsidiaries are <strong>third-party beneficiaries</strong> of this Agreement and may enforce it against you.</li>
+<li>You represent that you are not located in a country subject to a U.S. Government embargo or designated as "terrorist supporting," and that you are not on any U.S. Government restricted-parties list.</li>
+</ul>
+<h2>7. Google Play — additional terms</h2>
+<p>If you obtained the App from Google Play, your use is also subject to the Google Play Terms of Service. Quentin Smith, <strong>not Google</strong>, is responsible for the App and any support.</p>
+<h2>8. Disclaimer of warranties</h2>
+<p>THE APP IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. Quentin Smith DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT, TO THE FULLEST EXTENT PERMITTED BY LAW.</p>
+<h2>9. Limitation of liability</h2>
+<p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, Quentin Smith IS NOT LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, OR FOR LOSS OF MATERIALS, TIME, OR DATA, ARISING FROM THE APP. OUR TOTAL LIABILITY WILL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP.</p>
+<h2>10. Termination</h2>
+<p>This Agreement is effective until terminated. It ends automatically if you breach it. On termination, you must stop using and delete the App.</p>
+<h2>11. Governing law</h2>
+<p>This Agreement is governed by the laws of the State of Texas, United States, without regard to conflict-of-laws principles.</p>
+<h2>12. General</h2>
+<p><strong>Entire agreement.</strong> This Agreement is the complete agreement between you and Quentin Smith regarding your license to use the App software, and it replaces any prior license terms on that subject.</p>
+<p><strong>Severability.</strong> If any provision of this Agreement is held unenforceable, it will be limited or removed only to the smallest extent necessary, and the remaining provisions will remain in full effect.</p>
+<h2>13. Contact</h2>
+<p>For questions, support, or complaints about the App, contact Quentin Smith at <strong>Slowspun.app@gmail.com</strong>.</p>
+<p>Quentin Smith — <strong>Slowspun.app@gmail.com</strong> — <a href="https://slowspun.app">Slowspun.app</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <span class="foot-brand"><img src="assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="index.html">Slowspun</a></span>
+      <nav class="foot-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="eula.html" class="here">EULA</a>
+        <a href="mailto:slowspun.app@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <p class="foot-fine">
+      &copy; 2026 Slowspun. Made slowly, with yarn.<br>
+      Apple, the Apple logo, and App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── theme picker: iris reveal (theme_reveal port via View Transitions) ── */
+  function applyTheme(id){
+    if(id) root.setAttribute('data-theme',id); else root.removeAttribute('data-theme');
+    try{localStorage.setItem('ss-theme',id)}catch(e){}
+    d.querySelectorAll('.tdot').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
+  }
+  d.querySelectorAll('.tdot').forEach(function(b){
+    b.addEventListener('click',function(ev){
+      var id=b.getAttribute('data-theme-id')||'';
+      if((root.getAttribute('data-theme')||'')===id) return;
+      if(reduce || !document.startViewTransition){ applyTheme(id); return; }
+      var x=ev.clientX||innerWidth/2, y=ev.clientY||60;
+      var vt=document.startViewTransition(function(){ applyTheme(id); });
+      vt.ready.then(function(){
+        var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
+        root.animate(
+          {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
+          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'}
+        );
+      }).catch(function(){});
+    });
+  });
+  applyTheme(root.getAttribute('data-theme')||'');
+
+  /* ── rocking Pearl logos (sloth_button port): idle rock + tap energy + spark rings ── */
+  if(!reduce){
+    var rockers=[];
+    d.querySelectorAll('.brand>img,.foot-brand>img').forEach(function(img){
+      var wrap=d.createElement('span'); wrap.className='rock-wrap';
+      img.parentNode.insertBefore(wrap,img); wrap.appendChild(img);
+      var st={img:img,wrap:wrap,energy:0,phase:0};
+      rockers.push(st);
+      var host=img.closest('.brand,.foot-brand')||wrap;
+      host.addEventListener('click',function(ev){
+        if(ev.target.closest('.tdot,.brand-name')) return;               /* theme dots do their own thing */
+        st.energy=Math.min(1,st.energy+0.4);            /* ~3 taps to cap */
+        if(wrap.querySelectorAll('.rock-ring').length<12){
+          var ring=d.createElement('span'); ring.className='rock-ring';
+          ring.addEventListener('animationend',function(){ ring.remove(); });
+          wrap.appendChild(ring);
+        }
+      });
+    });
+    if(rockers.length){
+      var last=null;
+      (function tick(now){
+        var t=now/1000, dt=last===null?0:Math.min(.05,t-last); last=t;
+        for(var i=0;i<rockers.length;i++){
+          var st=rockers[i];
+          if(st.energy>0) st.energy=Math.max(0,st.energy-dt/1.4);  /* bleed back to idle */
+          var idle=-3*Math.cos(t/4.5*2*Math.PI);                   /* ±3°, ~4.5s */
+          st.phase+=dt*(1.5*(1+st.energy*1.8))*2*Math.PI;          /* freq grows with energy */
+          var deg=idle+Math.sin(st.phase)*st.energy*15;            /* amplitude up to ±15° */
+          st.img.style.transform='rotate('+deg+'deg)';
+        }
+        requestAnimationFrame(tick);
+      })(performance.now());
+    }
+  }
+})();
+</script>
+</body>
+</html>

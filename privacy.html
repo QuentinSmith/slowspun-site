@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Slowspun</title>
+<meta name="description" content="Privacy Policy for Slowspun — a cozy knitting companion.">
+<meta name="robots" content="index, follow">
+<style>
+@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+  /* ---- Oat & Sage palette ---- */
+  :root{
+    --paper:#EBE5D9; --paper-deep:#E4DED1; --card:#F8F3EA; --card2:#F1EBDF;
+    --ink:#3C3833; --ink-soft:#837A6C; --ink-faint:#A89D8C;
+    --sage:#6F8B79; --sage-soft:#9BB4A4; --sage-deep:#56705F; --wash:#E7EEE9;
+    --line:#DCCFBB; --line-soft:#E7DDCC; --gold:#E6C142; --clay:#B5715A; --clay-deep:#965A45;
+    --pine:#33413A; --pine-deep:#2A362F; --cream:#F7F2E4; --cream-soft:#C9CFC2; --sage-mist:#A8BCA4;
+    --panel:var(--sage); --on-accent:#FFFFFF; --on-panel-soft:var(--wash); --foot-bg:#3C3833; --warn2:#AB8540;
+    --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:'Spline Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono:'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --wrap:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  /* ---- Lamplight: warm dark (espresso ground, cream text) ---- */
+  [data-theme="lamplight"]{
+    --paper:#221F1B; --paper-deep:#1D1A16; --card:#2B2722; --card2:#342F29;
+    --ink:#E4DCCC; --ink-soft:#AEA390; --ink-faint:#897F70;
+    --sage:#87A691; --sage-soft:#5E7967; --sage-deep:#87A691; --wash:#2E3A33;
+    --line:#39322A; --line-soft:#322C25; --gold:#C49F4E; --clay:#C28166; --clay-deep:#9C6045;
+    --cream:#F0E8D6; --cream-soft:#C9BFA9;
+    --panel:#2E3A33; --on-accent:#221F1B; --on-panel-soft:#C6BCA6; --foot-bg:#1A1815; --warn2:#D9B36A;
+    --cta-hover-bg:#F0E8D6; --cta-hover-ink:#221F1B;
+  }
+  [data-theme="lamplight"] .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%23E4DCCC' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E")}
+  [data-theme="lamplight"] .tex-dots{background-image:radial-gradient(circle at center, rgba(228,220,204,.05) 1px, transparent 1.7px)}
+  [data-theme="lamplight"] .flip-front,[data-theme="lamplight"] .flip-back{border-color:rgba(228,220,204,.13)}
+  [data-theme="lamplight"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2387A691' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+  [data-theme="lamplight"] .phone{background:#0F0D0A}
+  /* ---- Colorblind Safe: blue + amber, higher-contrast lines ---- */
+  [data-theme="cbsafe"]{
+    --paper:#F2EFE9; --paper-deep:#EAE6DC; --card:#FBF9F4; --card2:#F0EDE6;
+    --ink:#2B2A28; --ink-soft:#5A5853; --ink-faint:#6E6B63;
+    --sage:#2C6E9A; --sage-soft:#79A6C4; --sage-deep:#255C81; --wash:#DEEAF1;
+    --line:#837D6D; --line-soft:#DDD8CE; --gold:#8A5E08; --clay:#B0561F; --clay-deep:#8E4517;
+    --cream:#FFFFFF; --cream-soft:#D5E2EC;
+    --on-accent:#FFFFFF; --on-panel-soft:#D5E2EC; --foot-bg:#2B2A28; --warn2:#8A5E08;
+  }
+  [data-theme="cbsafe"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C6E9A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  a{color:var(--sage);text-decoration:none}
+  a:hover{color:var(--clay)}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-0.012em;text-wrap:balance;overflow-wrap:break-word}
+  p{text-wrap:pretty}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage)}
+  .muted{color:var(--ink-soft)}
+
+
+  /* ---- nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--panel) 94%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--cream);cursor:pointer;user-select:none}
+  .brand:hover{color:#fff}
+  .brand img{width:60px;height:60px}
+  .nav-links{display:none;gap:32px;font-size:.95rem;font-weight:600}
+  .nav-links a{color:var(--cream-soft);transition:color .2s;white-space:nowrap}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{flex:none;white-space:nowrap;background:var(--card);color:var(--ink);font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:999px;transition:background .2s}
+  .nav-cta:hover{background:var(--cta-hover-bg,#fff);color:var(--cta-hover-ink,#3C3833)}
+  @media(min-width:860px){.nav-links{display:flex}}
+  .nav-burger{display:none;flex:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(247,242,228,.35);background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
+  .nav-burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--cream)}
+  @media(max-width:859px){.nav-burger{display:flex}.nav-in .nav-cta{display:none}html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;display:none}}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(42,54,47,.5);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:98}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px}
+  .drawer.open{transform:none}
+  .drawer .brand{margin-bottom:16px}
+  .drawer a.dlink{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:12px;color:var(--cream);font-weight:600;font-size:1.05rem}
+  .drawer a.dlink:hover{background:rgba(247,242,228,.12);color:#fff}
+  .drawer .nav-cta{margin-top:auto;text-align:center;padding:14px 20px}
+
+
+  /* footer */
+  footer{background:var(--foot-bg);color:#D8CDB8;padding:48px 0 36px;font-size:.9rem}
+  .foot-top{display:flex;flex-wrap:wrap;gap:28px 60px;justify-content:space-between;align-items:center}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-size:1.3rem;color:#FBF7EE;cursor:pointer;user-select:none}
+  .foot-brand:hover{color:#fff}
+  .foot-brand img{width:62px;height:62px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center}
+  .foot-links a{color:#D8CDB8;font-weight:600;transition:color .2s}
+  .foot-links a:hover{color:#fff}
+  .foot-fine{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#A99C84;font-size:.78rem;line-height:1.7}
+
+
+  /* motion */
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes bob{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-2%) scaleY(1.008)}}
+  .brand img,.foot-brand img{transform-origin:50% 100%;animation:bob 6.5s ease-in-out infinite}
+  /* rocking logo (sloth_button port) */
+  .rock-wrap{position:relative;display:inline-flex;flex:none}
+  .rock-wrap img{transform-origin:50% 80%;animation:none}
+  .rock-ring{position:absolute;left:50%;top:50%;width:110%;aspect-ratio:1;border-radius:50%;border:2px solid var(--cream);opacity:.55;transform:translate(-50%,-50%) scale(.45);animation:rockRing .75s ease-out forwards;pointer-events:none}
+  @keyframes rockRing{60%{opacity:.5}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+  /* theme picker */
+  .theme-dots{display:flex;gap:7px;align-items:center;margin-top:3px}
+  .tdot{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(247,242,228,.55);cursor:pointer;padding:0;flex:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .tdot:hover{transform:scale(1.2)}
+  .tdot[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1.5px rgba(230,193,66,.4)}
+  .brand-col{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+  /* theme iris reveal (view transitions) */
+  ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-old(root){z-index:1}
+  ::view-transition-new(root){z-index:2147483646}
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  :focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:6px}
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    .badge,.step,.fcard,.flip-inner,.drawer,.drawer-backdrop{transition:none}
+    .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl{animation:none!important}
+    .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
+  }
+
+/* doc */
+.doc{padding:54px 0 72px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sage-deep);margin-bottom:14px}
+.doc h1{font-family:var(--font-display);font-weight:600;line-height:1.08;
+  letter-spacing:-0.01em;font-size:clamp(2rem,5vw,2.7rem);color:var(--ink);
+  text-wrap:balance}
+.updated{margin-top:14px;display:inline-block;font-size:.82rem;font-weight:700;
+  color:var(--clay-deep);background:var(--card2);border:1px solid var(--line);
+  padding:5px 12px;border-radius:999px}
+.rule{height:1px;background:var(--line);margin:30px 0 4px}
+
+.doc h2{font-family:var(--font-display);font-weight:600;line-height:1.18;
+  letter-spacing:-0.005em;font-size:1.42rem;color:var(--ink);
+  margin:42px 0 12px;text-wrap:balance}
+.doc h3{font-family:var(--font-display);font-weight:600;font-size:1.12rem;
+  color:var(--ink);margin:26px 0 8px}
+.doc p{margin:0 0 16px;color:var(--ink);text-wrap:pretty}
+.doc ul,.doc ol{margin:0 0 18px;padding-left:1.3em}
+.doc li{margin:0 0 9px;padding-left:.2em}
+.doc li::marker{color:var(--clay)}
+.doc strong{font-weight:800;color:var(--ink)}
+.doc a{font-weight:700;word-break:break-word}
+.doc hr{border:0;height:1px;background:var(--line);margin:34px 0}
+
+/* the plain-language summary blockquote -> soft callout card */
+.doc blockquote{background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--sage);border-radius:14px;
+  padding:20px 22px;margin:0 0 28px;color:var(--ink);
+  box-shadow:0 1px 0 rgba(60,56,51,.03)}
+.doc blockquote p{margin:0 0 10px}
+.doc blockquote p:last-child{margin:0}
+.doc blockquote strong{color:var(--sage-deep)}
+
+
+
+/* doc page fit-ins */
+.doc .wrap{max-width:760px}
+.foot-links a.here{color:var(--gold)}
+[data-theme="lamplight"] .updated{color:var(--clay)}
+.brand-name{color:inherit}
+.brand-name:hover{color:#fff}
+.foot-brand .brand-name:hover{color:#fff}
+/* keep the Back button on mobile — it's the only way home */
+@media(max-width:859px){.nav-in .nav-cta{display:inline-block;padding:9px 15px;font-size:.82rem;white-space:nowrap}}
+</style>
+<script>try{var __t=localStorage.getItem('ss-theme');if(__t)document.documentElement.setAttribute('data-theme',__t)}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Colour theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
+    <a class="nav-cta" href="index.html">&larr; Back to Slowspun</a>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Your privacy</p>
+    <h1>Privacy Policy</h1>
+    <span class="updated">Last updated 07 / 16 / 2026</span>
+    <div class="rule"></div>
+    <blockquote>
+<p><strong>Plain-language summary:</strong> Slowspun is private by default. The app runs on your device and keeps your information <em>there</em> — your gauge, measurements, saved setups and yarns, and saved patterns stay on your mobile device. We don't have user accounts, we don't run a server that collects your data, and we don't sell or share your personal information.</p>
+</blockquote>
+<p>This Privacy Policy explains what information Slowspun ("the App," "we," "us," or "our") handles when you use it, and your choices. Slowspun is an app for iOS and Android mobile devices — it is not a website, web app, or desktop/computer program — and this policy applies to the App on those devices.</p>
+<h2>1. Who we are</h2>
+<p>Slowspun is owned and operated by Quentin Smith. For privacy questions, contact us at <strong>Slowspun.app@gmail.com</strong>.</p>
+<h2>2. Information stored on your device</h2>
+<p>The App stores the following <strong>locally on your device</strong> so it can remember your work between sessions. This data is <strong>not transmitted to us</strong> and is <strong>not stored on any server we control</strong>:</p>
+<ul>
+<li>Your knitting gauge and needle size</li>
+<li>Body measurements you enter</li>
+<li>Saved "setups" (needle + gauge combinations) and yarn/material entries, including any photos you choose to add</li>
+<li>Saved or regauged patterns and any pattern text you paste in</li>
+<li>App preferences (for example, units and whether you have the full version)</li>
+</ul>
+<p>Because this information lives on your device, you control it. You can erase it at any time by clearing the App's data in your device settings, or by uninstalling the App. We cannot retrieve or restore it for you.</p>
+<p><strong>Photos.</strong> When you choose to add a photo to a setup or swatch, the App asks your device for permission to open your photo library and copies the image you select into its own local storage on your device. It does not browse, read, or upload any of your other photos.</p>
+<h2>3. When you contact us</h2>
+<p>The App has no account system and sends nothing to us on its own. The one time we receive anything from you is when <em>you choose</em> to contact us — for example, the in-app feedback option simply opens your own email app with a message addressed to us.</p>
+<p>If you email us, we receive your email address and whatever you put in your message. We use that <strong>only</strong> to read and reply, and to understand and improve the App. We do <strong>not</strong> sell, rent, or share it, we do <strong>not</strong> use it for advertising, and we will <strong>not</strong> add you to any mailing list. Your message is delivered and stored through our email provider under its own privacy terms.</p>
+<p>We keep support emails only as long as they are useful for handling your request and improving the App, and you can ask us to delete your correspondence at any time at <strong>Slowspun.app@gmail.com</strong>.</p>
+<h2>4. Information we do not collect</h2>
+<ul>
+<li>We do <strong>not</strong> require you to create an account.</li>
+<li>The App does <strong>not</strong> automatically collect your name, email, address, or contacts — emailing us is the one exception, described in "When you contact us" above.</li>
+<li>We do <strong>not</strong> track your location.</li>
+<li>We do <strong>not</strong> sell, rent, or share your personal information with third parties for their marketing.</li>
+</ul>
+<h2>5. Purchases</h2>
+<p>The full version of Slowspun is a one-time purchase. Purchases are processed by <strong>Apple (App Store)</strong> or <strong>Google (Google Play)</strong> — not by us. We never receive or store your payment card details. The app stores handle the transaction, billing, receipts, refunds, and taxes, and provide us only limited, largely anonymized sales information. To keep your full-version unlock accurate, the App also asks the app store whether your purchase is currently valid — for example, to restore it after you reinstall, or to reflect a refund. This check confirms only whether the full version is owned; it sends no personal information and uses no server of ours. Your use of those stores is governed by their own privacy policies:</p>
+<ul>
+<li>Apple: https://www.apple.com/legal/privacy/</li>
+<li>Google: https://policies.google.com/privacy</li>
+</ul>
+<h2>6. Third-party services</h2>
+<p>Slowspun makes no network requests of its own except to verify your purchase status with the app store, as described in "Purchases" above. Apart from that check, the only times it reaches beyond your device are when you tap a link or the feedback button (which hands off to your browser or email app), or when you make a purchase (handled by the app store). The third-party touchpoints are limited to these:</p>
+<ul>
+<li><strong>App stores</strong> (Apple, Google) as described above.</li>
+<li><strong>Fonts and images:</strong> All fonts and images are bundled inside the App. It does not fetch them from third-party providers, so no third party receives your device's IP address that way.</li>
+<li><strong>Analytics / crash reporting:</strong> We do not use third-party analytics or crash-reporting services, and the App does not track your usage. Apple and Google may, however, make <strong>aggregated and anonymized</strong> crash, diagnostic, performance, and sales reports available to us through their developer dashboards; we cannot identify you from these, and they are governed by the app stores' own privacy policies.</li>
+</ul>
+<h2>7. Children's privacy</h2>
+<p>Slowspun is a general-audience crafting tool intended for users who meet the age requirement in our Terms of Use, and it is not directed to children under 13. We do not knowingly collect personal information from children, and because the App stores nothing about you on any server we control, we hold no such information to begin with.</p>
+<h2>8. Your rights</h2>
+<p>Depending on where you live, you may have rights under laws such as the EU/UK GDPR, the California Consumer Privacy Act (CCPA/CPRA), or the Texas Data Privacy and Security Act (TDPSA), including rights to access or delete personal data. Because Slowspun stores your data only on your own device and we do not hold it, you can exercise these rights directly by viewing, editing, or deleting your data in the App. If you believe we hold personal data about you, contact <strong>Slowspun.app@gmail.com</strong> and we will respond as required by applicable law.</p>
+<h2>9. Data security</h2>
+<p>Your in-app data is stored using your mobile device's standard local storage. No method of storage is perfectly secure, but because the data does not leave your device, the main protection is the security of your own device.</p>
+<h2>10. Changes to this policy</h2>
+<p>We may update this Privacy Policy from time to time. We will post the updated version with a new "Last updated" date. Material changes will be highlighted in the App or at <a href="https://slowspun.app">Slowspun.app</a>.</p>
+<h2>11. Contact</h2>
+<p>Questions? Email <strong>Slowspun.app@gmail.com</strong></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <span class="foot-brand"><img src="assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="index.html">Slowspun</a></span>
+      <nav class="foot-links">
+        <a href="privacy.html" class="here">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="eula.html">EULA</a>
+        <a href="mailto:slowspun.app@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <p class="foot-fine">
+      &copy; 2026 Slowspun. Made slowly, with yarn.<br>
+      Apple, the Apple logo, and App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── theme picker: iris reveal (theme_reveal port via View Transitions) ── */
+  function applyTheme(id){
+    if(id) root.setAttribute('data-theme',id); else root.removeAttribute('data-theme');
+    try{localStorage.setItem('ss-theme',id)}catch(e){}
+    d.querySelectorAll('.tdot').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
+  }
+  d.querySelectorAll('.tdot').forEach(function(b){
+    b.addEventListener('click',function(ev){
+      var id=b.getAttribute('data-theme-id')||'';
+      if((root.getAttribute('data-theme')||'')===id) return;
+      if(reduce || !document.startViewTransition){ applyTheme(id); return; }
+      var x=ev.clientX||innerWidth/2, y=ev.clientY||60;
+      var vt=document.startViewTransition(function(){ applyTheme(id); });
+      vt.ready.then(function(){
+        var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
+        root.animate(
+          {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
+          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'}
+        );
+      }).catch(function(){});
+    });
+  });
+  applyTheme(root.getAttribute('data-theme')||'');
+
+  /* ── rocking Pearl logos (sloth_button port): idle rock + tap energy + spark rings ── */
+  if(!reduce){
+    var rockers=[];
+    d.querySelectorAll('.brand>img,.foot-brand>img').forEach(function(img){
+      var wrap=d.createElement('span'); wrap.className='rock-wrap';
+      img.parentNode.insertBefore(wrap,img); wrap.appendChild(img);
+      var st={img:img,wrap:wrap,energy:0,phase:0};
+      rockers.push(st);
+      var host=img.closest('.brand,.foot-brand')||wrap;
+      host.addEventListener('click',function(ev){
+        if(ev.target.closest('.tdot,.brand-name')) return;               /* theme dots do their own thing */
+        st.energy=Math.min(1,st.energy+0.4);            /* ~3 taps to cap */
+        if(wrap.querySelectorAll('.rock-ring').length<12){
+          var ring=d.createElement('span'); ring.className='rock-ring';
+          ring.addEventListener('animationend',function(){ ring.remove(); });
+          wrap.appendChild(ring);
+        }
+      });
+    });
+    if(rockers.length){
+      var last=null;
+      (function tick(now){
+        var t=now/1000, dt=last===null?0:Math.min(.05,t-last); last=t;
+        for(var i=0;i<rockers.length;i++){
+          var st=rockers[i];
+          if(st.energy>0) st.energy=Math.max(0,st.energy-dt/1.4);  /* bleed back to idle */
+          var idle=-3*Math.cos(t/4.5*2*Math.PI);                   /* ±3°, ~4.5s */
+          st.phase+=dt*(1.5*(1+st.energy*1.8))*2*Math.PI;          /* freq grows with energy */
+          var deg=idle+Math.sin(st.phase)*st.energy*15;            /* amplitude up to ±15° */
+          st.img.style.transform='rotate('+deg+'deg)';
+        }
+        requestAnimationFrame(tick);
+      })(performance.now());
+    }
+  }
+})();
+</script>
+</body>
+</html>

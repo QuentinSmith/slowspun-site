@@ -1,0 +1,37 @@
+# Slowspun
+
+> Slowspun is a calm, privacy-first knitting companion app for iOS and Android. Its main job is "regauging" — recalculating a knitting pattern's stitch and row counts so the finished piece matches the knitter's own gauge — alongside calculators and tools for organizing gauges, needles, yarns, measurements, and patterns. It runs entirely on the device: no accounts, no usage tracking, and no server that stores personal data.
+
+## What Slowspun is
+
+Slowspun is a mobile app for knitters, available only on iOS and Android (it is not a website, web app, or desktop program). It helps a knitter adapt a pattern to their personal gauge so a garment comes out at the intended size, and keeps their gauges, needles, yarns, measurements, and saved or regauged patterns organized in one place. Knitters can also read imported PDF knitting patterns and paste in pattern text.
+
+## Key features
+
+- Regauge knitting patterns to your own stitch and row gauge
+- Gauge and needle-size calculators
+- Save "setups" (needle + gauge combinations) and yarn/material entries, with optional photos
+- Store personal body measurements
+- Read PDF knitting patterns and paste in pattern text
+- Works fully offline — no internet connection required to use it
+
+## Privacy and data
+
+Slowspun is private by default. Everything a knitter enters — gauge, measurements, setups, yarns, any photos they add, and saved patterns — is stored locally on their own device and is never sent to a server the developer controls. There are no user accounts, no usage tracking, and no third-party analytics or advertising. The app makes no network requests of its own except to verify a user's purchase status with the app store (Apple or Google) so the full-version unlock stays accurate. Full privacy policy: https://slowspun.app/privacy.html
+
+## Pricing
+
+Slowspun is free to download and use, with an optional one-time purchase (the "full version") made through the Apple App Store or Google Play. It is a single one-time unlock, not a subscription. Payments, receipts, and refunds are handled entirely by the app stores.
+
+## Platforms
+
+- iOS (iPhone and iPad)
+- Android
+- Not available as a web app or desktop application
+
+## About
+
+- Developer: Quentin Smith
+- Website: https://slowspun.app
+- Contact: Slowspun.app@gmail.com
+- Legal documents (Privacy Policy, Terms of Use, EULA): https://slowspun.app

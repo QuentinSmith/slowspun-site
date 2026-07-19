@@ -186,7 +186,7 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Colour theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
+    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
     <a class="nav-cta" href="index.html">&larr; Back to Slowspun</a>
   </div>
 </header>
@@ -240,8 +240,8 @@
 <p><strong>Entire agreement.</strong> This Agreement is the complete agreement between you and Quentin Smith regarding your license to use the App software, and it replaces any prior license terms on that subject.</p>
 <p><strong>Severability.</strong> If any provision of this Agreement is held unenforceable, it will be limited or removed only to the smallest extent necessary, and the remaining provisions will remain in full effect.</p>
 <h2>13. Contact</h2>
-<p>For questions, support, or complaints about the App, contact Quentin Smith at <strong>Slowspun.app@gmail.com</strong>.</p>
-<p>Quentin Smith — <strong>Slowspun.app@gmail.com</strong> — <a href="https://slowspun.app">Slowspun.app</a></p>
+<p>For questions, support, or complaints about the App, contact Quentin Smith at <strong class="js-em" data-cap="1">Slowspun.app [at] gmail.com</strong>.</p>
+<p>Quentin Smith — <strong class="js-em" data-cap="1">Slowspun.app [at] gmail.com</strong> — <a href="https://slowspun.app">Slowspun.app</a></p>
   </div>
 </main>
 
@@ -253,7 +253,7 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms</a>
         <a href="eula.html" class="here">EULA</a>
-        <a href="mailto:slowspun.app@gmail.com" style="font-family:var(--font-mono,monospace)">slowspun.app@gmail.com</a>
+        <a href="#" class="js-em" style="font-family:var(--font-mono,monospace)">slowspun.app [at] gmail.com</a>
       </nav>
     </div>
     <p class="foot-fine">
@@ -327,6 +327,23 @@
       })(performance.now());
     }
   }
+})();
+</script>
+<script>
+/* CDN email-obfuscation workaround (Cloudflare / IONOS CDN rewrites literal
+   addresses in served HTML into "[email protected]"). Addresses are assembled
+   here at load time instead, so the proxy never sees one to rewrite. */
+(function(){
+  var A='slowspun.app', D='gmail'+'.com';
+  document.querySelectorAll('.js-em,.js-em-href').forEach(function(el){
+    var tag=el.getAttribute('data-tag');
+    var local=A+(tag?'+'+tag:'');
+    if(el.classList.contains('js-em')){
+      var shown=(el.getAttribute('data-cap')==='1'?'S'+A.slice(1):A)+(tag?'+'+tag:'');
+      el.textContent=shown+'\u0040'+D;
+    }
+    if(el.tagName==='A') el.setAttribute('href','mail'+'to:'+local+'\u0040'+D);
+  });
 })();
 </script>
 </body>

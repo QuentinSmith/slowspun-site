@@ -159,7 +159,7 @@
   /* ---- Oat & Sage palette ---- */
   :root{
     --paper:#EBE5D9; --paper-deep:#E4DED1; --card:#F8F3EA; --card2:#F1EBDF;
-    --ink:#3C3833; --ink-soft:#837A6C; --ink-faint:#A89D8C;
+    --ink:#3C3833; --ink-soft:#6B6356; --ink-faint:#A89D8C;
     --sage:#6F8B79; --sage-soft:#9BB4A4; --sage-deep:#56705F; --wash:#E7EEE9;
     --line:#DCCFBB; --line-soft:#E7DDCC; --gold:#E6C142; --clay:#B5715A; --clay-deep:#965A45;
     --pine:#33413A; --pine-deep:#2A362F; --cream:#F7F2E4; --cream-soft:#C9CFC2; --sage-mist:#A8BCA4;
@@ -173,15 +173,15 @@
   /* ---- Lamplight: warm dark (espresso ground, cream text) ---- */
   [data-theme="lamplight"]{
     --paper:#221F1B; --paper-deep:#1D1A16; --card:#2B2722; --card2:#342F29;
-    --ink:#E4DCCC; --ink-soft:#AEA390; --ink-faint:#897F70;
+    --ink:#E4DCCC; --ink-soft:#BFB4A0; --ink-faint:#897F70;
     --sage:#87A691; --sage-soft:#5E7967; --sage-deep:#87A691; --wash:#2E3A33;
     --line:#39322A; --line-soft:#322C25; --gold:#C49F4E; --clay:#C28166; --clay-deep:#9C6045;
     --cream:#F0E8D6; --cream-soft:#C9BFA9;
     --panel:#2E3A33; --on-accent:#221F1B; --on-panel-soft:#C6BCA6; --foot-bg:#1A1815; --warn2:#D9B36A;
     --cta-hover-bg:#F0E8D6; --cta-hover-ink:#221F1B;
   }
-  [data-theme="lamplight"] .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%23E4DCCC' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E")}
-  [data-theme="lamplight"] .tex-dots{background-image:radial-gradient(circle at center, rgba(228,220,204,.05) 1px, transparent 1.7px)}
+  [data-theme="lamplight"] .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%23E4DCCC' stroke-opacity='0.12' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E")}
+  [data-theme="lamplight"] .tex-dots{background-image:radial-gradient(circle at center, rgba(228,220,204,.12) 1.2px, transparent 2px)}
   [data-theme="lamplight"] .flip-front,[data-theme="lamplight"] .flip-back{border-color:rgba(228,220,204,.13)}
   [data-theme="lamplight"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2387A691' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
   [data-theme="lamplight"] .phone{background:#0F0D0A}
@@ -207,8 +207,13 @@
   .muted{color:var(--ink-soft)}
 
   /* ---- section fabric textures (page-locked, like the app) ---- */
-  .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%233C3833' stroke-opacity='0.06' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");background-size:20px 12px}
-  .tex-dots{background-color:var(--paper-deep);background-image:radial-gradient(circle at center, rgba(60,56,51,.06) 1px, transparent 1.7px);background-size:21px 21px}
+  .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%233C3833' stroke-opacity='0.14' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E");background-size:20px 12px}
+  .tex-dots{background-color:var(--paper-deep);background-image:radial-gradient(circle at center, rgba(60,56,51,.14) 1.2px, transparent 2px);background-size:21px 21px}
+  /* readability: fade the fabric out from behind the content column (texture stays at the edges) */
+  .tex-scallop,.tex-dots{position:relative}
+  .tex-scallop::before,.tex-dots::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg, transparent 1.5%, var(--paper) 19%, var(--paper) 81%, transparent 98.5%)}
+  .tex-dots::before{background:linear-gradient(90deg, transparent 1.5%, var(--paper-deep) 19%, var(--paper-deep) 81%, transparent 98.5%)}
+  .band>.wrap,.final>.wrap{position:relative;z-index:1}
 
   /* ---- nav ---- */
   .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--panel) 94%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
@@ -268,8 +273,17 @@
   .badge-paper{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
   .badge-paper:hover{color:var(--ink);box-shadow:0 14px 26px -14px rgba(40,30,15,.35)}
   /* store availability states (driven by SLOWSPUN_STORES in <head>) */
-  .badge-soon{opacity:.55;pointer-events:none;cursor:default}
+  .badge-soon{pointer-events:none;cursor:default}
+  .badge-soon>svg,.badge-soon .b-text{opacity:.55}
   .badge-soon::after{content:"soon";position:absolute;top:-9px;right:-7px;background:var(--gold);color:#3C3833;font-size:.56rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+    /* desktop: make the SOON tag unmissable (mobile keeps the quiet tag) */
+  @media(min-width:920px){
+    .badge-soon::after{font-size:.72rem;padding:4px 11px;top:-14px;right:-12px;transform:rotate(4deg);box-shadow:0 6px 14px -6px rgba(40,30,15,.5), 0 0 0 2.5px var(--panel);animation:soonNudge 3.2s ease-in-out infinite}
+    .final-cta .badge-soon::after{box-shadow:0 6px 14px -6px rgba(40,30,15,.35), 0 0 0 2.5px var(--paper)}
+  }
+  @keyframes soonNudge{0%,72%,100%{transform:rotate(4deg) scale(1)}80%{transform:rotate(-2deg) scale(1.12)}88%{transform:rotate(4deg) scale(1)}}
+  @media(prefers-reduced-motion:reduce){.badge-soon::after{animation:none}}
+[data-theme="cbsafe"] .badge-soon::after{background:#F4B942;color:#2B2A28}
   .badge-coming{border:1.5px dashed rgba(247,242,228,.5);color:var(--cream);cursor:default}
   .final-cta .badge-coming{border-color:var(--line);color:var(--ink-soft)}
   /* skeleton shimmer while heavier images/video arrive */
@@ -334,7 +348,7 @@
   .steps{display:grid;gap:18px;margin-top:42px}
   @media(min-width:780px){.steps{grid-template-columns:repeat(3,1fr)}}
   .step{background:var(--card);border:1px solid var(--line-soft);border-radius:20px;padding:26px 24px;transition:transform .22s ease, box-shadow .22s ease;position:relative}
-  .step-pearl{position:absolute;top:-38px;right:16px;width:78px;transform-origin:50% 100%;animation:bob 8s ease-in-out infinite;pointer-events:none}
+  .step-pearl{position:absolute;top:-38px;right:16px;width:78px;transform-origin:50% 100%;animation:bob 8s ease-in-out infinite}
   @media(min-width:780px){.steps{align-items:start}.step:nth-child(1),.step:nth-child(3){margin-top:22px}}
   .step:hover{transform:translateY(-4px);box-shadow:0 20px 42px -30px rgba(60,56,51,.55)}
   .step-top{display:flex;align-items:center;gap:13px}
@@ -611,6 +625,29 @@
   .tdot:hover{transform:scale(1.2)}
   .tdot[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1.5px rgba(230,193,66,.4)}
   .brand-col{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+  /* ── desktop-only theme hints: footer row, first-visit tip, pull cord, card chips ── */
+  .foot-themes,.pull-cord,.card-themes{display:none}
+  @media(min-width:920px){
+    .foot-themes{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .ft-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#A99C84;margin-right:4px}
+    .tchip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#D8CDB8;font-family:inherit;font-size:.82rem;font-weight:600;line-height:1;padding:8px 14px 8px 9px;border-radius:999px;cursor:pointer;transition:border-color .2s,color .2s,transform .2s}
+    .tchip:hover{transform:translateY(-1px);color:#FBF7EE;border-color:rgba(255,255,255,.45)}
+    .tchip[aria-pressed="true"]{border-color:var(--gold);color:#FBF7EE;box-shadow:0 0 0 1px rgba(230,193,66,.35)}
+    .tchip .sw{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.35)}
+    .card-themes{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:22px;font-size:.85rem;font-weight:600;color:var(--cream)}
+    .pull-cord{display:block;position:absolute;top:100%;left:104px;width:28px;height:72px;margin-top:-2px;background:none;border:0;padding:0;cursor:grab;z-index:49;filter:drop-shadow(0 5px 7px rgba(40,30,15,.3));touch-action:none}
+    .cord-swing{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:10px;box-sizing:border-box;width:100%;height:100%;background:linear-gradient(180deg,#C97F5F,#B4623F);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 11px),0 100%);transform-origin:50% 0;animation:cordSway 6s ease-in-out infinite;box-shadow:inset 0 3px 0 rgba(0,0,0,.12)}
+    .bm-dot{width:10px;height:10px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.55);pointer-events:none}
+    .pull-cord:hover .cord-swing{animation-play-state:paused}
+    .pull-cord.bm-drag{cursor:grabbing}
+    .pull-cord.bm-drag .cord-swing{animation:none}
+    .pull-cord.bm-ready .cord-swing{filter:brightness(1.16)}
+    .bm-grip{margin-top:auto;margin-bottom:16px;width:12px;height:8px;border-top:2px solid rgba(255,255,255,.55);border-bottom:2px solid rgba(255,255,255,.55);flex:none;pointer-events:none}
+  }
+  @keyframes cordSway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+  .theme-tip{position:fixed;z-index:60;max-width:300px;text-align:left;background:var(--paper);color:var(--ink);border:1.5px solid var(--gold);border-radius:12px;padding:10px 14px;font-family:inherit;font-size:.84rem;font-weight:600;line-height:1.5;box-shadow:0 16px 32px -14px rgba(40,30,15,.45);cursor:pointer;opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s;pointer-events:none}
+  .theme-tip.on{opacity:1;transform:none;pointer-events:auto}
+  .theme-tip::before{content:"";position:absolute;top:-6.5px;left:24px;width:11px;height:11px;background:var(--paper);border-left:1.5px solid var(--gold);border-top:1.5px solid var(--gold);transform:rotate(45deg)}
   /* theme iris reveal (view transitions) */
   ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
   ::view-transition-old(root){z-index:1}
@@ -622,7 +659,7 @@
     *{scroll-behavior:auto!important}
     .js .reveal{opacity:1;transform:none;transition:none}
     .badge,.step,.fcard,.flip-inner,.drawer,.drawer-backdrop{transition:none}
-    .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl{animation:none!important}
+    .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl,.cord-swing,.pull-cord{animation:none!important}
     .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
   }
 </style>
@@ -660,6 +697,7 @@ window.SLOWSPUN_STORES = {
     </nav>
     <a class="nav-cta" href="#get">Get the app</a>
   </div>
+<button class="pull-cord" id="pull-cord" type="button" title="Pull me — surprise theme" aria-label="Pull the bookmark for a surprise site theme"><span class="cord-swing"><span class="bm-dot" style="background:#EBE5D9"></span><span class="bm-dot" style="background:#221F1B"></span><span class="bm-dot" style="background:#2C6E9A"></span><span class="bm-grip"></span></span></button>
 </header>
 
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
@@ -759,6 +797,7 @@ window.SLOWSPUN_STORES = {
         <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-themes.png" aria-label="Setups and yarns — see it in the app"><div class="flip-inner"><div class="flip-front"><div class="yb" style="--yc:#BCAE7E;width:64px;margin:7px;animation:yarnSpin 42s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></div><h4>Setups &amp; yarns</h4><p>Keep your go-to gauges, needles and yarns, and pour a saved setup straight into a new project.</p></div><div class="flip-back"><div class="fb-cap">Nine themes <em>to knit by</em></div><img src="assets/screens/themes.png" alt="Theme picker in the app" loading="lazy"></div></div></div>
         <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-row-reader.png" aria-label="Read and keep — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-sweater.webp" alt="" loading="lazy"><h4>Read &amp; keep</h4><p>A row reader that holds your place and your counts, and a tidy home for every pattern you save.</p></div><div class="flip-back"><div class="fb-cap">Never lose your place <em>again</em></div><img src="assets/screens/row-reader.png" alt="Row reader in the app" loading="lazy"></div></div></div>
       </div>
+      <div class="card-themes" role="group" aria-label="Site theme">This site knits up in three themes, too —<button class="tdot" type="button" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage site theme"></button><button class="tdot" type="button" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight site theme"></button><button class="tdot" type="button" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe site theme"></button></div>
     </div>
 
     <div class="sec-head center reveal" id="pricing" style="margin-top:48px">
@@ -852,7 +891,7 @@ window.SLOWSPUN_STORES = {
       <div class="askbox">
         <button type="button" class="ask-head" id="ask-toggle" aria-expanded="false" aria-controls="ask-form">
           <span class="ask-dot"></span>
-          <p>Don't see your question?<br><a href="/cdn-cgi/l/email-protection#6f1c0300181c1f1a01410e1f1f44090a0a0b0d0e0c042f08020e0603410c0002" id="ask-link" style="font-weight:700">Ask the developer who made me</a>.<br>He answers, slowly but surely.<br><span class="ask-email" id="ask-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9dac5c6dedad9dcc787c8d9d9e9cec4c8c0c587cac6c4">[email&#160;protected]</a></span></p>
+          <p>Don't see your question?<br><a href="#" class="js-em-href" data-tag="feedback" id="ask-link" style="font-weight:700">Ask the developer who made me</a>.<br>He answers, slowly but surely.<br><span class="ask-email js-em" id="ask-email">slowspun.app [at] gmail.com</span></p>
           <img src="assets/pearl-swatch.webp" alt="Pearl inspecting a swatch with her magnifying glass" loading="lazy">
         </button>
         <div class="ask-form" id="ask-form" hidden>
@@ -883,7 +922,7 @@ window.SLOWSPUN_STORES = {
             <button type="button" class="ask-copy2" id="ask-copy2">Copy message</button>
             <span class="ask-hint">Composes in your own mail app — nothing is stored or tracked.</span>
           </div>
-          <p class="ask-fallback" id="ask-fallback" hidden>Nothing opened? Email <b id="ask-addr"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9baa5a6bebab9bca7e7a8b9b989aea4a8a0a5e7aaa6a4">[email&#160;protected]</a></b> directly — <button type="button" id="ask-copy">copy your message</button></p>
+          <p class="ask-fallback" id="ask-fallback" hidden>Nothing opened? Email <b id="ask-addr" class="js-em">slowspun.app [at] gmail.com</b> directly — <button type="button" id="ask-copy">copy your message</button></p>
           </div>
         </div>
       </div>
@@ -947,9 +986,10 @@ window.SLOWSPUN_STORES = {
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms</a>
         <a href="eula.html">EULA</a>
-        <a href="/cdn-cgi/l/email-protection#77041b1800040702195916070737101a161e1b5914181a" style="font-family:var(--font-mono,monospace)"><span class="__cf_email__" data-cfemail="f88b94978f8b888d96d6998888b89f95999194d69b9795">[email&#160;protected]</span></a>
+        <a href="#" class="js-em" style="font-family:var(--font-mono,monospace)">slowspun.app [at] gmail.com</a>
       </nav>
     </div>
+    <div class="foot-themes" role="group" aria-label="Site theme"><span class="ft-label">Site theme</span><button class="tchip" type="button" data-theme-id=""><span class="sw" style="background:#EBE5D9"></span>Oat &amp; Sage</button><button class="tchip" type="button" data-theme-id="lamplight"><span class="sw" style="background:#221F1B"></span>Lamplight</button><button class="tchip" type="button" data-theme-id="cbsafe"><span class="sw" style="background:#2C6E9A"></span>Colorblind Safe</button></div>
     <p class="foot-fine">
       &copy; 2026 Slowspun. Made slowly, with yarn.<br>
       Apple, the Apple logo, and App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
@@ -957,14 +997,14 @@ window.SLOWSPUN_STORES = {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var d=document, root=d.documentElement;
   root.classList.add('js');
   var hasIO='IntersectionObserver' in window;
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── yarn dividers: the twisted cord where two section colours meet ── */
+  /* ── yarn dividers: the twisted cord where two section colors meet ── */
   var WAVE='M-300,24 C-250,14 -200,14 -150,24 C-100,34 -50,34 0,24 C50,14 100,14 150,24 C200,34 250,34 300,24 C350,14 400,14 450,24 C500,34 550,34 600,24 C650,14 700,14 750,24 C800,34 850,34 900,24 C950,14 1000,14 1050,24 C1100,34 1150,34 1200,24 C1250,14 1300,14 1350,24 C1400,34 1450,34 1500,24';
   function texFill(kind,i,pos){
     if(kind==='dots') return '<pattern id="tex'+pos+i+'" class="texp texp-dots" patternUnits="userSpaceOnUse" width="21" height="21"><circle cx="10.5" cy="10.5" r="1" fill="#3C3833" fill-opacity="0.06"></circle></pattern>';
@@ -1157,23 +1197,161 @@ window.SLOWSPUN_STORES = {
     try{localStorage.setItem('ss-theme',id)}catch(e){}
     d.querySelectorAll('.tdot').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
   }
-  d.querySelectorAll('.tdot').forEach(function(b){
+  function irisTo(id,x,y){
+    if((root.getAttribute('data-theme')||'')===id) return;
+    if(reduce || !document.startViewTransition){ applyTheme(id); return; }
+    x=x||innerWidth/2; y=y||60;
+    var vt=document.startViewTransition(function(){ applyTheme(id); });
+    vt.ready.then(function(){
+      var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
+      root.animate(
+        {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
+        {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'}
+      );
+    }).catch(function(){});
+  }
+  d.querySelectorAll('.tdot,.tchip').forEach(function(b){
     b.addEventListener('click',function(ev){
-      var id=b.getAttribute('data-theme-id')||'';
-      if((root.getAttribute('data-theme')||'')===id) return;
-      if(reduce || !document.startViewTransition){ applyTheme(id); return; }
-      var x=ev.clientX||innerWidth/2, y=ev.clientY||60;
-      var vt=document.startViewTransition(function(){ applyTheme(id); });
-      vt.ready.then(function(){
-        var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
-        root.animate(
-          {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
-          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'}
-        );
-      }).catch(function(){});
+      ev.stopPropagation();
+      irisTo(b.getAttribute('data-theme-id')||'', ev.clientX, ev.clientY);
+      tipDone();
     });
   });
   applyTheme(root.getAttribute('data-theme')||'');
+
+  /* ── first-visit nudge toward the colorway picker (desktop) ── */
+  var tipEl=null,tipT1,tipT2;
+  function tipDone(){
+    try{localStorage.setItem('ss-theme-tip','1')}catch(e){}
+    clearTimeout(tipT1); clearTimeout(tipT2);
+    if(tipEl){ var t=tipEl; tipEl=null; t.classList.remove('on'); setTimeout(function(){t.remove()},400); }
+  }
+  (function(){
+    var seen=null; try{seen=localStorage.getItem('ss-theme-tip')}catch(e){}
+    if(seen || innerWidth<920) return;
+    tipT1=setTimeout(function(){
+      var dots=d.querySelector('.nav .brand .rock-wrap')||d.querySelector('.nav .brand img'); if(!dots) return;
+      var r=dots.getBoundingClientRect();
+      tipEl=d.createElement('button');
+      tipEl.className='theme-tip'; tipEl.type='button';
+      tipEl.textContent='Hi \u2014 Pearl here. This site knits up in three themes. Pick one, or give my bookmark a little pull and I\u2019ll choose for you.';
+      tipEl.style.left=Math.max(12,r.left-16)+'px';
+      tipEl.style.top=(r.bottom+14)+'px';
+      tipEl.addEventListener('click',tipDone);
+      d.body.appendChild(tipEl);
+      requestAnimationFrame(function(){requestAnimationFrame(function(){ if(tipEl) tipEl.classList.add('on'); });});
+      tipT2=setTimeout(tipDone,12000);
+    },1400);
+    window.addEventListener('scroll',function onSc(){ if(window.pageYOffset>700){ tipDone(); window.removeEventListener('scroll',onSc); } },{passive:true});
+  })();
+
+  /* ── pull cord: random colorway that isn't the current one ── */
+  var cord=d.getElementById('pull-cord');
+  if(cord){
+    /* sit centered under the nav theme dots */
+    function placeCord(){
+      var dots=d.querySelector('.nav .brand .rock-wrap')||d.querySelector('.nav .brand img'); if(!dots) return;
+      var host=cord.offsetParent; if(!host) return;
+      var hr=host.getBoundingClientRect(), dr=dots.getBoundingClientRect();
+      cord.style.left=Math.round(dr.left+dr.width/2-hr.left-cord.offsetWidth/2)+'px';
+    }
+    placeCord(); addEventListener('resize',placeCord); addEventListener('load',placeCord);
+    /* pull_bookmark port: drag to stretch, release past threshold to fire */
+    var BASE=72, MAXPULL=46, TRIGGER=24, pull=0, dragging=false, moved=false, sy=0, spring=null;
+    function setPull(p){
+      pull=p; cord.style.height=(BASE+p)+'px';
+      cord.classList.toggle('bm-ready', p>=TRIGGER);
+    }
+    /* confetti_burst port: upward fan, gravity + drag arc, tumble + fade */
+    var confC=null,confCtx=null,confP=[],confRaf=0,confLast=0;
+    var CONF_COLORS=['#6F8B79','#B5715A','#E6C142','#9BB4A4','#C99A4A'];
+    function confettiFire(x,y){
+      if(reduce) return;
+      if(!confC){
+        confC=d.createElement('canvas');
+        confC.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:300';
+        d.body.appendChild(confC); confCtx=confC.getContext('2d');
+      }
+      confC.width=innerWidth; confC.height=innerHeight;
+      for(var i=0;i<34;i++){
+        var ang=(-90+(Math.random()*2-1)*58)*Math.PI/180;
+        var spd=8+Math.random()*10;
+        confP.push({x:x+(Math.random()*2-1)*20,y:y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,
+          rot:Math.random()*6.28,vr:(Math.random()*2-1)*0.22,sway:Math.random()*6.28,
+          life:0,max:150+(Math.random()*60|0),c:CONF_COLORS[i%5],s:6+Math.random()*6,round:Math.random()<.5});
+      }
+      if(!confRaf){ confLast=0; confRaf=requestAnimationFrame(confTick); }
+    }
+    function confTick(now){
+      var dt=confLast?Math.min(3,(now-confLast)/16.666):1; confLast=now;
+      confCtx.clearRect(0,0,confC.width,confC.height);
+      for(var i=confP.length-1;i>=0;i--){
+        var p=confP[i];
+        p.vx*=Math.pow(0.992,dt); p.vy+=0.34*dt; p.sway+=0.1*dt;
+        p.x+=(p.vx+Math.sin(p.sway)*0.7)*dt; p.y+=p.vy*dt; p.rot+=p.vr*dt; p.life+=dt;
+        if(p.life>p.max || p.y>confC.height+60){ confP.splice(i,1); continue; }
+        var f0=p.max*0.55, op=p.life>f0?Math.max(0,1-(p.life-f0)/(p.max-f0)):1;
+        confCtx.globalAlpha=op; confCtx.fillStyle=p.c;
+        confCtx.save(); confCtx.translate(p.x,p.y); confCtx.rotate(p.rot);
+        if(p.round){ confCtx.beginPath(); confCtx.ellipse(0,0,p.s/2,p.s/2,0,0,6.283); confCtx.fill(); }
+        else{ confCtx.fillRect(-p.s/2,-p.s*0.85,p.s,p.s*1.7); }
+        confCtx.restore();
+      }
+      confCtx.globalAlpha=1;
+      if(confP.length){ confRaf=requestAnimationFrame(confTick); }
+      else{ confRaf=0; if(confC){ confC.remove(); confC=null; confCtx=null; } }
+    }
+    function firePull(){
+      var cur=root.getAttribute('data-theme')||'';
+      var pool=['','lamplight','cbsafe'].filter(function(t){return t!==cur});
+      var next=pool[Math.floor(Math.random()*pool.length)];
+      var r=cord.getBoundingClientRect();
+      confettiFire(r.left+r.width/2, r.bottom-6);
+      irisTo(next, r.left+r.width/2, r.bottom-8); tipDone();
+    }
+    function springBack(){
+      var from=BASE+pull; setPull(0);
+      if(reduce||!cord.animate) return;
+      if(spring) spring.cancel();
+      spring=cord.animate(
+        [{height:from+'px'},{height:(BASE-7)+'px',offset:.55},{height:(BASE+3)+'px',offset:.8},{height:BASE+'px'}],
+        {duration:460,easing:'cubic-bezier(.3,.7,.4,1)'});
+    }
+    cord.addEventListener('pointerdown',function(e){
+      dragging=true; moved=false; sy=e.clientY;
+      if(spring){spring.cancel();spring=null;}
+      cord.classList.add('bm-drag');
+      try{cord.setPointerCapture(e.pointerId)}catch(err){}
+      e.preventDefault();
+    });
+    cord.addEventListener('pointermove',function(e){
+      if(!dragging) return;
+      var dy=e.clientY-sy;
+      if(Math.abs(dy)>4) moved=true;
+      setPull(Math.max(0,Math.min(MAXPULL,dy*0.9)));   /* resistance, clamped */
+    });
+    function bmRelease(){
+      if(!dragging) return;
+      dragging=false; cord.classList.remove('bm-drag');
+      var go=(pull>=TRIGGER)||!moved;                   /* full pull, or a plain tap */
+      springBack();
+      if(go) firePull();
+    }
+    cord.addEventListener('pointerup',bmRelease);
+    cord.addEventListener('pointercancel',bmRelease);
+  }
+
+  /* ── easter egg: yarn balls + playful Pearls (magnifier targets, not the logo) cycle the colorway ── */
+  d.addEventListener('click',function(ev){
+    if(innerWidth<920) return;
+    var yb=ev.target.closest('.yb,.pearl-stack,.step-pearl,.freebox-img img'); if(!yb) return;
+    if(ev.target.closest('.rock-wrap,.brand,.foot-brand')) return;   /* never the logo */
+    if(ev.target.closest('.tdot,.tchip')) return;
+    ev.stopPropagation();
+    var order=['','lamplight','cbsafe'];
+    var next=order[(order.indexOf(root.getAttribute('data-theme')||'')+1)%order.length];
+    irisTo(next, ev.clientX, ev.clientY);
+  },true);
 
   /* ── store badges: driven by SLOWSPUN_STORES in <head> ── */
   var cfg=window.SLOWSPUN_STORES||{};
@@ -1283,9 +1461,11 @@ window.SLOWSPUN_STORES = {
     }
   }
   var kind='general';
+  /* assembled from parts so a CDN email-rewriter never sees a literal address, even in JS */
+  function EM(tag){ return 'slowspun.app'+(tag?'+'+tag:'')+'\u0040'+'gmail'+'.com'; }
   function setEmail(open){
     var e=d.getElementById('ask-email');
-    if(e) e.textContent = open ? 'slowspun.app+'+KINDS[kind].tag+'@gmail.com' : 'slowspun.app@gmail.com';
+    if(e) e.textContent = open ? EM(KINDS[kind].tag) : EM();
   }
   toggle.addEventListener('click',function(e){
     if(e.target.closest('#ask-link')) e.preventDefault();   /* JS present: expand instead of bare mailto */
@@ -1331,7 +1511,7 @@ window.SLOWSPUN_STORES = {
       body+='\n\n\u2014\nSlowspun site \u00b7 Web';
     }
     /* encodeURIComponent -> %20 for spaces, matching the app's manual encoding note */
-    var addr='slowspun.app+'+KINDS[kind].tag+'@gmail.com';
+    var addr=EM(KINDS[kind].tag);
     var mailto='mailto:'+addr+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     /* routing lines included so a manual paste still lands in the right Gmail label */
     lastComposed='To: '+addr+'\nSubject: '+subject+'\n\n'+body;
@@ -1351,8 +1531,25 @@ window.SLOWSPUN_STORES = {
   var lastComposed='';
   var cp=d.getElementById('ask-copy');
   if(cp) cp.addEventListener('click',function(){
-    var txt=lastComposed||'To: slowspun.app@gmail.com';
+    var txt=lastComposed||'To: '+EM();
     (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ cp.textContent='copied!'; setTimeout(function(){ cp.textContent='copy your message'; },2000); },function(){ cp.textContent='copy failed — select it above'; });
+  });
+})();
+</script>
+<script>
+/* CDN email-obfuscation workaround (Cloudflare / IONOS CDN rewrites literal
+   addresses in served HTML into "[email protected]"). Addresses are assembled
+   here at load time instead, so the proxy never sees one to rewrite. */
+(function(){
+  var A='slowspun.app', D='gmail'+'.com';
+  document.querySelectorAll('.js-em,.js-em-href').forEach(function(el){
+    var tag=el.getAttribute('data-tag');
+    var local=A+(tag?'+'+tag:'');
+    if(el.classList.contains('js-em')){
+      var shown=(el.getAttribute('data-cap')==='1'?'S'+A.slice(1):A)+(tag?'+'+tag:'');
+      el.textContent=shown+'\u0040'+D;
+    }
+    if(el.tagName==='A') el.setAttribute('href','mail'+'to:'+local+'\u0040'+D);
   });
 })();
 </script>

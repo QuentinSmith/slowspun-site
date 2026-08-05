@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://slowspun.app/updates.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://slowspun.app/privacy.html</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>yearly</changefreq>

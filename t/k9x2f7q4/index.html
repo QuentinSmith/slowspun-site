@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Slowspun tester guide — what to do during the 14-day closed test.">
+<title>Slowspun — Tester guide</title>
+<link rel="icon" type="image/png" href="../../assets/pearl-logo.png">
+<link rel="apple-touch-icon" href="../../assets/pearl-logo.png">
+<meta name="theme-color" content="#6F8B79">
+<link rel="preload" href="../../assets/fonts/Fraunces-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/SplineSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var __t=localStorage.getItem('ss-theme');if(__t===null&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)__t='lamplight';if(__t)document.documentElement.setAttribute('data-theme',__t);
+var __m=document.querySelector('meta[name="theme-color"]');if(__m)__m.setAttribute('content',__t==='lamplight'?'#2E3A33':__t==='cbsafe'?'#2C6E9A':'#6F8B79')}catch(e){}</script>
+<style>
+@font-face{font-family:'Fraunces';src:url('../../assets/fonts/Fraunces-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('../../assets/fonts/Fraunces-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('../../assets/fonts/SplineSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('../../assets/fonts/SplineSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('../../assets/fonts/SplineSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('../../assets/fonts/SplineSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Spline Sans Mono';src:url('../../assets/fonts/SplineSansMono-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+
+  :root{
+    --paper:#EBE5D9; --paper-deep:#E4DED1; --card:#F8F3EA; --card2:#F1EBDF;
+    --ink:#3C3833; --ink-soft:#6B6356; --ink-faint:#A89D8C;
+    --sage:#6F8B79; --sage-soft:#9BB4A4; --sage-deep:#56705F; --wash:#E7EEE9;
+    --line:#DCCFBB; --line-soft:#E7DDCC; --gold:#E6C142; --clay:#B5715A; --clay-deep:#965A45;
+    --cream:#F7F2E4; --cream-soft:#C9CFC2; --gold-wash:#FBF3E4;
+    --panel:var(--sage); --on-accent:#FFFFFF;
+    --label:#48604F; --label-clay:#7E4632;   /* AA-safe small-caps text */
+    --font-display:'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:'Spline Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono:'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  [data-theme="lamplight"]{
+    --paper:#221F1B; --paper-deep:#1D1A16; --card:#2B2722; --card2:#342F29;
+    --ink:#E4DCCC; --ink-soft:#AEA390; --ink-faint:#897F70;
+    --sage:#87A691; --sage-soft:#5E7967; --sage-deep:#87A691; --wash:#2E3A33;
+    --line:#39322A; --line-soft:#322C25; --gold:#C49F4E; --clay:#C28166; --clay-deep:#C28166;
+    --cream:#F0E8D6; --cream-soft:#C9BFA9; --gold-wash:#2A2620;
+    --panel:#2E3A33; --on-accent:#221F1B;
+    --label:#9DBCA6; --label-clay:#D4977C;
+  }
+  [data-theme="cbsafe"]{
+    --paper:#F2EFE9; --paper-deep:#EAE6DC; --card:#FBF9F4; --card2:#F0EDE6;
+    --label:#1F5375; --label-clay:#7A3A13;
+    --ink:#2B2A28; --ink-soft:#5A5853; --ink-faint:#6E6B63;
+    --sage:#2C6E9A; --sage-soft:#79A6C4; --sage-deep:#255C81; --wash:#DEEAF1;
+    --line:#837D6D; --line-soft:#DDD8CE; --gold:#E6C142; --clay:#B0561F; --clay-deep:#8E4517;
+    --cream:#FFFFFF; --cream-soft:#D5E2EC; --gold-wash:#F4ECDA;
+    --on-accent:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.02rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.14;letter-spacing:-.012em;text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:var(--sage);text-decoration:none}
+  a:hover{color:var(--clay)}
+  img{max-width:100%;height:auto;display:block}
+  .wrap{max-width:50rem;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--font-body);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--label);margin-bottom:10px}
+  .eyebrow.clayx{color:var(--label-clay)}
+
+  /* ── masthead (no nav, no outbound links) ── */
+  .mast{background:var(--panel);border-bottom:1px solid rgba(247,242,228,.16)}
+  .mast-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:56px;height:56px;flex:none;transform-origin:50% 100%;animation:bob 6.5s ease-in-out infinite}
+  .brand .bn{font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--cream);line-height:1.1}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3%)}}
+
+  /* ── theme control ── */
+  .th-wrap{position:relative;flex:none}
+  .th-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(247,242,228,.4);background:rgba(247,242,228,.1);color:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+  .th-btn:hover{background:rgba(247,242,228,.2);transform:translateY(-1px)}
+  .th-btn svg{width:20px;height:20px}
+  .th-tray{position:absolute;top:calc(100% + 9px);right:0;min-width:190px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 24px 50px -24px rgba(40,30,15,.55);z-index:20;
+    opacity:0;visibility:hidden;transform:translateY(-8px) scale(.97);transform-origin:top right;pointer-events:none;
+    transition:opacity .22s ease,transform .26s cubic-bezier(.32,1.35,.5,1),visibility 0s linear .26s}
+  .th-tray.open{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+  .tt-row{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:9px 11px;border-radius:10px;cursor:pointer;font:inherit;font-size:.9rem;color:var(--ink);text-align:left;
+    opacity:0;transform:translateY(-5px);transition:background .18s,opacity .22s ease,transform .22s ease}
+  .th-tray.open .tt-row{opacity:1;transform:none}
+  .th-tray.open .tt-row:nth-child(1){transition-delay:.05s}
+  .th-tray.open .tt-row:nth-child(2){transition-delay:.1s}
+  .th-tray.open .tt-row:nth-child(3){transition-delay:.15s}
+  .tt-row:hover{background:var(--card2)}
+  .tt-sw{width:16px;height:16px;border-radius:50%;flex:none;border:1px solid var(--line)}
+  .tt-row[aria-pressed="true"] .tt-sw{box-shadow:0 0 0 2px var(--gold)}
+
+  /* ── head ── */
+  .head{padding:44px 0 4px}
+  .head h1{font-size:clamp(2rem,5.4vw,2.7rem)}
+  .head .lede{color:var(--ink-soft);font-size:1.06rem;margin-top:14px;max-width:46ch}
+  .head .days{font-weight:700;color:var(--ink)}
+  .rule{height:3px;background:var(--sage);border:0;border-radius:2px;margin:26px 0 30px;max-width:120px}
+
+  /* ── cards ── */
+  .card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--sage);border-radius:16px;padding:22px 24px;margin-bottom:20px}
+  .card.gold{background:var(--gold-wash);border-left-color:var(--gold)}
+  .card.clay{background:var(--paper-deep);border-left-color:var(--clay-deep)}
+  .card.wash{background:var(--wash);border-left-color:var(--sage)}
+  .card p+p{margin-top:10px}
+  .card strong{color:var(--ink);font-weight:700}
+
+  /* ── numbered steps ── */
+  ol.steps{list-style:none;counter-reset:n}
+  ol.steps li{counter-increment:n;position:relative;padding-left:34px;margin-bottom:13px}
+  ol.steps li:last-child{margin-bottom:0}
+  ol.steps li::before{content:counter(n);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--clay-deep);color:#fff;font-family:var(--font-mono);font-size:.76rem;font-weight:500;display:flex;align-items:center;justify-content:center}
+  [data-theme="lamplight"] ol.steps li::before{color:#221F1B}
+  .days{font-weight:700}
+
+  /* ── section headings ── */
+  h2{font-size:clamp(1.35rem,3vw,1.65rem);margin:38px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line-soft)}
+  h2:first-of-type{margin-top:30px}
+  .sub{color:var(--ink-soft);font-size:.97rem;margin:10px 0 16px}
+  .note{color:var(--ink-soft);font-size:.95rem;margin-top:12px}
+  .body p+p{margin-top:12px}
+
+  /* ── CTAs ── */
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:14px 28px;border-radius:999px;font-weight:700;font-size:1rem;background:var(--clay-deep);color:#fff;margin-top:16px;transition:transform .18s,box-shadow .18s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -16px rgba(40,30,15,.5);color:#fff}
+  .cta.sage{background:var(--sage-deep)}
+  [data-theme="lamplight"] .cta{color:#221F1B}
+  [data-theme="lamplight"] .cta:hover{color:#221F1B}
+  [data-theme="lamplight"] .cta.sage{background:var(--wash);color:var(--cream);border:2px solid var(--sage)}
+  [data-theme="lamplight"] .cta.sage:hover{background:var(--sage);color:#221F1B}
+  .cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .hint{font-size:.92rem;color:var(--ink-soft);margin-top:10px}
+
+  /* ── paired lists ── */
+  .lists{display:grid;gap:16px;margin-top:14px}
+  @media(min-width:640px){.lists{grid-template-columns:1fr 1fr}}
+  .listbox{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .listbox h3{font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:11px 16px}
+  [data-theme="lamplight"] .listbox h3{color:#221F1B}
+  .listbox.ok h3{background:var(--sage-deep)}
+  .listbox.no h3{background:var(--clay-deep)}
+  .listbox ul{list-style:none}
+  .listbox.ok ul{background:var(--wash)}
+  .listbox.no ul{background:var(--paper-deep)}
+  .listbox li{position:relative;padding:12px 16px 12px 40px;border-top:1px solid var(--line-soft);font-size:.97rem}
+  .listbox li:first-child{border-top:0}
+  .listbox li::before{position:absolute;left:16px;top:12px;font-weight:700}
+  .listbox.ok li::before{content:"\2713";color:var(--sage-deep)}
+  .listbox.no li::before{content:"\2715";color:var(--clay-deep)}
+
+  /* ── schedule ── */
+  .tbl{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:14px}
+  .tbl .thead{background:var(--sage-deep);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:11px 16px}
+  [data-theme="lamplight"] .tbl .thead{color:#221F1B}
+  .row{padding:15px 16px;border-top:1px solid var(--line-soft)}
+  .row:nth-of-type(odd){background:var(--card)}
+  .row:nth-of-type(even){background:var(--card2)}
+  .row .when{display:block;font-family:var(--font-mono);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--label);margin-bottom:5px}
+  @media(min-width:640px){
+    .row{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline}
+    .row .when{margin-bottom:0}
+  }
+
+  /* ── questions (site FAQ accordion) ── */
+  .qa{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:14px}
+  .qa details{border-top:1px solid var(--line-soft);background:var(--card)}
+  .qa details:first-of-type{border-top:0}
+  .qa summary{list-style:none;cursor:pointer;padding:15px 44px 15px 16px;position:relative;font-weight:600;color:var(--ink);font-size:.99rem}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary::after{content:"";position:absolute;right:18px;top:50%;width:9px;height:9px;border-right:2px solid var(--sage);border-bottom:2px solid var(--sage);transform:translateY(-70%) rotate(45deg);transition:transform .28s cubic-bezier(.3,.8,.35,1)}
+  .qa details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+  .qa summary:hover{background:var(--card2)}
+  .qa .a{padding:0 16px 16px;color:var(--ink-soft);font-size:.97rem}
+  .qa details[open]{background:var(--card2)}
+
+  /* ── end ── */
+  .end{text-align:center;padding:44px 0 56px}
+  .end img{width:64px;height:64px;margin:0 auto 12px;transform-origin:50% 100%;animation:bob 7s ease-in-out infinite}
+  .end p{font-family:var(--font-display);font-style:italic;font-size:1.12rem;color:var(--ink-soft)}
+
+  :focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:6px}
+  @media(max-width:539px){
+    body{font-size:.99rem}
+    .wrap{padding:0 18px}
+    .brand img{width:48px;height:48px}
+    .brand .bn{font-size:1.15rem}
+    .card{padding:18px 18px;border-radius:14px}
+    .cta{width:100%}
+    .head{padding:32px 0 2px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .brand img,.end img{animation:none!important}
+    .th-tray,.tt-row{transition:none!important}
+  }
+  @media print{
+    body{background:#fff}
+    .mast,.th-wrap{display:none}
+    .card,.tbl,.qa,.listbox{break-inside:avoid}
+    .qa .a{display:block!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <span class="brand">
+      <img src="../../assets/pearl-logo.png" alt="" width="56" height="56">
+      <span class="bn">Slowspun</span>
+    </span>
+    <div class="th-wrap">
+      <button class="th-btn" id="th-btn" type="button" aria-label="Change theme" aria-expanded="false" aria-controls="th-tray">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>
+      </button>
+      <div class="th-tray" id="th-tray" role="group" aria-label="Color theme">
+        <button class="tt-row" type="button" data-theme-id=""><span class="tt-sw" style="background:#EBE5D9"></span>Oat &amp; Sage</button>
+        <button class="tt-row" type="button" data-theme-id="lamplight"><span class="tt-sw" style="background:#221F1B"></span>Lamplight</button>
+        <button class="tt-row" type="button" data-theme-id="cbsafe"><span class="tt-sw" style="background:#2C6E9A"></span>Colorblind Safe</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="head">
+    <p class="eyebrow">Closed test</p>
+    <h1>Thank you for testing Slowspun.</h1>
+    <p class="lede">Google requires twelve testers over <span class="days">14 days</span> before Slowspun can be released. Here is everything you need.</p>
+    <hr class="rule">
+  </div>
+
+  <section class="card" aria-labelledby="short">
+    <p class="eyebrow" id="short">The short version</p>
+    <ol class="steps">
+      <li>Install from the link below, on your phone.</li>
+      <li>Use the Google account you sent me.</li>
+      <li>Stay opted in for all <span class="days">14 days</span>.</li>
+      <li>Email feedback to the address further down.</li>
+    </ol>
+  </section>
+
+  <section class="card clay" aria-labelledby="android">
+    <p class="eyebrow clayx" id="android">Android only</p>
+    <p><strong>This test runs on Android, and the phone has to be signed in to the Google account you sent me.</strong></p>
+    <p>An install on any other account does not count toward the twelve testers.</p>
+  </section>
+
+  <section class="card gold" aria-labelledby="link">
+    <p class="eyebrow clayx" id="link">Your tester link</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=app.slowspun.app" target="_blank" rel="noopener">Open the tester link</a>
+    <p class="hint">Tap this on your phone. It only works for the Google account you sent me.</p>
+  </section>
+
+  <h2>Start here</h2>
+  <div class="body">
+    <ol class="steps" style="margin-top:16px">
+      <li><strong>Tap the link above on your phone</strong>, press &ldquo;Become a tester,&rdquo; then install from Google Play. Searching the Play Store will not work &mdash; it has to come through the link.</li>
+      <li><strong>Check that your phone is on the account you sent me.</strong> The install only counts on that account, and phones are often signed in to a different one from the address people use for email.</li>
+    </ol>
+  </div>
+
+  <section class="card wash" aria-labelledby="most" style="margin-top:20px">
+    <p class="eyebrow" id="most">Most important</p>
+    <p><strong>Stay opted in for all <span class="days">14 days</span>.</strong> Google counts twelve testers on the list across <span class="days">14 unbroken days</span>. An interruption starts the count again from zero.</p>
+  </section>
+
+  <div class="lists">
+    <div class="listbox ok">
+      <h3>This is fine</h3>
+      <ul>
+        <li>Using the app often, or rarely</li>
+        <li>Uninstalling the app</li>
+        <li>Not opening it for a few days</li>
+      </ul>
+    </div>
+    <div class="listbox no">
+      <h3>This removes you from the list</h3>
+      <ul>
+        <li>Signing out of that Google account</li>
+        <li>Using a new phone on another account</li>
+        <li>Pressing &ldquo;Leave the test&rdquo; on the link</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What to test, and when</h2>
+  <p class="sub">A suggested order. Adjust it to fit your own knitting.</p>
+  <div class="tbl">
+    <div class="thead">When &amp; what</div>
+    <div class="row">
+      <span class="when">Days 1&ndash;2</span>
+      <p>Open it and look around. Anything that crashes or looks wrong is easier to fix in the first week.</p>
+    </div>
+    <div class="row">
+      <span class="when">Days 2&ndash;4</span>
+      <p>Regauge a pattern against your own swatch, open a PDF, and size it to your measurements.</p>
+    </div>
+    <div class="row">
+      <span class="when">Days 4&ndash;14</span>
+      <p>Use the row reader on a project you are actually knitting. Put the phone down mid-row and check the next day that it still holds your place.</p>
+    </div>
+  </div>
+  <p class="note">Updates install automatically. Nothing for you to do.</p>
+
+  <h2>Sending feedback</h2>
+  <div class="body">
+    <p>Two things are worth reporting: <strong>what took longer than it should have</strong>, and <strong>where you had to stop and think</strong>. Small details are the most useful &mdash; a control in an unexpected place, or a step that was not clear.</p>
+    <a class="cta sage js-em-href" data-tag="feedback" data-subject="Slowspun tester feedback" href="#">Email feedback</a>
+    <p class="hint">Or write to <span class="js-em" data-tag="feedback" style="font-family:var(--font-mono)">slowspun.app+feedback [at] gmail.com</span> &mdash; email rather than texting, since I have to summarize all of this for Google at the end.</p>
+  </div>
+
+  <h2>Common questions</h2>
+  <div class="qa">
+    <details open>
+      <summary>Does it cost anything?</summary>
+      <div class="a">No. Paid features are unlocked for you. Tell me if a real charge appears.</div>
+    </details>
+    <details>
+      <summary>I cannot find the app.</summary>
+      <div class="a">Check your phone is on the account you sent me. If the link errors, tell me &mdash; the release may still be in review.</div>
+    </details>
+    <details>
+      <summary>New phone mid-test?</summary>
+      <div class="a">Let me know &mdash; the same Google account should carry over.</div>
+    </details>
+    <details>
+      <summary>Where does my data go?</summary>
+      <div class="a">Nowhere. No account, no sign-up, nothing leaves your phone, ever.</div>
+    </details>
+    <details>
+      <summary>I found a bug.</summary>
+      <div class="a">Send it, even if it seems minor. Bugs found now never reach users.</div>
+    </details>
+    <details>
+      <summary>Can I tell people?</summary>
+      <div class="a">Hold off until the app is public &mdash; there is nothing to download yet.</div>
+    </details>
+    <details>
+      <summary>When does this end?</summary>
+      <div class="a"><span class="days">14 days</span> after the last tester joins. I will let you know.</div>
+    </details>
+  </div>
+
+  <div class="end">
+    <img src="../../assets/pearl-swatch.webp" alt="" width="64" height="64" loading="lazy">
+    <p>Knit slowly. Tell me everything.</p>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme */
+  function applyTheme(id){
+    if(id) root.setAttribute('data-theme',id); else root.removeAttribute('data-theme');
+    try{localStorage.setItem('ss-theme',id)}catch(e){}
+    var tc=d.querySelector('meta[name="theme-color"]');
+    if(tc) tc.setAttribute('content', id==='lamplight'?'#2E3A33':id==='cbsafe'?'#2C6E9A':'#6F8B79');
+    d.querySelectorAll('.tt-row').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
+  }
+  /* init: reflect current theme WITHOUT persisting — the pre-paint script gates on
+     ss-theme === null to keep following the OS setting until a real choice is made. */
+  (function(){
+    var cur=root.getAttribute('data-theme')||'';
+    d.querySelectorAll('.tt-row').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===cur)); });
+  })();
+
+  var btn=d.getElementById('th-btn'), tray=d.getElementById('th-tray');
+  function setTray(o){ tray.classList.toggle('open',o); btn.setAttribute('aria-expanded',String(o)); }
+  btn.addEventListener('click',function(e){ e.stopPropagation(); setTray(!tray.classList.contains('open')); });
+  d.addEventListener('click',function(e){ if(!tray.contains(e.target) && e.target!==btn) setTray(false); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape') setTray(false); });
+  d.querySelectorAll('.tt-row').forEach(function(b){
+    b.addEventListener('click',function(ev){
+      var id=b.getAttribute('data-theme-id')||'';
+      setTray(false);
+      if((root.getAttribute('data-theme')||'')===id) return;
+      if(reduce || !d.startViewTransition){ applyTheme(id); return; }
+      var x=ev.clientX||innerWidth-40, y=ev.clientY||60;
+      var vt=d.startViewTransition(function(){ applyTheme(id); });
+      vt.ready.then(function(){
+        var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
+        root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
+          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'});
+      }).catch(function(){});
+    });
+  });
+
+  /* email, assembled at runtime so no literal address sits in the source */
+  var A='slowspun.app', D='gmail'+'.com';
+  d.querySelectorAll('.js-em,.js-em-href').forEach(function(el){
+    var tag=el.getAttribute('data-tag'), local=A+(tag?'+'+tag:'');
+    if(el.classList.contains('js-em')) el.textContent=local+'\u0040'+D;
+    if(el.tagName==='A'){
+      var s=el.getAttribute('data-subject');
+      el.setAttribute('href','mail'+'to:'+local+'\u0040'+D+(s?'?subject='+encodeURIComponent(s):''));
+    }
+  });
+})();
+</script>
+</body>
+</html>

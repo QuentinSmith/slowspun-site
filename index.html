@@ -145,16 +145,17 @@
 </script>
 <style>
   /* ---- fonts (local) ---- */
-  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
-  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
-  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
-  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
-  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
-  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
-  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+  @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+  @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+  @font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 
   /* ---- Oat & Sage palette ---- */
   :root{
@@ -190,7 +191,7 @@
     --paper:#F2EFE9; --paper-deep:#EAE6DC; --card:#FBF9F4; --card2:#F0EDE6;
     --ink:#2B2A28; --ink-soft:#5A5853; --ink-faint:#6E6B63;
     --sage:#2C6E9A; --sage-soft:#79A6C4; --sage-deep:#255C81; --wash:#DEEAF1;
-    --line:#837D6D; --line-soft:#DDD8CE; --gold:#8A5E08; --clay:#B0561F; --clay-deep:#8E4517;
+    --line:#837D6D; --line-soft:#DDD8CE; --gold:#E6C142; --clay:#B0561F; --clay-deep:#8E4517;
     --cream:#FFFFFF; --cream-soft:#D5E2EC;
     --on-accent:#FFFFFF; --on-panel-soft:#D5E2EC; --foot-bg:#2B2A28; --warn2:#8A5E08;
   }
@@ -230,17 +231,73 @@
   .nav-cta{flex:none;white-space:nowrap;background:var(--card);color:var(--ink);font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:999px;transition:background .2s}
   .nav-cta:hover{background:var(--cta-hover-bg,#fff);color:var(--cta-hover-ink,#3C3833)}
   @media(min-width:860px){.nav-links{display:flex}}
+  .cta-mini{display:none}
+  @media(max-width:859px){
+    .nav .theme-dots{display:none}          /* theme picker lives in the drawer on mobile/tablet */
+    .nav-in{gap:10px}
+    .brand{font-size:1.12rem;gap:8px}
+    .brand img{width:44px;height:44px}
+  }
+  /* landscape phones/tablets have a wide, shallow bar — keep the picker up there */
+  @media(max-width:859px) and (min-width:700px) and (max-height:520px){
+    .nav .theme-dots{display:inline-flex}
+  }
+  /* brand block sits hard left, never centred */
+  .nav-in .brand{margin-right:auto}
+  .drawer .theme-dots{align-self:flex-start;width:auto;flex:none}
+
+  /* six nav links need breathing room on narrow desktops */
+  @media(min-width:860px) and (max-width:1039px){
+    .nav-links{gap:11px;font-size:.76rem}
+    .brand{font-size:1.05rem;gap:7px}
+    .brand img{width:40px;height:40px}
+    .tp-label{font-size:.54rem}
+    .tdot{width:13px;height:13px}
+  }
+  /* nav links optically centred in the header bar */
+  .nav-in{position:relative}
+  @media(min-width:860px){
+    .nav-in .nav-links{position:absolute;left:50%;transform:translateX(-50%);margin-left:0}
+  }
+  /* too tight to hard-centre: let the links flow-centre so nothing can collide */
+  @media(min-width:860px) and (max-width:1099px){
+    .nav-in .nav-links{position:static;transform:none;margin-left:auto;margin-right:auto}
+  }
   .nav-burger{display:none;flex:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(247,242,228,.35);background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
   .nav-burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--cream)}
   @media(max-width:859px){.nav-burger{display:flex}.nav-in .nav-cta{display:none}html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;display:none}}
   .drawer-backdrop{position:fixed;inset:0;background:rgba(42,54,47,.5);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:98}
   .drawer-backdrop.open{opacity:1;pointer-events:auto}
-  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px;overflow-y:auto;overscroll-behavior:contain}
   .drawer.open{transform:none}
   .drawer .brand{margin-bottom:16px}
   .drawer a.dlink{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:12px;color:var(--cream);font-weight:600;font-size:1.05rem}
   .drawer a.dlink:hover{background:rgba(247,242,228,.12);color:#fff}
   .drawer .nav-cta{margin-top:auto;text-align:center;padding:14px 20px}
+  /* desktop header: the two gated store badges in place of the old pill */
+  .nav-get{display:none;flex:none;align-items:center;align-self:center;gap:8px;flex-wrap:nowrap}
+  .nav-in .nav-get{margin-top:0;display:none}      /* beats .cta-row's display:flex + hero margin */   /* beats .cta-row's hero margin regardless of order */
+  @media(min-width:860px){.nav-in .nav-get{display:flex}}
+  .nav-get .badge{min-width:0;gap:8px;padding:7px 13px;border-radius:11px}
+  .nav-get .badge .b-top{font-size:.55rem}
+  .nav-get .badge .b-main{font-size:.9rem}
+  .nav-get .badge-soon::after{top:-7px;right:-5px;font-size:.5rem;padding:1px 6px}
+  /* tight desktop widths: keep both buttons, drop to icon-only */
+  @media(min-width:860px) and (max-width:1119px){
+    .nav-get .badge .b-text{display:none}
+    .nav-get .badge{padding:9px 12px;gap:0}
+    .nav-links{gap:20px;font-size:.88rem}
+  }
+  @media(min-width:860px) and (max-width:979px){
+    .nav-links{gap:15px;font-size:.82rem}
+    .brand{font-size:1.14rem}
+    .brand img{width:48px;height:48px}
+  }
+  /* ---- drawer store badges (same gating as the hero) ---- */
+  .drawer-get{margin-top:auto;display:flex;flex-direction:column;flex-wrap:nowrap;gap:9px;padding-top:14px}
+  .drawer-get .dg-label{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,228,.6);padding-left:2px}
+  .drawer-get .badge{min-width:0;padding:10px 16px}
+  .drawer-get .badge .b-main{font-size:1.02rem}
 
   /* ---- hero (deep pine) ---- */
   .hero{background:var(--panel);background-image:radial-gradient(120% 90% at 78% -10%, rgba(231,238,233,.22), transparent 60%);color:var(--cream);padding:64px 0 8px;position:relative;overflow:hidden}
@@ -378,6 +435,25 @@
   .gb-chip.gb-faint b{color:var(--ink-soft)}
   .gb-x{color:var(--ink-faint)}
   .gb-bar{align-self:stretch;width:1px;background:var(--line)}
+  .gauge-row{display:flex;align-items:stretch;gap:0;margin-top:20px;flex-wrap:wrap;width:fit-content;max-width:100%;border-radius:16px;box-shadow:0 16px 36px -24px rgba(86,112,95,.6)}
+  .gauge-row .gauge-bar{margin-top:0;border-top-right-radius:0;border-bottom-right-radius:0}
+  .gb-unit{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--card2);border:1.5px solid var(--sage);border-left:0;border-radius:0 16px 16px 0;padding:12px 15px;flex:none;cursor:pointer}
+  .gb-unit-label{font-family:var(--font-mono);font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* wherever the gauge row has to wrap, Units becomes a full-width base
+     for the card above it rather than a narrow stub */
+  @media(max-width:767px){
+    .gauge-row{width:100%;flex-direction:column}
+    .gauge-row .gauge-bar{width:100%;border-radius:16px 16px 0 0}
+    .gb-unit{width:100%;border-left:1.5px solid var(--sage);border-top:0;border-radius:0 0 16px 16px;padding:12px 15px 14px}
+    .gb-unit .gb-seg{align-self:center}
+  }
+  .gb-seg{position:relative;display:inline-flex;background:var(--wash);border:1px solid var(--sage-soft);border-radius:12px;padding:3px}
+  .gu-thumb{position:absolute;top:3px;bottom:3px;left:3px;width:46px;background:var(--sage);border-radius:9px;z-index:0;transform-origin:center;will-change:transform}
+  .gu-btn{position:relative;z-index:1;font-family:var(--font-mono);font-size:.84rem;font-weight:600;color:var(--ink-soft);background:none;border:0;padding:9px 18px;border-radius:9px;cursor:pointer;transition:color .25s ease}
+  .gu-btn.is-on{color:var(--on-accent)}
+  .gb-per,.gb-needle{transition:opacity .18s ease,transform .18s ease}
+  .gb-swapping{opacity:0;transform:translateY(-5px)}
 
   /* what's inside — PRO (deep pine workshop) */
   .workshop{background:var(--panel);background-image:radial-gradient(110% 100% at 20% -20%, rgba(255,255,255,.1), transparent 55%);border-radius:26px;padding:38px 34px 34px;margin-top:26px;box-shadow:0 34px 70px -44px rgba(86,112,95,.65)}
@@ -392,12 +468,13 @@
   .fcard{position:relative;perspective:1200px;background:transparent;border:0;padding:0;cursor:pointer}
   .flip-inner{position:relative;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.35,.1,.2,1)}
   .fcard:hover .flip-inner,.fcard.flipped .flip-inner,.fcard:focus-visible .flip-inner{transform:rotateY(180deg)}
-  .flip-front{height:100%;background:var(--card);border:1px solid rgba(60,56,51,.08);border-radius:18px;padding:20px 18px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .flip-front{height:100%;background:var(--card);border:1px solid rgba(60,56,51,.08);border-radius:18px;padding:20px 18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:flex-start}
   .flip-back{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:var(--paper);border:1px solid rgba(60,56,51,.08);transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column}
   .fb-cap{font-family:var(--font-display);font-weight:600;font-size:.95rem;line-height:1.3;color:var(--ink);text-align:center;padding:12px 12px 9px}
   .fb-cap em{font-style:normal;color:var(--sage);text-decoration:underline wavy var(--clay);text-decoration-thickness:2px;text-underline-offset:5px}
   .flip-back img{width:100%;flex:1;min-height:0;object-fit:cover;object-position:center top}
-  .flip-front>img{height:78px;width:auto;animation:floaty 8s ease-in-out infinite}
+  .flip-front>img{height:78px;width:auto;margin:0 0 10px;animation:floaty 8s ease-in-out infinite}
+  .flip-front>.yb{width:78px !important;margin:0 0 10px !important}
   .fcard:nth-child(2) img{animation-delay:-2s}
   .fcard:nth-child(3) img{animation-delay:-4s}
   .fcard:nth-child(4) img{animation-delay:-6s}
@@ -488,8 +565,24 @@
   @media(min-width:700px){.price{grid-template-columns:1fr 1fr}}
   .ptier{border-radius:22px;padding:30px 28px;position:relative;overflow:hidden}
   .ptier>*{position:relative;z-index:1}
+  /* sale: grow the Pro card without enlarging Free */
+  .price:has(.ptier-pro.sale-on){max-width:858px;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);align-items:center}
+  .ptier-pro.sale-on{padding:34px 34px}
+  @media(min-width:700px){.ptier-pro.sale-on .pname{font-size:1.32rem}}
+  /* sage travel border (sage_travel_border.dart port) — orbits the Pro card while on sale */
+  .sage-orbit{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;overflow:visible}
+  .sage-orbit .track{fill:none;stroke:#9BB4A4;stroke-width:2.4;opacity:.2}
+  .sage-orbit .arc{fill:none;stroke:#B9D2C4;stroke-width:2.8;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(155,180,164,.75));animation:sageTravel 3.6s linear infinite}
+  @keyframes sageTravel{to{stroke-dashoffset:var(--peri,0)}}
+  @media (prefers-reduced-motion: reduce){.sage-orbit .arc{display:none}.sage-orbit .track{opacity:.42}}
   .ptier .yb{position:absolute;z-index:0;opacity:.55}
   .ptier .pname{font-family:var(--font-display);font-size:1.4rem;font-weight:600}
+  .ptier .ptagline{font-family:var(--font-display);font-style:italic;font-size:.98rem;color:var(--ink-soft);margin-top:6px}
+  .ptier-pro .ptagline{color:var(--on-panel-soft);padding-right:60px}
+  .ptier-foot{margin-top:18px;padding-left:22px;font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--sage)}
+  .mini-list{list-style:none;display:grid;grid-template-columns:1fr;gap:8px 0;margin:12px 0 14px;padding:0;width:100%}
+  .mini-list li{position:relative;padding-left:16px;font-size:.75rem;line-height:1.32;color:var(--ink-soft)}
+  .mini-list li::before{content:"";position:absolute;left:2px;top:.52em;width:5px;height:5px;border-radius:50%;background:var(--sage)}
   .ptier .pprice{font-size:.95rem;margin:6px 0 18px}
   .ptier .pprice b{font-family:var(--font-display);font-size:1.7rem;font-weight:600}
   .ptier ul{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -503,6 +596,39 @@
   .ptier-pro .pname{color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .ptier-pro .pprice{color:var(--on-panel-soft)}
   .ptier-pro .pprice b{color:#fff}
+  .ptier-pro .pprice s{color:var(--on-panel-soft);text-decoration-thickness:1.5px}
+  .ptier-pro .pprice.on-sale b{color:#E6C142}
+  /* diagonal corner sale ribbon on the Pro card (shown only when SLOWSPUN_SALE.on) */
+  .sale-ribbon{position:absolute;top:0;right:0;width:152px;height:152px;overflow:hidden;pointer-events:none;z-index:6;border-top-right-radius:inherit}
+  .sale-ribbon span{position:absolute;top:33px;right:-52px;width:210px;padding:8px 0;text-align:center;transform:rotate(45deg);background:#E6C142;color:#3b2d09;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 8px 18px -8px rgba(40,30,10,.55)}
+  .ptier-pro.sale-on > .yb:first-of-type{opacity:0}
+  .prerelease-note{text-align:center;color:var(--ink-soft);font-family:var(--font-display);font-style:italic;font-size:1rem;margin-top:26px;max-width:none;white-space:nowrap}
+  @media(max-width:1080px){.prerelease-note{white-space:normal;font-size:.95rem}}
+  .promo-note{text-align:center;color:var(--ink);font-size:1rem;margin-top:10px}
+  .promo-note b{color:var(--clay);font-weight:700}
+  .promo-note s{color:var(--ink-faint);text-decoration-thickness:1.5px}
+  .sec-head .not-out{position:relative;display:inline-block;text-align:center;margin:26px auto 0;padding:15px 26px 16px;border-radius:24px;background:var(--sage-deep);color:var(--on-accent);font-size:1.06rem;line-height:1.5;max-width:100%;box-shadow:0 12px 26px -18px rgba(40,30,15,.5)}
+  .sec-head .not-out b{font-weight:800}
+  .no-dot{display:inline-block;vertical-align:middle;position:relative;top:-1px;margin-right:10px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 26%,transparent)}
+  /* Lamplight: dark pill + cream text reads far crisper than dark-on-light-sage.
+     Outlined in sage so it still reads as a pill against the near-black page. */
+  [data-theme="lamplight"] .sec-head .not-out{background:var(--wash);color:var(--cream);border:1.5px solid var(--sage);box-shadow:0 14px 30px -18px rgba(0,0,0,.7)}
+  [data-theme="lamplight"] .no-dot{background:#E6C142;box-shadow:0 0 0 4px rgba(230,193,66,.22)}
+  /* the status pill is also the way in: make it read as clickable */
+  .sec-head a.not-out{text-decoration:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+  .sec-head a.not-out:hover{transform:translateY(-2px);box-shadow:0 16px 32px -20px rgba(40,30,15,.55);color:var(--on-accent)}
+  [data-theme="lamplight"] .sec-head a.not-out:hover{color:var(--cream)}
+  .no-cue{display:block;margin:9px auto 0;font-weight:700;white-space:nowrap;width:fit-content;border-bottom:1.5px solid color-mix(in srgb,currentColor 45%,transparent);padding-bottom:2px}
+  .sec-head a.not-out:hover .no-cue{border-bottom-color:currentColor}
+  .no-arw{display:inline-block;transition:transform .18s ease}
+  .sec-head a.not-out:hover .no-arw{transform:translateX(3px)}
+  /* the tester band follows pricing directly — one gap, not two stacked paddings */
+  #testers{padding-top:0}
+  /* same treatment for the tester CTA: cream on dark reads crisper than dark on light sage */
+  [data-theme="lamplight"] .t-cta{background:var(--wash);color:var(--cream);border:2px solid var(--sage);padding:11px 24px}
+  [data-theme="lamplight"] .t-cta:hover{background:color-mix(in srgb,var(--sage) 22%,var(--wash))}
+  [data-theme="lamplight"] .t-cta:hover{color:var(--cream)}
+  .price-note{text-align:center;color:var(--ink-soft);font-family:var(--font-display);font-style:italic;font-size:.94rem;margin-top:10px}
   .ptier-pro li{color:#F7F2E4}
   .ptier-pro li::before{background-color:rgba(255,255,255,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
 
@@ -549,6 +675,15 @@
     .step h3{font-size:1rem}
     .step p{font-size:.86rem}
     .feat{grid-template-columns:1fr;gap:10px}
+    /* phones: every feature card is forced to one uniform height; the
+       calculators bullets stay, and each card's copy sits inside that box */
+    .feat{grid-auto-rows:1fr}
+    .fcard{height:100%}
+    .mini-list{display:flex;flex-wrap:wrap;gap:1px 12px;margin:2px 0 0;width:auto}
+    .mini-list li{padding-left:10px;font-size:.7rem;line-height:1.28}
+    .mini-list li::before{width:4px;height:4px;left:1px;top:.52em}
+    .fcard .flip-front p{font-size:.78rem}
+    .fcard .flip-front:has(.mini-list) p{display:none}
     .flip-front{padding:14px 14px;display:grid;grid-template-columns:56px 1fr;gap:2px 14px;align-items:center}
     .flip-front>img,.flip-front .yb{grid-row:span 2;align-self:center}
     .flip-front>img{height:auto;max-height:64px;width:100%;object-fit:contain}
@@ -556,7 +691,25 @@
     .fcard h4{font-size:.98rem;margin:0}
     .fcard p{font-size:.8rem;margin:0}
     .price{grid-template-columns:1fr;gap:12px}
-    .ptier{padding:20px 18px}
+    /* the sale layout's :has() rule outranks the line above, so restate it here:
+       on phones both cards go full-width and size to their own content */
+    .price:has(.ptier-pro.sale-on){grid-template-columns:1fr;max-width:none;align-items:stretch}
+    .ptier,.ptier-pro.sale-on{width:100%;max-width:100%;min-width:0;height:auto;padding:22px 18px}
+    .ptier ul{gap:7px}
+    .ptier li{line-height:1.35}
+    .prerelease-note{font-size:.9rem;margin-top:18px}
+    .promo-note{font-size:.9rem;margin-top:8px}
+    .ptier-pro.sale-on .pname{font-size:1.15rem}
+    .ptier .ptagline,.ptier-pro .ptagline{padding-right:0;font-size:.92rem}
+    .ptier .pprice{font-size:1.5rem;flex-wrap:wrap}
+    .sale-ribbon{width:120px;height:120px}
+    .sale-ribbon span{top:26px;right:-46px;width:170px;font-size:.62rem;padding:6px 0}
+    .ptier-foot{padding-left:0;font-size:1rem}
+    .prerelease-note,.promo-note,.price-note{padding:0 4px}
+    .sec-head .not-out{padding:11px 16px;gap:8px;font-size:.95rem;margin-bottom:18px}
+    .testers{padding:26px 18px 24px}
+    .testers p{font-size:.95rem}
+    .t-cta{width:100%;justify-content:center}
     .ptier li{font-size:.85rem;gap:8px}
     .ptier .pname{font-size:1.15rem}
     .ptier .pprice b{font-size:1.3rem}
@@ -620,10 +773,24 @@
   .rock-ring{position:absolute;left:50%;top:50%;width:110%;aspect-ratio:1;border-radius:50%;border:2px solid var(--cream);opacity:.55;transform:translate(-50%,-50%) scale(.45);animation:rockRing .75s ease-out forwards;pointer-events:none}
   @keyframes rockRing{60%{opacity:.5}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
   /* theme picker */
-  .theme-dots{display:flex;gap:7px;align-items:center;margin-top:3px}
-  .tdot{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(247,242,228,.55);cursor:pointer;padding:0;flex:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-  .tdot:hover{transform:scale(1.2)}
-  .tdot[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1.5px rgba(230,193,66,.4)}
+  .theme-dots{display:inline-flex;gap:8px;align-items:center;margin-top:5px;padding:4px 10px 4px 8px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:color-mix(in srgb,currentColor 7%,transparent)}
+  .tp-label{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,currentColor 78%,transparent);white-space:nowrap}
+  .tp-label svg{width:13px;height:13px;flex:none}
+  .tdot{width:16px;height:16px;border-radius:50%;border:1.5px solid color-mix(in srgb,currentColor 42%,transparent);cursor:pointer;padding:0;flex:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .tdot:hover{transform:scale(1.15);box-shadow:0 0 0 3px color-mix(in srgb,currentColor 16%,transparent)}
+  .tdot[aria-pressed="true"]{border-color:#E6C142;box-shadow:0 0 0 2px rgba(230,193,66,.45)}
+  @keyframes tpPulse{0%,100%{box-shadow:0 0 0 0 rgba(230,193,66,0)}50%{box-shadow:0 0 0 5px rgba(230,193,66,.3)}}
+  .theme-dots.tp-hint{animation:tpPulse 2.1s ease-in-out 3}
+  /* theme-name flash (fades in below the header on every theme change) */
+  .theme-flash{position:fixed;z-index:40;left:50%;transform:translateX(-50%);top:80px;display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:999px;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 14px 32px -18px rgba(40,30,15,.45);font-size:.92rem;font-weight:600;opacity:0;pointer-events:none;white-space:nowrap}
+  .theme-flash .tf-sw{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid color-mix(in srgb,currentColor 32%,transparent)}
+  .theme-flash.on{animation:themeFlash 4s ease forwards}
+  @keyframes themeFlash{0%{opacity:0;transform:translate(-50%,-30px)}12%{opacity:1;transform:translate(-50%,0)}85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-16px)}}
+  @media(max-width:919px){.theme-flash{top:62px;font-size:.86rem;padding:7px 13px}}
+  @media(prefers-reduced-motion:reduce){.theme-flash.on{animation:none}}
+  .ct-lead{opacity:.92}
+  .ct-active{display:none}
+  @media(min-width:920px){.ct-active{display:block;text-align:center;margin:26px auto 8px;font-family:var(--font-display);font-style:italic;font-size:clamp(1.35rem,2.4vw,1.7rem);color:var(--cream);opacity:.9}}
   .brand-col{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
   /* ── desktop-only theme hints: footer row, first-visit tip, pull cord, card chips ── */
   .foot-themes,.pull-cord,.card-themes{display:none}
@@ -662,8 +829,123 @@
     .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl,.cord-swing,.pull-cord{animation:none!important}
     .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
   }
+
+  /* ═══════════ HEADER (redesigned) ═══════════════════════════════════
+     One job per cluster: identity left, sections centre, controls right. */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
+  .nav-in{max-width:1200px;margin:0 auto;padding:0 28px;height:72px;display:flex;align-items:center;gap:20px;position:relative;justify-content:flex-start;transition:height .3s cubic-bezier(.4,0,.2,1)}
+  .nav.shrunk .nav-in{height:56px}
+
+  /* identity — single row, nothing stacked beneath */
+  .nav .brand{display:flex;flex-direction:row;align-items:center;gap:11px;flex:none;margin-right:auto;font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--cream)}
+  .nav .brand img{width:60px;height:60px;transition:width .3s cubic-bezier(.4,0,.2,1),height .3s cubic-bezier(.4,0,.2,1)}
+  .nav.shrunk .brand img{width:48px;height:48px}
+  .nav .brand-col{display:contents}
+  .nav .theme-dots{display:none}
+
+  /* sections — centred on the bar itself */
+  .nav-links{display:none;align-items:center;gap:30px;font-size:.95rem;font-weight:600;margin:0}
+  @media(min-width:900px){
+    .nav-links{display:flex;position:absolute;left:50%;transform:translateX(-50%);margin:0}
+  }
+  @media(min-width:900px) and (max-width:1039px){.nav-links{gap:20px;font-size:.88rem}}
+  .nav-links a{position:relative;color:var(--cream-soft);padding:7px 0;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:#E6C142;opacity:0;transform:scaleX(.35);transition:opacity .3s ease,transform .3s ease}
+  .nav-links a[aria-current]{color:#fff}
+  .nav-links a[aria-current]::after{opacity:1;transform:none}
+  .nav-sep{width:1px;height:19px;background:rgba(247,242,228,.26);flex:none}
+  .nav-links a.ext{font-weight:500;color:color-mix(in srgb,var(--cream-soft) 76%,transparent)}
+  .nav-links a.ext:hover{color:#fff}
+
+  /* controls */
+  .nav-right{display:flex;align-items:center;gap:12px;flex:none;margin-left:auto}
+  .theme-wrap{position:relative;flex:none}
+  .theme-btn{width:40px;height:40px;border-radius:12px;border:1px solid rgba(247,242,228,.3);background:transparent;color:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .2s,border-color .2s}
+  .theme-btn svg{width:19px;height:19px}
+  .theme-btn:hover{background:rgba(247,242,228,.12);border-color:rgba(247,242,228,.58)}
+  .theme-btn[aria-expanded="true"]{background:rgba(247,242,228,.16);border-color:rgba(247,242,228,.7)}
+  .nav.shrunk .theme-btn{width:36px;height:36px;border-radius:11px}
+  .theme-tray{position:absolute;top:calc(100% + 22px);right:0;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:7px;box-shadow:0 24px 46px -24px rgba(40,30,15,.55);display:flex;flex-direction:column;gap:1px;z-index:60;
+    transform:translateY(-8px) scale(.96);transform-origin:top right;opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .22s ease,transform .26s cubic-bezier(.32,1.35,.5,1),visibility 0s linear .26s}
+  .theme-tray.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);transition-delay:0s,0s,0s}
+  .theme-tray .tt-row{opacity:0;transform:translateY(-5px);transition:opacity .2s ease,transform .24s ease}
+  .theme-tray.open .tt-row{opacity:1;transform:none}
+  .theme-tray.open .tt-row:nth-of-type(1){transition-delay:.05s}
+  .theme-tray.open .tt-row:nth-of-type(2){transition-delay:.1s}
+  .theme-tray.open .tt-row:nth-of-type(3){transition-delay:.15s}
+  @media(prefers-reduced-motion:reduce){
+    .theme-tray,.theme-tray .tt-row{transition:none!important;transform:none!important}
+  }
+  .tt-title{font-family:var(--font-mono);font-size:.57rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);padding:7px 10px 5px}
+  .tt-row{display:flex;align-items:center;gap:11px;width:100%;background:none;border:0;padding:9px 10px;border-radius:9px;font:inherit;font-size:.88rem;color:var(--ink);cursor:pointer;text-align:left;transition:background .18s}
+  .tt-row:hover{background:var(--card2)}
+  .tt-row .sw{width:16px;height:16px;border-radius:50%;flex:none;border:1.5px solid color-mix(in srgb,var(--ink) 20%,transparent)}
+  .tt-row[aria-checked="true"]{font-weight:600}
+  .tt-row[aria-checked="true"] .sw{border-color:#E6C142;box-shadow:0 0 0 2px rgba(230,193,66,.45)}
+  .get-pill{flex:none;white-space:nowrap;background:var(--card);color:var(--ink);font-weight:700;font-size:.9rem;padding:11px 20px;border-radius:999px;transition:background .2s,color .2s,padding .3s cubic-bezier(.4,0,.2,1)}
+  .get-pill:hover{background:var(--cta-hover-bg,#fff);color:var(--cta-hover-ink,#3C3833)}
+  .nav.shrunk .get-pill{padding:9px 17px;font-size:.86rem}
+
+  @media(max-width:899px){
+    .nav-burger{display:flex}
+    .nav-in{padding:0 16px;gap:12px;height:64px}
+    .nav .brand{font-size:1.12rem;gap:8px}
+    .nav .brand img{width:52px;height:52px}
+    .nav.shrunk .nav-in{height:54px}
+    .get-pill{padding:9px 15px;font-size:.83rem}
+  }
+  @media(max-width:400px){.theme-wrap{display:none}}
+  /* smallest phones: keep burger + wordmark + pill on one line */
+  @media(max-width:409px){
+    .nav-in{padding:0 12px;gap:8px}
+    .nav .brand{font-size:1.02rem;gap:7px}
+    .nav .brand img{width:44px;height:44px}
+    .nav.shrunk .brand img{width:38px;height:38px}
+    .get-pill{padding:8px 13px;font-size:.8rem}
+    .nav-burger{width:40px;height:40px}
+  }   /* picker still in the drawer */
+
+
+  /* demo band: the video is the whole point of the section */
+  .demo-block{max-width:1000px;margin:0 auto;text-align:center}
+  .demo-block .video-shell{margin-top:26px}
+  .band-joined{padding-top:0}
+  .get-band{max-width:760px;margin:0 auto;text-align:center;align-items:center}
+  .get-band .cta-row{justify-content:center;margin-top:26px;padding-top:0}
+  .get-band .cta-note{justify-content:center}
+  .get-band p{margin-left:auto;margin-right:auto;max-width:52ch}
+  /* tester recruitment band */
+  .testers{max-width:660px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 28px 32px}
+  .testers img{width:84px;height:84px;margin:0 auto 12px}
+  .testers h2{font-size:clamp(1.45rem,3vw,1.9rem)}
+  .testers p{color:var(--ink-soft);margin:12px auto 0;font-size:1.02rem;max-width:46ch}
+  .t-cta{display:inline-flex;align-items:center;white-space:nowrap;gap:9px;margin-top:22px;background:var(--sage-deep);color:var(--on-accent);font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:999px;transition:transform .18s,box-shadow .18s}
+  .t-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -16px rgba(40,30,15,.5);color:var(--on-accent)}
+  .t-cta .arw{transition:transform .18s}
+  .t-cta:hover .arw{transform:translateX(3px)}
+  .t-cta:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+  /* nav links: cream + bold clears WCAG "large text" (3:1) on every bar colour */
+  .nav-links a{color:var(--cream);font-weight:700}
+  .nav-links a.ext{color:color-mix(in srgb,var(--cream) 82%,transparent);font-weight:600}
+  .nav-links a.ext:hover{color:#fff}
+  /* Get the app pill: keep a visible edge so it never dissolves into a dark bar */
+  .get-pill{border:1.5px solid transparent}
+  [data-theme="lamplight"] .get-pill{background:var(--cream);color:#221F1B;border-color:var(--cream)}
+  [data-theme="lamplight"] .get-pill:hover{background:#fff;color:#221F1B}
+  [data-theme="lamplight"] .get-pill.ghost{background:transparent;color:var(--cream);border-color:rgba(247,242,228,.5)}
+  [data-theme="lamplight"] .get-pill.ghost:hover{background:rgba(247,242,228,.14);color:#fff}
+  @media(prefers-reduced-motion:reduce){
+    .nav-in,.nav .brand img,.get-pill,.nav-links a::after{transition:none!important}
+  }
 </style>
-<script>try{var __t=localStorage.getItem('ss-theme');if(__t)document.documentElement.setAttribute('data-theme',__t)}catch(e){}</script>
+<meta name="theme-color" content="#6F8B79">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="assets/fonts/Fraunces-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/SplineSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var __t=localStorage.getItem('ss-theme');if(__t===null&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)__t='lamplight';if(__t)document.documentElement.setAttribute('data-theme',__t);
+var __m=document.querySelector('meta[name="theme-color"]');if(__m)__m.setAttribute('content',__t==='lamplight'?'#2E3A33':__t==='cbsafe'?'#2C6E9A':'#6F8B79')}catch(e){}</script>
 <!-- ════════════════════════════════════════════════════════════════════
      STORE LINKS — the only thing you need to edit at launch time.
      • Paste your real listing URL into url:'' to make a badge clickable.
@@ -679,36 +961,90 @@ window.SLOWSPUN_STORES = {
   appstore: { enabled: true, url: '' },
   play:     { enabled: true, url: '' }
 };
+
+/* Tester recruitment — paste the sign-up form URL between the quotes.
+   Left blank, the button falls back to the contact email so it's never dead. */
+window.SLOWSPUN_TESTERS = {
+  testing: true,   /* true while in closed testing: header pill reads "Join the test" */
+  formUrl: 'https://forms.gle/yUEa7UjwSYSyCM2t7'  /* paste the sign-up form URL; blank falls back to the contact email */
+};
+
+/* ═══ PRICING ═══════════════════════════════════════════════════════
+   EDIT THESE FIVE LINES — nothing else needs touching.
+
+   regularPrice → the normal price ($6.99).
+   mode         → the ON/OFF toggle:  ← #2  switch sale ↔ regular here
+                    'none'  = regular price only, no promo, plain card.
+                    'intro' = pre-launch. Shows the introductory price with
+                              NO strike-through + the "rises to …" note.
+                    'sale'  = post-launch. Strikes through regularPrice and
+                              shows promoPrice, + an "on sale, ends …" note.
+   promoPrice   → the sale / intro price ($4.99).            ← #4
+   promoLabel   → the text on the corner ribbon              ← #3
+                  ('INTRO PRICE' | 'ON SALE' | 'HOLIDAY SALE' …).
+   endsAt       → ISO date the promo ends; auto-formats into the note
+                  as "September 16" (that's #1). Set '' to use endsWhen.
+   endsWhen     → words to use INSTEAD of a date, when you don't have one
+                  yet (only used while endsAt is ''). Reads as
+                  "rises to $6.99 <endsWhen>."
+   preRelease   → true adds one calm line above the price note saying
+                  Slowspun isn't out yet. Set false at launch.  */
+window.SLOWSPUN_PRICING = {
+  regularPrice: '$6.99',
+  mode:         'intro',
+  promoPrice:   '$4.99',
+  promoLabel:   'INTRO PRICE',
+  endsAt:       '',
+  endsWhen:     'a little while after launch',
+  preRelease:   true
+};
 </script>
 </head>
 <body>
 
 <!-- NAV -->
-<header class="nav">
-  <div class="wrap nav-in">
+<header class="nav" id="site-nav">
+  <div class="nav-in">
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
-    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="#top">Slowspun</a><span class="theme-dots" role="group" aria-label="Colour theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
-    <nav class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#see">See it work</a>
+    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="46" height="46"><a class="brand-name" href="#top">Slowspun</a></span>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="#how" data-spy="how">How it works</a>
+      <a href="#see" data-spy="see">Demo</a>
+      <a href="#features" data-spy="features">Features</a>
+      <a href="#pricing" data-spy="pricing">Pricing</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="updates.html" class="ext">Updates</a>
     </nav>
-    <a class="nav-cta" href="#get">Get the app</a>
+    <div class="nav-right">
+      <div class="theme-wrap">
+        <button class="theme-btn" id="theme-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="theme-tray" aria-label="Choose a theme" title="Theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg></button>
+        <div class="theme-tray" id="theme-tray" role="menu" aria-label="Theme">
+          <span class="tt-title">Theme</span>
+          <button class="tt-row" type="button" role="menuitemradio" data-theme-id="" aria-checked="false"><span class="sw" style="background:#EBE5D9"></span>Oat &amp; Sage</button>
+          <button class="tt-row" type="button" role="menuitemradio" data-theme-id="lamplight" aria-checked="false"><span class="sw" style="background:#221F1B"></span>Lamplight</button>
+          <button class="tt-row" type="button" role="menuitemradio" data-theme-id="cbsafe" aria-checked="false"><span class="sw" style="background:#2C6E9A"></span>Colorblind Safe</button>
+        </div>
+      </div>
+      <a class="get-pill" href="#see">Get the app</a>
+    </div>
   </div>
 <button class="pull-cord" id="pull-cord" type="button" title="Pull me — surprise theme" aria-label="Pull the bookmark for a surprise site theme"><span class="cord-swing"><span class="bm-dot" style="background:#EBE5D9"></span><span class="bm-dot" style="background:#221F1B"></span><span class="bm-dot" style="background:#2C6E9A"></span><span class="bm-grip"></span></span></button>
 </header>
 
+<div class="theme-flash" id="theme-flash" aria-hidden="true"><span class="tf-sw" id="tf-sw"></span><span id="tf-name"></span></div>
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
 <nav class="drawer" id="drawer" aria-label="Menu">
-  <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="#top">Slowspun</a><span class="theme-dots" role="group" aria-label="Colour theme"><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
+  <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="#top">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
   <a class="dlink" href="#how">How it works</a>
+  <a class="dlink" href="#see">Demo</a>
   <a class="dlink" href="#features">Features</a>
   <a class="dlink" href="#pricing">Pricing</a>
-  <a class="dlink" href="#faq">FAQ</a>
-  <a class="dlink" href="#see">See it work</a>
-  <a class="nav-cta" href="#get">Get the app</a>
+  <a class="dlink" href="updates.html">Updates</a>
+  <div class="drawer-get cta-row">
+    <span class="dg-label">Get the app</span>
+    <a class="badge badge-solid" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
+    <a class="badge badge-ghost" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="19" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#F7F2E4"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#F7F2E4" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#F7F2E4" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#F7F2E4" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
+  </div>
 </nav>
 
 <a id="top"></a>
@@ -719,7 +1055,7 @@ window.SLOWSPUN_STORES = {
       <span class="hero-tag">A cozy knitting companion</span>
       <h1>Knitting your patterns to <span class="accent">your</span> gauge.</h1>
       <p class="lede">Paste in a pattern, tell Pearl your swatch, and she works out every stitch and row so it comes out your size — at your tension, in your yarn. No frogging. No notebook full of sums.</p>
-      <div class="cta-row" id="get">
+      <div class="cta-row">
         <a class="badge badge-solid" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
         <a class="badge badge-ghost" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#F7F2E4"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#F7F2E4" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#F7F2E4" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#F7F2E4" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
       </div>
@@ -756,8 +1092,40 @@ window.SLOWSPUN_STORES = {
 
 <div class="yarn" data-ca="var(--paper)" data-cb="var(--paper-deep)" data-tex-above="scallop" data-tex-below="dots"></div>
 
+<!-- DEMO -->
+<section class="band tex-dots" id="see">
+  <div class="wrap">
+    <div class="reveal demo-block">
+      <span class="eyebrow" style="color:var(--clay)">See it work</span>
+      <h2 style="font-size:clamp(1.7rem,3.6vw,2.3rem);margin-top:10px">Get to know Pearl</h2>
+      <!-- Swap the teaser: replace assets/promo-teaser-16x9.mp4, or swap this <video> for a YouTube iframe (youtube-nocookie embed). -->
+      <div class="video-shell" id="promo-video">
+        <video controls playsinline preload="metadata" poster="assets/video-poster.jpg" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture aria-label="Slowspun teaser: a 45-second look at regauging a pattern with Pearl" src="assets/promo-teaser-16x9.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET SLOWSPUN -->
+<section class="band tex-dots band-joined" id="get">
+  <div class="wrap">
+    <div class="reveal final-cta get-band">
+      <span class="eyebrow">Get Slowspun</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2rem);margin-top:10px">Your gauge. Your patterns.<br>No&nbsp;math.</h2>
+      <p class="muted" style="margin-top:12px">Watched Pearl work? She's ready when you are — free to regauge, no account needed.</p>
+      <div class="cta-row">
+        <a class="badge badge-ink" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
+        <a class="badge badge-paper" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#56705F"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#6F8B79"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#B5715A"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#965A45"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
+      </div>
+      <div class="cta-note">Free to regauge. Pro is a one-time unlock — never a subscription.</div>
+    </div>
+  </div>
+</section>
+
+<div class="yarn" data-ca="var(--paper-deep)" data-cb="var(--paper)" data-tex-above="dots" data-tex-below="scallop"></div>
+
 <!-- FEATURES -->
-<section class="band tex-dots" id="features">
+<section class="band tex-scallop" id="features">
   <div class="wrap">
     <div class="sec-head center reveal">
       <h2>Free to regauge. Pro for the rest.</h2>
@@ -769,7 +1137,8 @@ window.SLOWSPUN_STORES = {
       <div>
         <span class="tag-free">Free, always</span>
         <h3>Regauge your patterns</h3>
-        <p>Paste a knitting pattern, add your swatch, and Pearl re-knits every count to your gauge — cast-on, rows, shaping and all. As many as you like, for nothing.</p>
+        <p>Paste a knitting pattern or open a PDF, add your swatch, and Pearl re-knits every count to your gauge —<br>cast-on, rows, shaping and all.<br><br>As many as you like, for nothing.</p>
+        <div class="gauge-row">
         <div class="gauge-bar" aria-label="Your gauge: 22 stitches by 30 rows per 10 cm on a 4 mm needle">
           <div class="gb-head"><span class="gb-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6F8B79" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 7q2.5-3 5 0t5 0 5 0 5 0"/><path d="M2 12q2.5-3 5 0t5 0 5 0 5 0"/><path d="M2 17q2.5-3 5 0t5 0 5 0 5 0"/></svg></span><span class="gb-title">Your Gauge</span><span class="gb-per">· per 10 cm</span></div>
           <div class="gb-chips">
@@ -777,8 +1146,10 @@ window.SLOWSPUN_STORES = {
             <span class="gb-x">×</span>
             <span class="gb-chip"><b class="count" data-to="30">0</b><small>rows</small></span>
             <span class="gb-bar"></span>
-            <span class="gb-chip gb-faint"><b><span class="count" data-to="4">0</span> mm</b><small>needle</small></span>
+            <span class="gb-chip gb-faint"><b class="gb-needle"><span class="count" data-to="4">0</span> mm</b><small>needle</small></span>
           </div>
+        </div>
+        <div class="gb-unit" role="group" aria-label="Units"><span class="gb-unit-label" aria-hidden="true">Units</span><div class="gb-seg"><span class="gu-thumb" aria-hidden="true"></span><button class="gu-btn is-on" type="button" data-unit="cm" aria-pressed="true">cm</button><button class="gu-btn" type="button" data-unit="in" aria-pressed="false">in</button></div></div>
         </div>
       </div>
     </div>
@@ -787,102 +1158,126 @@ window.SLOWSPUN_STORES = {
       <div class="workshop-head">
         <div>
           <h3>Pearl's workshop</h3>
-          <p>Everything beyond regauging lives here — one unlock opens the whole bench.</p>
+          <p style="max-width:none">Everything past your gauge lives here — one unlock opens the whole bench.</p>
         </div>
         <span class="tag-pro">Pro · one-time unlock</span>
       </div>
       <div class="feat">
-        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-tools.png" aria-label="Quick calculators — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-abacus.webp" alt="" loading="lazy"><h4>Quick calculators</h4><p>Cast-on from a width, even increases and decreases, length-to-rows, needle conversions and yarn amounts — the in-between sums, done for you.</p></div><div class="flip-back"><div class="fb-cap">The fiddly sums,<br><em>all done for you</em></div><img src="assets/screens/tools.png" alt="Quick calculators in the app" style="object-position:center 58%" loading="lazy"></div></div></div>
-        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-body.png" aria-label="Made to fit you — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-measure.webp" alt="" loading="lazy"><h4>Made to fit you</h4><p>Save your measurements and Pearl sizes a pattern to your body, with your ease worked in.</p></div><div class="flip-back"><div class="fb-cap">Sizing the patterns<br><em>to fit you</em></div><img src="assets/screens/body.png" alt="Body measurements in the app" style="object-position:center 62%" loading="lazy"></div></div></div>
-        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-themes.png" aria-label="Setups and yarns — see it in the app"><div class="flip-inner"><div class="flip-front"><div class="yb" style="--yc:#BCAE7E;width:64px;margin:7px;animation:yarnSpin 42s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></div><h4>Setups &amp; yarns</h4><p>Keep your go-to gauges, needles and yarns, and pour a saved setup straight into a new project.</p></div><div class="flip-back"><div class="fb-cap">Nine themes <em>to knit by</em></div><img src="assets/screens/themes.png" alt="Theme picker in the app" loading="lazy"></div></div></div>
-        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-row-reader.png" aria-label="Read and keep — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-sweater.webp" alt="" loading="lazy"><h4>Read &amp; keep</h4><p>A row reader that holds your place and your counts, and a tidy home for every pattern you save.</p></div><div class="flip-back"><div class="fb-cap">Never lose your place <em>again</em></div><img src="assets/screens/row-reader.png" alt="Row reader in the app" loading="lazy"></div></div></div>
+        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-tools.png" aria-label="Quick calculators — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-abacus.webp" alt="" loading="lazy"><h4>Quick calculators</h4><ul class="mini-list"><li>Cast-on from a width</li><li>Even increases and decreases</li><li>Length-to-rows</li><li>Needle conversions and yarn amounts</li></ul><p>The in-between sums, done for you.</p></div><div class="flip-back"><div class="fb-cap">The fiddly sums,<br><em>all done for you</em></div><img src="assets/screens/tools.png" alt="Slowspun’s calculator screen, working out a cast-on count from a target width" style="object-position:center 58%" loading="lazy"></div></div></div>
+        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-body.png" aria-label="Made to fit you — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-measure.webp" alt="" loading="lazy"><h4>Made to fit you</h4><p>Save your measurements and Pearl sizes a pattern to your body, with your ease worked in.</p></div><div class="flip-back"><div class="fb-cap">Sizing the patterns<br><em>to fit you</em></div><img src="assets/screens/body.png" alt="Slowspun’s measurements screen, with saved body measurements used to size a pattern" style="object-position:center 62%" loading="lazy"></div></div></div>
+        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-themes.png" aria-label="Setups and yarns — see it in the app"><div class="flip-inner"><div class="flip-front"><div class="yb" style="--yc:#BCAE7E;width:64px;margin:7px;animation:yarnSpin 42s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></div><h4>Setups &amp; yarns</h4><p>Keep your go-to gauges, needles and yarns, and pour a saved setup straight into a new project.</p></div><div class="flip-back"><div class="fb-cap">Your shelf, <em>always to hand</em></div><img src="assets/screens/themes.png" alt="Slowspun’s theme screen, listing light, dark and colorblind-safe palettes" loading="lazy"></div></div></div>
+        <div class="fcard" role="button" tabindex="0" data-shot="assets/screens/framed-row-reader.png" aria-label="Read and keep — see it in the app"><div class="flip-inner"><div class="flip-front"><img src="assets/pearl-sweater.webp" alt="" loading="lazy"><h4>Read &amp; keep</h4><p>A row reader that holds your place and your counts, and a tidy home for every pattern you save.</p></div><div class="flip-back"><div class="fb-cap">Pick up right where <em>you left off</em></div><img src="assets/screens/row-reader.png" alt="Slowspun’s row reader, holding the current row and its stitch counts" loading="lazy"></div></div></div>
       </div>
-      <div class="card-themes" role="group" aria-label="Site theme">This site knits up in three themes, too —<button class="tdot" type="button" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage site theme"></button><button class="tdot" type="button" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight site theme"></button><button class="tdot" type="button" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe site theme"></button></div>
+      <div class="card-themes"><span class="ct-lead">This site knits up in three themes, too</span><span class="theme-dots" role="group" aria-label="Site theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" type="button" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage site theme"></button><button class="tdot" type="button" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight site theme"></button><button class="tdot" type="button" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe site theme"></button></span></div>
+      <div class="ct-active" id="ct-active" aria-live="polite"></div>
     </div>
 
     <div class="sec-head center reveal" id="pricing" style="margin-top:48px">
       <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Free to use. Pro if you love it.</h2>
       <p>No subscription, ever. Pro is a one-time unlock — pay once, it's yours.</p>
+      <a class="not-out" id="not-out-cta" href="#"><span class="no-dot" aria-hidden="true"></span><span><b>Not out yet</b> — Slowspun is in closed testing. Android first.</span><span class="no-cue">Join the test<span class="no-arw" aria-hidden="true"> →</span></span></a>
     </div>
     <div class="price" style="margin-top:34px">
       <div class="ptier ptier-free reveal">
         <span class="yb" style="--yc:#A8B884;width:110px;top:-34px;right:-30px;animation:yarnSpin 40s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></span>
         <span class="yb" style="--yc:#C9A98B;width:74px;bottom:-24px;left:-20px;animation:yarnSpin 52s linear infinite reverse"><img src="assets/yarn-white.webp" alt="" loading="lazy"></span>
         <div class="pname">Free</div>
+        <div class="ptagline">Fitted to your knitting.</div>
         <div class="pprice"><b>$0</b> &nbsp;/ forever</div>
         <ul>
-          <li>Regauge your patterns, as many as you like</li>
+          <li>Knit any pattern at your own gauge, as many as you like</li>
+          <li>Paste a pattern or open a PDF</li>
           <li>A light and a dark theme to knit by</li>
           <li>Pearl, always included</li>
         </ul>
+        <div class="ptier-foot">Free regauges. Pro remembers.</div>
       </div>
       <div class="ptier ptier-pro reveal">
+        <div class="sale-ribbon" id="sale-ribbon" hidden><span id="sale-ribbon-text">Sale</span></div>
         <span class="yb" style="--yc:#C2848D;width:120px;top:-38px;right:-34px;animation:yarnSpin 44s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></span>
         <span class="yb" style="--yc:#8FA9B6;width:66px;top:38%;left:-26px;animation:yarnSpin 58s linear infinite reverse"><img src="assets/yarn-white.webp" alt="" loading="lazy"></span>
         <span class="yb" style="--yc:#B89B6E;width:88px;bottom:-30px;right:18%;animation:yarnSpin 50s linear infinite"><img src="assets/yarn-white.webp" alt="" loading="lazy"></span>
         <div class="pname">Pro <span class="tag-pro">One-time unlock</span></div>
-        <div class="pprice"><b>$—</b> &nbsp;/ once, yours forever</div>
+        <div class="ptagline">Fitted to your measurements,<br>ease and all.</div>
+        <div class="pprice" id="pro-price"><b>$6.99</b> &nbsp;/ once, yours to keep</div>
         <ul>
           <li>Everything in Free</li>
           <li>Quick calculators &amp; shaping tools</li>
           <li>Body measurements, sized to fit</li>
           <li>Setups, yarns &amp; saved patterns</li>
-          <li>Row reader, plus every theme</li>
+          <li>Row reader to keep your place</li>
+          <li>Every theme, light and dark</li>
           <li>A one-time purchase, never a subscription</li>
         </ul>
       </div>
     </div>
+    <p class="prerelease-note reveal" id="prerelease-note" hidden></p>
+    <p class="promo-note reveal" id="promo-note" hidden></p>
+    <p class="price-note reveal">Prices in USD — your local price is set by the store.</p>
   </div>
 </section>
 
-<div class="yarn" data-ca="var(--paper-deep)" data-cb="var(--paper)" data-tex-above="dots" data-tex-below="scallop"></div>
+<!-- WANT IT EARLY? — tester recruitment -->
+<section class="band tex-scallop" id="testers">
+  <div class="wrap">
+    <div class="reveal testers">
+      <img src="assets/pearl-swatch.webp" alt="" width="84" height="84" loading="lazy">
+      <h2>Want it early?</h2>
+      <p>Slowspun needs a handful of testers before it can launch — two weeks on your phone, Android only.</p>
+      <a class="t-cta" id="tester-cta" href="#">Join the test <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="yarn" data-ca="var(--paper)" data-cb="var(--paper-deep)" data-tex-above="scallop" data-tex-below="dots"></div>
 
 <!-- STORY + FAQ -->
-<section class="band tex-scallop" id="about">
+<section class="band tex-dots" id="about">
   <div class="wrap about-stack">
     <div class="reveal" id="faq" style="order:2">
-      <h2>Questions, answered.</h2>
+      <span class="eyebrow">FAQ</span>
+      <h2 style="margin-top:8px">Questions, answered.</h2>
       <div class="faq">
         <div class="faq-col">
-        <details open>
+        <details id="faq-what" open>
           <summary>What is Slowspun?</summary>
           <div class="faq-a"><p>Slowspun is a knitting companion app for iOS and Android. Its main job is regauging — recalculating a knitting pattern's stitch and row counts so the finished piece matches your own gauge — along with tools to organize your gauges, needles, yarns, measurements, and patterns.</p></div>
         </details>
-        <details>
+        <details id="faq-regauging">
           <summary>What does "regauging" mean?</summary>
           <div class="faq-a"><p>Regauging is adjusting a knitting pattern to your personal gauge — how many stitches and rows you knit per inch or centimeter. Because every knitter's tension is a little different, working a pattern at your own gauge is what keeps the finished garment the intended size. Slowspun does that recalculation for you.</p></div>
         </details>
-        <details>
+        <details id="faq-offline">
           <summary>Does Slowspun work offline?</summary>
           <div class="faq-a"><p>Yes. Slowspun works fully offline and needs no internet connection to use. The only time it reaches the network is a quick check with the app store to confirm your purchase status — it uses no server of its own and sends no personal information.</p></div>
         </details>
-        <details>
+        <details id="faq-privacy">
           <summary>Does Slowspun collect my data or require an account?</summary>
           <div class="faq-a"><p>No. There are no accounts and no sign-up. Everything you enter — gauges, measurements, setups, yarns, any photos you add, and saved patterns — stays on your device. Slowspun has no analytics, no tracking, and no advertising.</p></div>
         </details>
-        <details>
+        <details id="faq-pricing">
           <summary>Is Slowspun free? Is it a subscription?</summary>
           <div class="faq-a"><p>Slowspun is free to download and use, with an optional one-time purchase to unlock the full version. It is a single one-time unlock, not a subscription. Payments and refunds are handled by the App Store or Google Play.</p></div>
         </details>
         </div>
         <div class="faq-col">
-        <details>
+        <details id="faq-platforms">
           <summary>What platforms is Slowspun available on?</summary>
           <div class="faq-a"><p>Slowspun is a mobile app for iOS (iPhone and iPad) and Android. It is not available as a website or a desktop program.</p></div>
         </details>
-        <details>
+        <details id="faq-knitting">
           <summary>Is Slowspun for knitting or crochet?</summary>
           <div class="faq-a"><p>Slowspun is built for knitting — it works with knitting gauge, needles, and patterns.</p></div>
         </details>
-        <details>
+        <details id="faq-pdf">
           <summary>Can Slowspun read PDF knitting patterns?</summary>
           <div class="faq-a"><p>Yes. You can import and read PDF knitting patterns in the app, and you can also paste in pattern text.</p></div>
         </details>
-        <details>
+        <details id="faq-restore">
           <summary>If I reinstall Slowspun or get a new phone, do I keep the full version?</summary>
           <div class="faq-a"><p>Yes. Your unlock is tied to your app-store account, so after a reinstall or on a new device Slowspun restores it automatically once you're online, and there is a “Restore purchase” option if you ever need it.</p></div>
         </details>
-        <details>
+        <details id="faq-refund">
           <summary>How do I get a refund?</summary>
           <div class="faq-a"><p>Refunds are handled by the app store you bought from — the Apple App Store or Google Play — following their refund policies. If your purchase is refunded, the full version turns back off.</p></div>
         </details>
@@ -949,33 +1344,7 @@ window.SLOWSPUN_STORES = {
   </div>
 </section>
 
-<div class="yarn" data-ca="var(--paper)" data-cb="var(--paper-deep)" data-tex-above="scallop" data-tex-below="dots"></div>
-
-<!-- SEE IT WORK + GET -->
-<section class="band tex-dots" id="see">
-  <div class="wrap see-grid">
-    <div class="reveal">
-      <span class="eyebrow" style="color:var(--clay)">See it work</span>
-      <h2 style="font-size:clamp(1.6rem,3.4vw,2.1rem);margin-top:10px">A minute with Pearl</h2>
-      <!-- Swap the teaser: replace assets/promo-teaser-16x9.mp4, or swap this <video> for a YouTube iframe (youtube-nocookie embed). -->
-      <div class="video-shell" id="promo-video">
-        <video controls playsinline preload="metadata" poster="assets/video-poster.jpg" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture src="assets/promo-teaser-16x9.mp4"></video>
-      </div>
-    </div>
-    <div class="reveal final-cta">
-      <span class="eyebrow">Get Slowspun</span>
-      <h2 style="font-size:clamp(1.6rem,3vw,2rem);margin-top:10px">Your gauge. Your patterns.<br>No&nbsp;math.</h2>
-      <p class="muted" style="margin-top:12px">Watched Pearl work? She's ready when you are — free to regauge, no account needed.</p>
-      <div class="cta-row">
-        <a class="badge badge-ink" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
-        <a class="badge badge-paper" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#56705F"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#6F8B79"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#B5715A"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#965A45"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
-      </div>
-      <div class="cta-note">Free to regauge. Pro is a one-time unlock — never a subscription.</div>
-    </div>
-  </div>
-</section>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-label="App screenshot"><button class="lb-x" id="lb-x" aria-label="Close">×</button><img id="lb-img" alt="App screenshot"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="App screenshot"><button class="lb-x" id="lb-x" aria-label="Close">×</button><img id="lb-img" alt=""></div>
 
 <!-- FOOTER -->
 <footer>
@@ -983,6 +1352,8 @@ window.SLOWSPUN_STORES = {
     <div class="foot-top">
       <span class="foot-brand"><img src="assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="#top">Slowspun</a></span>
       <nav class="foot-links">
+        <a href="updates.html">Updates</a>
+        <a href="#faq">FAQ</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms</a>
         <a href="eula.html">EULA</a>
@@ -1059,6 +1430,44 @@ window.SLOWSPUN_STORES = {
     counts.forEach(function(c){ cio.observe(c); });
   } else { counts.forEach(animCount); }
 
+  /* ── gauge units: cm ⇄ in swap with squash-stretch thumb ── */
+  (function(){
+    var bar=d.querySelector('.gauge-bar'); if(!bar) return;
+    var row=bar.closest('.gauge-row')||bar.parentNode;
+    var unit=row.querySelector('.gb-unit'); if(!unit) return;
+    var per=bar.querySelector('.gb-per'), ndl=bar.querySelector('.gb-needle');
+    var btns=[].slice.call(unit.querySelectorAll('.gu-btn')), thumb=unit.querySelector('.gu-thumb');
+    var DATA={cm:{per:'\u00b7 per 10 cm', ndl:'4 mm', aria:'Your gauge: 22 stitches by 30 rows per 10 cm on a 4 mm needle'},
+              in:{per:'\u00b7 per 4 in', ndl:'US 6', aria:'Your gauge: 22 stitches by 30 rows per 4 inches on a US 6 needle'}};
+    var cur='cm', fromX=0;
+    function xFor(u){ var b=btns.filter(function(x){return x.getAttribute('data-unit')===u;})[0]; return b?b.offsetLeft-btns[0].offsetLeft:0; }
+    function sizeThumb(){ if(!thumb)return; thumb.style.width=btns[0].offsetWidth+'px'; fromX=xFor(cur); thumb.style.transform='translateX('+fromX+'px)'; }
+    function moveThumb(u){
+      if(!thumb)return; var toX=xFor(u);
+      if(reduce||!thumb.animate){ thumb.style.transform='translateX('+toX+'px)'; fromX=toX; return; }
+      thumb.animate([
+        {transform:'translateX('+fromX+'px) scaleX(1)'},
+        {transform:'translateX('+((fromX+toX)/2)+'px) scaleX(1.34)', offset:.5},
+        {transform:'translateX('+toX+'px) scaleX(1)'}
+      ],{duration:440,easing:'cubic-bezier(.5,1.4,.4,1)',fill:'forwards'});
+      fromX=toX;
+    }
+    function swap(u){
+      if(u===cur||!DATA[u]) return; cur=u;
+      btns.forEach(function(b){ var on=b.getAttribute('data-unit')===u; b.classList.toggle('is-on',on); b.setAttribute('aria-pressed',String(on)); });
+      moveThumb(u);
+      var x=DATA[u];
+      if(reduce){ per.textContent=x.per; ndl.textContent=x.ndl; bar.setAttribute('aria-label',x.aria); return; }
+      per.classList.add('gb-swapping'); ndl.classList.add('gb-swapping');
+      setTimeout(function(){
+        per.textContent=x.per; ndl.textContent=x.ndl; bar.setAttribute('aria-label',x.aria);
+        per.classList.remove('gb-swapping'); ndl.classList.remove('gb-swapping');
+      },180);
+    }
+    btns.forEach(function(b){ b.addEventListener('click',function(){ swap(b.getAttribute('data-unit')); }); });
+    sizeThumb(); addEventListener('resize',sizeThumb);
+  })();
+
   /* ── one page-wide fabric: sections + divider textures share an origin ── */
   var textured=d.querySelectorAll('.tex-scallop,.tex-dots');
   function alignTextures(){
@@ -1110,6 +1519,7 @@ window.SLOWSPUN_STORES = {
     function act(){
       if(lbMode.matches && c.getAttribute('data-shot')){
         lbImg.src=c.getAttribute('data-shot');
+        lbImg.alt=(c.getAttribute('aria-label')||'').replace(' \u2014 see it in the app','')+' \u2014 a full screenshot from the Slowspun app';
         lb.classList.add('open');
       } else { c.classList.toggle('flipped'); }
     }
@@ -1195,7 +1605,18 @@ window.SLOWSPUN_STORES = {
   function applyTheme(id){
     if(id) root.setAttribute('data-theme',id); else root.removeAttribute('data-theme');
     try{localStorage.setItem('ss-theme',id)}catch(e){}
+    var __tc=d.querySelector('meta[name="theme-color"]');
+    if(__tc) __tc.setAttribute('content', id==='lamplight'?'#2E3A33':id==='cbsafe'?'#2C6E9A':'#6F8B79');
     d.querySelectorAll('.tdot').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
+    var NAMES={'':'Oat & Sage','lamplight':'Lamplight','cbsafe':'Colorblind Safe'};
+    var SW={'':'#EBE5D9','lamplight':'#221F1B','cbsafe':'#2C6E9A'};
+    var fl=d.getElementById('theme-flash');
+    if(fl){
+      d.getElementById('tf-name').textContent=NAMES[id]||'Oat & Sage';
+      d.getElementById('tf-sw').style.background=SW[id]||'#EBE5D9';
+      fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on');
+    }
+    var ca=d.getElementById('ct-active'); if(ca) ca.textContent=NAMES[id]||'Oat & Sage';
   }
   function irisTo(id,x,y){
     if((root.getAttribute('data-theme')||'')===id) return;
@@ -1210,25 +1631,39 @@ window.SLOWSPUN_STORES = {
       );
     }).catch(function(){});
   }
-  d.querySelectorAll('.tdot,.tchip').forEach(function(b){
+  d.querySelectorAll('.tdot,.tchip,.tt-row').forEach(function(b){
     b.addEventListener('click',function(ev){
       ev.stopPropagation();
       irisTo(b.getAttribute('data-theme-id')||'', ev.clientX, ev.clientY);
       tipDone();
     });
   });
-  applyTheme(root.getAttribute('data-theme')||'');
+  (function(){
+    var cur=root.getAttribute('data-theme')||'';
+    var N={'':'Oat & Sage','lamplight':'Lamplight','cbsafe':'Colorblind Safe'};
+    d.querySelectorAll('.tdot').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===cur)); });
+    var ca=d.getElementById('ct-active'); if(ca) ca.textContent=N[cur]||'Oat & Sage';
+  })();
+  /* keep the theme-name flash aligned directly under the nav theme pill */
+  function placeFlash(){
+    var p=d.querySelector('.nav .theme-dots'), fl=d.getElementById('theme-flash');
+    if(p && fl && innerWidth>=920){ fl.style.left=Math.round(p.getBoundingClientRect().left)+'px'; }
+  }
+  placeFlash(); addEventListener('resize',placeFlash);
 
   /* ── first-visit nudge toward the colorway picker (desktop) ── */
   var tipEl=null,tipT1,tipT2;
   function tipDone(){
     try{localStorage.setItem('ss-theme-tip','1')}catch(e){}
     clearTimeout(tipT1); clearTimeout(tipT2);
+    var __pk=d.querySelector('.nav .theme-dots.tp-hint'); if(__pk) __pk.classList.remove('tp-hint');
     if(tipEl){ var t=tipEl; tipEl=null; t.classList.remove('on'); setTimeout(function(){t.remove()},400); }
   }
   (function(){
     var seen=null; try{seen=localStorage.getItem('ss-theme-tip')}catch(e){}
     if(seen || innerWidth<920) return;
+    var __pk=d.querySelector('.nav .theme-dots');
+    if(__pk && !matchMedia('(prefers-reduced-motion: reduce)').matches) __pk.classList.add('tp-hint');
     tipT1=setTimeout(function(){
       var dots=d.querySelector('.nav .brand .rock-wrap')||d.querySelector('.nav .brand img'); if(!dots) return;
       var r=dots.getBoundingClientRect();
@@ -1249,13 +1684,22 @@ window.SLOWSPUN_STORES = {
   var cord=d.getElementById('pull-cord');
   if(cord){
     /* sit centered under the nav theme dots */
+    /* hang dead-centre under the mascot. Measured from the brand box + the
+       logo's layout width, so the rocking rotation can't skew the reading. */
     function placeCord(){
-      var dots=d.querySelector('.nav .brand .rock-wrap')||d.querySelector('.nav .brand img'); if(!dots) return;
+      var brand=d.querySelector('.nav .brand');
+      var logo=d.querySelector('.nav .brand img'); if(!brand||!logo) return;
       var host=cord.offsetParent; if(!host) return;
-      var hr=host.getBoundingClientRect(), dr=dots.getBoundingClientRect();
-      cord.style.left=Math.round(dr.left+dr.width/2-hr.left-cord.offsetWidth/2)+'px';
+      var hr=host.getBoundingClientRect(), br=brand.getBoundingClientRect();
+      cord.style.left=Math.round(br.left + logo.offsetWidth/2 - hr.left - cord.offsetWidth/2)+'px';
     }
-    placeCord(); addEventListener('resize',placeCord); addEventListener('load',placeCord);
+    placeCord();
+    addEventListener('resize',placeCord);
+    addEventListener('load',function(){ placeCord(); setTimeout(placeCord,300); });
+    /* the mascot shrinks with the bar, so re-centre as it does */
+    addEventListener('scroll',placeCord,{passive:true});
+    var _logo=d.querySelector('.nav .brand img');
+    if(_logo) _logo.addEventListener('transitionend',placeCord);
     /* pull_bookmark port: drag to stretch, release past threshold to fire */
     var BASE=72, MAXPULL=46, TRIGGER=24, pull=0, dragging=false, moved=false, sy=0, spring=null;
     function setPull(p){
@@ -1353,8 +1797,140 @@ window.SLOWSPUN_STORES = {
     irisTo(next, ev.clientX, ev.clientY);
   },true);
 
+  /* ── pricing: driven by SLOWSPUN_PRICING in <head> ── */
+  (function(){
+    var P=window.SLOWSPUN_PRICING||{};
+    var reg=P.regularPrice||'$6.99', promo=P.promoPrice||'$4.99', mode=P.mode||'none';
+    var promoOn=(mode==='intro'||mode==='sale');
+    function fmtDate(iso){
+      if(!iso) return '';
+      var p=String(iso).split('-'); if(p.length<3) return '';
+      var dt=new Date(+p[0],+p[1]-1,+p[2]); if(isNaN(dt)) return '';
+      var m=['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var s=m[dt.getMonth()]+' '+dt.getDate();
+      if(dt.getFullYear()!==new Date().getFullYear()) s+=', '+dt.getFullYear();
+      return s;
+    }
+    var when=fmtDate(P.endsAt);
+    var whenTxt = when ? 'on '+when : (P.endsWhen||'');
+
+    var pp=d.getElementById('pro-price');
+    if(pp){
+      pp.classList.toggle('on-sale', promoOn);
+      var html = mode==='sale' ? '<s>'+reg+'</s> <b>'+promo+'</b>'
+               : mode==='intro' ? '<b>'+promo+'</b>'
+               : '<b>'+reg+'</b>';
+      pp.innerHTML=html+' &nbsp;/ once, yours to keep';
+    }
+
+    var note=d.getElementById('promo-note');
+    if(note){
+      if(mode==='intro'){
+        note.innerHTML='<b>'+promo+'</b> introductory price — rises to <b>'+reg+'</b>'+(whenTxt?' '+whenTxt:'')+'.';
+        note.hidden=false;
+      } else if(mode==='sale'){
+        note.innerHTML='On sale — <s>'+reg+'</s> now <b>'+promo+'</b>'+(when?', ends '+when:'')+'.';
+        note.hidden=false;
+      } else note.hidden=true;
+    }
+
+    var pre=d.getElementById('prerelease-note');
+    if(pre){
+      if(P.preRelease && promoOn){
+        pre.textContent='Slowspun is still on the needles — nearly off, and the early price holds a while past launch.';
+        pre.hidden=false;
+      } else pre.hidden=true;
+    }
+
+    var ribbon=d.getElementById('sale-ribbon'), pro=d.querySelector('.ptier-pro');
+    if(ribbon){
+      if(promoOn){
+        var rt=d.getElementById('sale-ribbon-text'); if(rt) rt.textContent=P.promoLabel||'Promo';
+        ribbon.hidden=false; if(pro) pro.classList.add('sale-on');
+      } else { ribbon.hidden=true; if(pro) pro.classList.remove('sale-on'); }
+    }
+    var NS='http://www.w3.org/2000/svg';
+    function rrPath(w,h,r,i){
+      r=Math.min(r,(w-2*i)/2,(h-2*i)/2);
+      var x2=w-2*i-2*r, y2=h-2*i-2*r;
+      return 'M'+(i+r)+','+i+'h'+x2+'a'+r+','+r+' 0 0 1 '+r+','+r+'v'+y2+'a'+r+','+r+' 0 0 1 '+(-r)+','+r+'h'+(-x2)+'a'+r+','+r+' 0 0 1 '+(-r)+','+(-r)+'v'+(-y2)+'a'+r+','+r+' 0 0 1 '+r+','+(-r)+'z';
+    }
+    /* traveling sage arc — used by the Pro card (on promo) and the testing pill */
+    function buildOrbit(host,radius){
+      if(!host) return;
+      var svg=host.querySelector(':scope > .sage-orbit');
+      if(!svg){
+        svg=d.createElementNS(NS,'svg'); svg.setAttribute('class','sage-orbit'); svg.setAttribute('preserveAspectRatio','none');
+        var t0=d.createElementNS(NS,'path'); t0.setAttribute('class','track');
+        var a0=d.createElementNS(NS,'path'); a0.setAttribute('class','arc');
+        svg.appendChild(t0); svg.appendChild(a0); host.appendChild(svg);
+      }
+      var w=host.clientWidth, h=host.clientHeight;
+      if(!w||!h) return;
+      svg.setAttribute('viewBox','0 0 '+w+' '+h);
+      var dd=rrPath(w,h,radius,1.6), t=svg.querySelector('.track'), a=svg.querySelector('.arc');
+      t.setAttribute('d',dd); a.setAttribute('d',dd);
+      var len=a.getTotalLength();
+      a.style.strokeDasharray=(len*0.16).toFixed(1)+' '+(len-len*0.16).toFixed(1);
+      a.style.setProperty('--peri',(-len).toFixed(1)+'px');
+    }
+    /* one traveling arc at a time: the testing pill while the test is live,
+       otherwise the Pro card (during a promo). */
+    var inTest=!!(window.SLOWSPUN_TESTERS||{}).testing;
+    function drawOrbits(){
+      if(inTest){ buildOrbit(d.getElementById('not-out-cta'),24); }
+      else if(promoOn && pro){ buildOrbit(pro,22); }
+    }
+    drawOrbits(); addEventListener('load',drawOrbits);
+    var rt2; addEventListener('resize',function(){clearTimeout(rt2);rt2=setTimeout(drawOrbits,150);});
+  })();
+
+  /* ── testing mode: header pill becomes "Join the test"; status pill links to the form ── */
+  (function(){
+    var T=window.SLOWSPUN_TESTERS||{};
+    var url=T.formUrl||'';
+    var mail='mail'+'to:slowspun.app+tester\u0040'+'gmail'+'.com?subject='+encodeURIComponent('Slowspun tester sign-up');
+    var onIndex=!!d.getElementById('testers');
+    var np=d.getElementById('not-out-cta'), band=d.getElementById('testers');
+    if(T.testing){
+      d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
+        p.textContent='Join the test';
+        p.setAttribute('href', onIndex ? '#testers' : 'index.html#testers');
+      });
+      if(np){ np.setAttribute('href', url||mail); if(url){ np.target='_blank'; np.rel='noopener'; } }
+    } else {
+      /* launched: drop the availability pill and the tester band, point every
+         CTA at the download section, hand the arc back to the Pro card. */
+      if(np) np.remove();
+      if(band) band.remove();
+      d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
+        p.textContent='Get the app';
+        p.setAttribute('href', onIndex ? '#see' : 'index.html#see');
+      });
+    }
+  })();
+
+  /* ── tester CTA: form URL from SLOWSPUN_TESTERS, email fallback ── */
+  var tcta=d.getElementById('tester-cta');
+  if(tcta){
+    var turl=(window.SLOWSPUN_TESTERS||{}).formUrl||'';
+    if(turl){ tcta.href=turl; tcta.target='_blank'; tcta.rel='noopener'; }
+    else{ tcta.href='mail'+'to:slowspun.app+tester\u0040'+'gmail'+'.com?subject='+encodeURIComponent('Slowspun tester sign-up'); }
+  }
+
   /* ── store badges: driven by SLOWSPUN_STORES in <head> ── */
   var cfg=window.SLOWSPUN_STORES||{};
+  /* Launch rehearsal (no file edits): append to any URL to preview a state.
+       ?preview=stores  → both stores live (uses real URLs if set, else # )
+       ?preview=soon    → both shown with the SOON tag
+       ?preview=none    → neither store, "Coming soon…" fallback            */
+  (function(){
+    var m=/[?&]preview=(stores|soon|none)/.exec(location.search); if(!m) return;
+    var u=function(k){ return (cfg[k]&&cfg[k].url)||'#'; };
+    if(m[1]==='stores') cfg={appstore:{enabled:true,url:u('appstore')},play:{enabled:true,url:u('play')}};
+    if(m[1]==='soon')   cfg={appstore:{enabled:true,url:''},play:{enabled:true,url:''}};
+    if(m[1]==='none')   cfg={appstore:{enabled:false},play:{enabled:false}};
+  })();
   d.querySelectorAll('.cta-row').forEach(function(row){
     var visible=0;
     row.querySelectorAll('[data-store]').forEach(function(b){
@@ -1551,6 +2127,91 @@ window.SLOWSPUN_STORES = {
     }
     if(el.tagName==='A') el.setAttribute('href','mail'+'to:'+local+'\u0040'+D);
   });
+})();
+</script>
+<script>
+/* ── header: shrink on scroll, theme tray, scroll-spy ── */
+(function(){
+  var d=document, nav=d.getElementById('site-nav');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* shrink */
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(function(){
+      nav.classList.toggle('shrunk', scrollY>40);
+      nav.style.setProperty('--nav-h', nav.offsetHeight+'px');
+      spy(); ticking=false;
+    });
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+
+  /* theme tray */
+  var btn=d.getElementById('theme-btn'), tray=d.getElementById('theme-tray');
+  if(btn&&tray){
+    function trayOpen(){ return tray.classList.contains('open'); }
+    function setTray(open){
+      nav.style.setProperty('--nav-h', nav.offsetHeight+'px');
+      tray.classList.toggle('open',open);
+      tray.setAttribute('aria-hidden',String(!open));
+      btn.setAttribute('aria-expanded',String(open));
+      if(open){ var cur=tray.querySelector('[aria-checked="true"]')||tray.querySelector('.tt-row'); cur&&cur.focus(); }
+    }
+    setTray(false);
+    btn.addEventListener('click',function(e){ e.stopPropagation(); setTray(!trayOpen()); });
+    d.addEventListener('click',function(e){ if(trayOpen() && !tray.contains(e.target) && !btn.contains(e.target)) setTray(false); });
+    d.addEventListener('keydown',function(e){ if(e.key==='Escape' && trayOpen()){ setTray(false); btn.focus(); } });
+    tray.addEventListener('keydown',function(e){
+      var rows=[].slice.call(tray.querySelectorAll('.tt-row')), i=rows.indexOf(d.activeElement);
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+        e.preventDefault();
+        rows[(i+(e.key==='ArrowDown'?1:rows.length-1)+rows.length)%rows.length].focus();
+      }
+    });
+    tray.querySelectorAll('.tt-row').forEach(function(r){
+      r.addEventListener('click',function(){ setTimeout(function(){ setTray(false); btn.focus(); },140); });
+    });
+  }
+  /* keep the tray's checkmark in sync with whatever changed the theme */
+  function syncTray(){
+    var cur=d.documentElement.getAttribute('data-theme')||'';
+    d.querySelectorAll('.tt-row').forEach(function(r){
+      r.setAttribute('aria-checked', String((r.getAttribute('data-theme-id')||'')===cur));
+    });
+  }
+  syncTray();
+  new MutationObserver(syncTray).observe(d.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  /* deep-linked FAQ question opens itself */
+  (function(){
+    function openHash(){
+      var id=(location.hash||'').slice(1); if(!id.indexOf) return;
+      if(id.indexOf('faq-')!==0) return;
+      var el=d.getElementById(id); if(!el) return;
+      el.open=true;
+      requestAnimationFrame(function(){ window.scrollTo(0, el.getBoundingClientRect().top+scrollY-((nav.offsetHeight||72)+18)); });
+    }
+    addEventListener('hashchange',openHash); addEventListener('load',function(){setTimeout(openHash,180);});
+  })();
+
+  /* scroll-spy */
+  var links=[].slice.call(d.querySelectorAll('.nav-links a[data-spy]'));
+  var targets=links.map(function(a){ return d.getElementById(a.getAttribute('data-spy')); });
+  function spy(){
+    var line=(nav.offsetHeight||64)+28, best=-1;
+    for(var i=0;i<targets.length;i++){
+      var t=targets[i]; if(!t) continue;
+      if(t.getBoundingClientRect().top<=line) best=i;
+    }
+    if(scrollY<40) best=-1;
+    if(innerHeight+scrollY>=d.body.scrollHeight-4) best=targets.length-1;
+    links.forEach(function(a,i){
+      if(i===best){ a.setAttribute('aria-current','true'); }
+      else a.removeAttribute('aria-current');
+    });
+  }
+  spy(); addEventListener('resize',spy);
 })();
 </script>
 </body>

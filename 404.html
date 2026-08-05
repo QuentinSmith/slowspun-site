@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terms of Use — Slowspun</title>
-<meta name="description" content="Terms of Use for Slowspun — a cozy knitting companion.">
-<meta name="robots" content="index, follow">
-<link rel="icon" type="image/png" href="assets/pearl-logo.png">
-<link rel="apple-touch-icon" href="assets/pearl-logo.png">
+<title>Page not found — Slowspun</title>
+<meta name="description" content="This page came undone. Wind the yarn back, then head home to Slowspun — a cozy knitting companion.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/assets/pearl-logo.png">
+<link rel="apple-touch-icon" href="/assets/pearl-logo.png">
 <style>
-@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
-@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
-@font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('/assets/fonts/Fraunces-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('/assets/fonts/Fraunces-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('/assets/fonts/SplineSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('/assets/fonts/SplineSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('/assets/fonts/SplineSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Spline Sans';src:url('/assets/fonts/SplineSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 
   /* ---- Oat & Sage palette ---- */
   :root{
@@ -221,6 +221,79 @@
     .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
   }
 
+/* ══════════ 404: wind it back ══════════ */
+/* with no JS (or reduced motion) the page is a plain, legible 404 */
+.winder,.w-label,.meter,.mlabel,.foundline{display:none}
+.js .winder,.js .w-label,.js .meter,.js .mlabel,.js .foundline{display:block}
+.js .winder{display:block}
+.nf-static-only{display:block}
+.js .nf-static-only{display:none}
+.nf{padding:40px 0 64px;text-align:center}
+.nf-eye{font-family:var(--font-mono);font-size:.66rem;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--clay-deep)}
+.nf h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,4.6vw,2.7rem);
+  line-height:1.12;color:var(--ink);margin:14px 0 0;text-wrap:balance}
+.nf-lede{font-size:clamp(1rem,1.9vw,1.1rem);color:var(--ink-soft);line-height:1.6;
+  max-width:46ch;margin:14px auto 0;text-wrap:pretty}
+.knitwrap{position:relative;width:340px;max-width:100%;margin:26px auto 0}
+.knitwrap svg{display:block;width:100%;height:auto}
+.mag{position:absolute;inset:0;pointer-events:none;clip-path:circle(0px at 50% 50%);z-index:6}
+.mag svg{width:100%;height:auto}
+.lens{position:absolute;width:132px;height:132px;border-radius:50%;pointer-events:none;z-index:7;
+  opacity:0;transition:opacity .28s ease;border:7px solid var(--clay);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--paper) 90%,transparent),0 16px 32px -14px rgba(40,30,15,.6),inset 0 0 28px rgba(255,255,255,.26);
+  background:radial-gradient(circle at 33% 28%,rgba(255,255,255,.3),rgba(255,255,255,.03) 62%)}
+.lens::after{content:"";position:absolute;left:73%;top:73%;width:17px;height:56px;border-radius:99px;
+  background:linear-gradient(var(--clay),var(--clay-deep));transform:rotate(-42deg);transform-origin:top center;
+  box-shadow:0 4px 10px -5px rgba(40,30,15,.7)}
+.lens.on{opacity:1}
+.winder{position:absolute;width:92px;height:92px;z-index:8;touch-action:none}
+.w-arc{position:absolute;inset:0;border-radius:50%;border:2px dashed color-mix(in srgb,var(--clay) 52%,transparent);
+  animation:wspin 7s linear infinite;transition:opacity .5s ease}
+.w-arc::after{content:"";position:absolute;top:-8px;left:50%;margin-left:-6px;width:0;height:0;
+  border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid var(--clay)}
+.winder.spinning .w-arc{animation-duration:1.9s}
+.winder.wdone .w-arc{opacity:0}
+@keyframes wspin{to{transform:rotate(360deg)}}
+.w-ball{position:absolute;left:50%;top:50%;margin:-23px;width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#A8B884,#7c9260);box-shadow:0 7px 15px -5px rgba(40,30,15,.62);cursor:grab}
+.w-ball::after{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px solid rgba(255,255,255,.28);
+  border-bottom-color:transparent;border-right-color:transparent}
+.winder.dragging .w-ball{cursor:grabbing}
+.w-ghost{position:absolute;left:50%;top:50%;width:11px;height:11px;margin:-5.5px;border-radius:50%;
+  background:var(--clay);box-shadow:0 0 0 4px color-mix(in srgb,var(--clay) 24%,transparent);
+  animation:worbit 2.5s linear infinite;transition:opacity .4s ease;pointer-events:none}
+@keyframes worbit{from{transform:rotate(0deg) translateX(41px)}to{transform:rotate(360deg) translateX(41px)}}
+.winder.started .w-ghost{opacity:0}
+.w-label{position:absolute;width:104px;text-align:center;font-family:var(--font-mono);font-size:.62rem;
+  font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-deep);z-index:8;
+  transition:opacity .4s ease;pointer-events:none}
+.w-label.gone{opacity:0}
+.meter{width:216px;max-width:70%;height:8px;border-radius:99px;background:var(--card2);
+  border:1px solid var(--line);overflow:hidden;margin:20px auto 0}
+.meter i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--clay),var(--sage))}
+.mlabel{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:8px}
+.foundline{font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--sage-deep);
+  line-height:1.5;max-width:38ch;margin:14px auto 0;min-height:3em}
+.nf-act{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.nf-btn{font-family:inherit;font-size:.92rem;font-weight:700;padding:13px 24px;border-radius:999px;
+  border:0;cursor:pointer;background:var(--sage);color:var(--on-accent);transition:transform .2s,box-shadow .2s}
+.nf-btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(86,112,95,.85);color:var(--on-accent)}
+.nf-btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.nf-btn.ghost:hover{box-shadow:none;border-color:var(--sage);color:var(--ink)}
+.nf-links{margin-top:26px;font-size:.92rem;color:var(--ink-soft)}
+.nf-links a{font-weight:700}
+.nf-links span{color:var(--ink-faint);margin:0 8px}
+@media(max-width:560px){
+  .knitwrap{width:100%;max-width:340px}
+  .lens{width:104px;height:104px}
+  .foundline{min-height:4.2em}
+}
+@media(prefers-reduced-motion:reduce){
+  .w-arc,.w-ghost{animation:none!important}
+}
+
 /* doc */
 .doc{padding:54px 0 72px}
 .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;
@@ -373,33 +446,25 @@ window.SLOWSPUN_STORES = {
 };
 </script>
 <meta name="theme-color" content="#6F8B79">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="assets/fonts/Fraunces-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/SplineSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/assets/fonts/Fraunces-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/SplineSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var __t=localStorage.getItem('ss-theme');if(__t===null&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)__t='lamplight';if(__t)document.documentElement.setAttribute('data-theme',__t);
 var __m=document.querySelector('meta[name="theme-color"]');if(__m)__m.setAttribute('content',__t==='lamplight'?'#2E3A33':__t==='cbsafe'?'#2C6E9A':'#6F8B79')}catch(e){}</script>
-<script>
-/* Tester recruitment — paste the sign-up form URL between the quotes.
-   Left blank, the button falls back to the contact email so it's never dead. */
-window.SLOWSPUN_TESTERS = {
-  testing: true,   /* true while in closed testing: header pill reads "Join the test" */
-  formUrl: ''      /* paste the sign-up form URL; blank falls back to the contact email */
-};
-</script>
 </head>
 <body>
 
 <header class="nav" id="site-nav">
   <div class="nav-in">
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
-    <span class="brand"><img src="assets/pearl-logo.png" alt="" width="46" height="46"><a class="brand-name" href="index.html">Slowspun</a></span>
+    <span class="brand"><img src="/assets/pearl-logo.png" alt="" width="46" height="46"><a class="brand-name" href="/index.html">Slowspun</a></span>
     <nav class="nav-links" id="nav-links" aria-label="Sections">
-      <a href="index.html#how">How it works</a>
-      <a href="index.html#see">Demo</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#pricing">Pricing</a>
+      <a href="/index.html#how">How it works</a>
+      <a href="/index.html#see">Demo</a>
+      <a href="/index.html#features">Features</a>
+      <a href="/index.html#pricing">Pricing</a>
       <span class="nav-sep" aria-hidden="true"></span>
-      <a href="updates.html" class="ext">Updates</a>
+      <a href="/updates.html" class="ext">Updates</a>
     </nav>
     <div class="nav-right">
       <div class="theme-wrap">
@@ -411,21 +476,21 @@ window.SLOWSPUN_TESTERS = {
           <button class="tt-row" type="button" role="menuitemradio" data-theme-id="cbsafe" aria-checked="false"><span class="sw" style="background:#2C6E9A"></span>Colorblind Safe</button>
         </div>
       </div>
-      <a class="get-pill ghost" href="index.html">&larr; Back</a>
-      <a class="get-pill" href="index.html#see">Get the app</a>
+      <a class="get-pill ghost" href="/index.html">&larr; Back</a>
+      <a class="get-pill" href="/index.html#see">Get the app</a>
     </div>
   </div>
 </header>
 
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
 <nav class="drawer" id="drawer" aria-label="Menu">
-  <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span>
-  <a class="dlink" href="index.html#how">How it works</a>
-  <a class="dlink" href="index.html#see">Demo</a>
-  <a class="dlink" href="index.html#features">Features</a>
-  <a class="dlink" href="index.html#pricing">Pricing</a>
-  <a class="dlink" href="updates.html">Updates</a>
-  <a class="dlink" href="index.html">&larr; Back to Slowspun</a>
+  <span class="brand"><img src="/assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="/index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span>
+  <a class="dlink" href="/index.html#how">How it works</a>
+  <a class="dlink" href="/index.html#see">Demo</a>
+  <a class="dlink" href="/index.html#features">Features</a>
+  <a class="dlink" href="/index.html#pricing">Pricing</a>
+  <a class="dlink" href="/updates.html">Updates</a>
+  <a class="dlink" href="/index.html">&larr; Back to Slowspun</a>
   <div class="drawer-get cta-row">
     <span class="dg-label">Get the app</span>
     <a class="badge badge-solid" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
@@ -433,72 +498,56 @@ window.SLOWSPUN_TESTERS = {
   </div>
 </nav>
 
-<main class="doc">
+<main class="nf">
   <div class="wrap">
-    <p class="eyebrow">The agreement</p>
-    <h1>Terms of Use</h1>
-    <span class="updated">Last updated 07 / 23 / 2026</span>
-    <div class="rule"></div>
-    <p>Welcome to Slowspun. These Terms of Use ("Terms") are a legal agreement between you and Quentin Smith ("we," "us," "our") governing your use of the Slowspun application for iOS and Android mobile devices (the "Service"). By downloading, installing, or using the Service, you agree to these Terms, to our End User License Agreement (EULA), and to our Privacy Policy. If you do not agree, do not use the Service.</p>
-<h2>1. What Slowspun does</h2>
-<p>Slowspun is a tool that helps knitters recalculate ("regauge") knitting patterns to their own gauge and provides related calculators and organizational tools. Slowspun is an app for iOS and Android mobile devices — it is not a website or a desktop/computer program.</p>
-<p><strong>The Service provides calculations and estimates to assist you. It does not knit for you and cannot guarantee how any project will turn out.</strong> Results depend on the accuracy of the information you enter (your gauge, measurements, the pattern, and so on) and on your own knitting. <strong>You are responsible for checking the App's output — including swatching and verifying your gauge — before relying on it for a project, materials, or purchases.</strong></p>
-<h2>2. Eligibility</h2>
-<p>You must be at least 13 years old to use the Service. In some regions — including the European Economic Area and the United Kingdom — a higher minimum age may apply for digital consent; where it does, that higher age governs. By using the Service, you confirm that you meet the applicable minimum age.</p>
-<h2>3. Your license to use the Service</h2>
-<p>Your right to use the App software is granted under our EULA, which is incorporated into these Terms. In short: we grant you a limited, personal license to use the App; we do not sell you the software itself.</p>
-<p><strong>Your knitting is yours.</strong> Nothing in these Terms gives us any ownership of the garments or items you knit, or of patterns you create or adapt using the Service. The license restrictions apply to the App software and our content — not to your knitting output. This includes any pattern text you paste into the App: it stays yours, we claim no ownership of it, and because the App runs on your device we do not receive or store it. You are responsible for making sure you have the right to use any pattern or material you enter, and for respecting the rights of its designer or owner.</p>
-<h2>4. Purchases and the full version</h2>
-<p>Some features require a one-time purchase ("full version"). Purchases are made through the Apple App Store or Google Play and are subject to their terms. We do not process payments and never receive or store your payment details. Prices may change for future purchasers; a one-time purchase you have already completed will not be charged again.</p>
-<p><strong>Refunds.</strong> We will refund the full version on request within <strong>30 days of the date of purchase</strong>. After 30 days we do not offer refunds for the full version. Apple and Google also operate their own refund processes, which are separate from ours and granted at their discretion. Nothing in this section limits any rights you may have under the consumer law of your country, including where the App is faulty or does not match its description.</p>
-<h2>5. Acceptable use</h2>
-<p>You agree not to:</p>
-<ul>
-<li>copy, modify, distribute, sell, rent, sublicense, or create derivative works of the Service, except as allowed by law;</li>
-<li>reverse engineer, decompile, or attempt to extract the source code, except to the extent this restriction is prohibited by applicable law;</li>
-<li>remove or alter any copyright, trademark, or other proprietary notices;</li>
-<li>use the Service to break any law or infringe anyone's rights;</li>
-<li>circumvent, disable, or interfere with any purchase, licensing, or access-control feature of the Service, or otherwise obtain access to paid features without purchasing them;</li>
-<li>interfere with or disrupt the Service.</li>
-</ul>
-<h2>6. Intellectual property</h2>
-<p>The Service — including its name, logo, design, original text, and software (other than third-party components, AI-generated components, and your own content) — is owned by Quentin Smith and protected by applicable intellectual property laws. These Terms do not transfer any of our intellectual property to you.</p>
-<p><strong>Feedback.</strong> If you send us feedback, suggestions, or feature ideas, you grant Quentin Smith a perpetual, irrevocable, worldwide, royalty-free right to use them for any purpose, with no obligation to you and without compensation or credit. You confirm that any feedback you send is yours to give and does not violate anyone else's rights.</p>
-<p><strong>Third-party and open-source components.</strong> The App includes third-party and open-source components provided under their own licenses. Those licenses are listed within the App.</p>
-<h2>7. Disclaimers</h2>
-<p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT. We do not warrant that the Service's calculations are error-free or that your projects will succeed. You assume responsibility for verifying results before spending materials or time on a project.</p>
-<h2>8. Limitation of liability</h2>
-<p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, Quentin Smith WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF MATERIALS (INCLUDING YARN), TIME, PROFITS, OR DATA, ARISING FROM YOUR USE OF THE SERVICE. OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SERVICE WILL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP (IF ANY) IN THE 12 MONTHS BEFORE THE CLAIM. Some jurisdictions do not allow certain limitations of liability, so parts of this section may not apply to you.</p>
-<h2>9. Indemnification</h2>
-<p>To the extent permitted by law, you agree to indemnify and hold harmless Quentin Smith from any third-party claims, damages, losses, liabilities, and reasonable legal fees arising out of or related to: (a) your use or misuse of the Service; (b) your violation of these Terms, the EULA, or any applicable law; (c) your violation of anyone else's rights, including the intellectual property rights of a pattern's designer; or (d) any pattern or other material you enter into the Service. We may take over the defense of any claim covered by this section, and you agree to cooperate with us if we do.</p>
-<h2>10. Changes to the Service and these Terms</h2>
-<p>We may modify or discontinue the Service, and we may update these Terms. If we make material changes, we will update the "Last updated" date and, where appropriate, notify you in the App. Continued use after changes means you accept the updated Terms.</p>
-<p><strong>Discontinuation.</strong> If we discontinue the Service, this means we will stop issuing updates and providing support for it. Because the App runs entirely on your device, a copy you have already installed will continue to function for as long as your device supports it. We cannot guarantee ongoing compatibility with future operating system versions, or that the App will remain available to download.</p>
-<h2>11. Termination</h2>
-<p>You may stop using the Service at any time. We may suspend or end your access if you violate these Terms.</p>
-<h2>12. Governing law and disputes</h2>
-<p>These Terms are governed by the laws of the State of Texas, United States, without regard to its conflict-of-laws rules. You and Quentin Smith agree that any dispute arising out of or relating to these Terms or the Service will be brought exclusively in the state or federal courts located in Williamson County, Texas, and you consent to the personal jurisdiction of those courts.</p>
-<h2>13. Miscellaneous</h2>
-<p><strong>Entire agreement.</strong> These Terms, together with the EULA and the Privacy Policy, are the entire agreement between you and Quentin Smith regarding the Service and replace any earlier agreements on that subject.</p>
-<p><strong>Severability.</strong> If any part of these Terms is found unenforceable, it will be limited or removed only to the smallest extent necessary, and the rest will remain in full effect.</p>
-<p><strong>No waiver.</strong> If we do not enforce a provision right away, that is not a waiver of our right to enforce it later.</p>
-<p><strong>Assignment.</strong> You may not transfer your rights or obligations under these Terms without our written consent. We may assign these Terms in connection with a merger, acquisition, or sale of assets, or to a successor in interest.</p>
-<p><strong>Survival.</strong> Provisions that by their nature should continue after these Terms end — including ownership, disclaimers, limitation of liability, and indemnification — will survive.</p>
-<h2>14. Contact</h2>
-<p>Quentin Smith — <strong class="js-em" data-cap="1">Slowspun.app [at] gmail.com</strong> — <a href="https://slowspun.app">Slowspun.app</a></p>
+    <p class="nf-eye">Error 404</p>
+    <h1 id="nf-hd">It's coming undone.</h1>
+    <p class="nf-lede" id="nf-sub">This page slid off the needle and into a heap on the floor. That thread still connects the two &mdash; so turn the ball, round and round like winding a skein, and the yarn comes back up with it.</p>
+
+    <div class="knitwrap" id="nf-wrap">
+      <svg id="nf-svg" width="340" height="262" viewBox="0 0 340 262" role="img" aria-label="The number 404, knitted, unravelling into a heap of yarn">
+      <g id="nf-static">
+        <defs><pattern id="nfkp" width="15" height="18" patternUnits="userSpaceOnUse">
+          <path d="M 1.6 3.4 L 7.5 14 L 13.4 3.4" fill="none" stroke="#6F8B79" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </pattern>
+        <mask id="nfkm"><text x="170" y="128" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="138" fill="#fff">404</text></mask></defs>
+        <g mask="url(#nfkm)"><rect width="340" height="180" fill="url(#nfkp)"></rect></g>
+      </g>
+      </svg>
+      <div class="mag" id="nf-mag"></div>
+      <div class="lens" id="nf-lens"></div>
+      <div class="winder" id="nf-winder">
+        <span class="w-arc" aria-hidden="true"></span>
+        <span class="w-ghost" id="nf-ghost" aria-hidden="true"></span>
+        <span class="w-ball" id="nf-ball" role="slider" tabindex="0" aria-label="Wind the yarn back" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></span>
+      </div>
+      <span class="w-label" id="nf-label">turn to wind</span>
+    </div>
+
+    <div class="meter"><i id="nf-fill"></i></div>
+    <p class="mlabel" id="nf-ml">wound &middot; 0%</p>
+    <p class="foundline" id="nf-found"></p>
+
+    <div class="nf-act">
+      <a class="nf-btn" href="/index.html">Back to the pattern</a>
+      <a class="nf-btn ghost" href="/updates.html">See what's new</a>
+    </div>
+    <p class="nf-links">
+      Or try <a href="/index.html#how">how it works</a><span>&middot;</span><a href="/index.html#pricing">pricing</a><span>&middot;</span><a href="/index.html#faq">FAQ</a>
+    </p>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <span class="foot-brand"><img src="assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="index.html">Slowspun</a></span>
+      <span class="foot-brand"><img src="/assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="/index.html">Slowspun</a></span>
       <nav class="foot-links">
-        <a href="index.html#faq">FAQ</a>
-        <a href="updates.html">Updates</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html" class="here">Terms</a>
-        <a href="eula.html">EULA</a>
+        <a href="/index.html#faq">FAQ</a>
+        <a href="/updates.html">Updates</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/eula.html">EULA</a>
         <a href="#" class="js-em" style="font-family:var(--font-mono,monospace)">slowspun.app [at] gmail.com</a>
       </nav>
     </div>
@@ -514,6 +563,7 @@ window.SLOWSPUN_TESTERS = {
 (function(){
   var d=document, root=d.documentElement;
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
 
   /* ── theme picker: iris reveal (theme_reveal port via View Transitions) ── */
   function applyTheme(id){
@@ -704,30 +754,242 @@ window.SLOWSPUN_TESTERS = {
     });
   }
   spy(); addEventListener('resize',spy);
-  /* ── testing mode: header pill becomes "Join the test"; status pill links to the form ── */
-  (function(){
-    var T=window.SLOWSPUN_TESTERS||{};
-    var url=T.formUrl||'';
-    var mail='mail'+'to:slowspun.app+tester\u0040'+'gmail'+'.com?subject='+encodeURIComponent('Slowspun tester sign-up');
-    var onIndex=!!d.getElementById('testers');
-    var np=d.getElementById('not-out-cta'), band=d.getElementById('testers');
-    if(T.testing){
-      d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
-        p.textContent='Join the test';
-        p.setAttribute('href', onIndex ? '#testers' : 'index.html#testers');
-      });
-      if(np){ np.setAttribute('href', url||mail); if(url){ np.target='_blank'; np.rel='noopener'; } }
-    } else {
-      /* launched: drop the availability pill and the tester band, point every
-         CTA at the download section, hand the arc back to the Pro card. */
-      if(np) np.remove();
-      if(band) band.remove();
-      d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
-        p.textContent='Get the app';
-        p.setAttribute('href', onIndex ? '#see' : 'index.html#see');
-      });
+})();
+</script>
+<script>
+(function(){
+/* knitted "404": Fraunces digits masking a tiled stockinette-stitch fill */
+function knitSVG(w,h,stitch,strokeW,fontSize,baseY,uid){
+  return '<defs><pattern id="kp'+uid+'" width="'+(stitch)+'" height="'+(stitch*1.2)+'" patternUnits="userSpaceOnUse">'+
+    '<path d="M '+(stitch*0.11)+' '+(stitch*0.19)+' L '+(stitch*0.5)+' '+(stitch*0.78)+' L '+(stitch*0.89)+' '+(stitch*0.19)+'" '+
+    'fill="none" stroke="#6F8B79" stroke-width="'+strokeW+'" stroke-linecap="round" stroke-linejoin="round"/></pattern>'+
+    '<mask id="km'+uid+'"><text x="'+(w/2)+'" y="'+baseY+'" text-anchor="middle" font-family="Fraunces, Georgia, serif" '+
+    'font-weight="700" font-size="'+fontSize+'" fill="#fff">404</text></mask></defs>';
+}
+/* a lens that genuinely magnifies: scaled clone of the artwork under a circular clip */
+function makeLens(wrap, magEl, lensEl, buildHTML, k, onMove){
+  var R=66;
+  magEl.innerHTML=buildHTML();
+  var inner=magEl.firstElementChild;
+  var armed=true;
+  function place(cx,cy){
+    magEl.style.clipPath='circle('+R+'px at '+cx+'px '+cy+'px)';
+    inner.style.transformOrigin=cx+'px '+cy+'px';
+    inner.style.transform='scale('+k+')';
+    lensEl.style.left=(cx-66)+'px';
+    lensEl.style.top=(cy-66)+'px';
+  }
+  wrap.addEventListener('pointermove',function(e){
+    if(!armed) return;
+    var r=wrap.getBoundingClientRect();
+    var cx=e.clientX-r.left, cy=e.clientY-r.top;
+    lensEl.classList.add('on'); place(cx,cy);
+    if(onMove) onMove(cx,cy);
+  });
+  wrap.addEventListener('pointerleave',function(){
+    lensEl.classList.remove('on');
+    magEl.style.clipPath='circle(0px at 50% 50%)';
+  });
+  return { arm:function(v){ armed=v; if(!v){ lensEl.classList.remove('on'); magEl.style.clipPath='circle(0px at 50% 50%)'; } },
+           refresh:function(){ magEl.innerHTML=buildHTML(); inner=magEl.firstElementChild; } };
+}
+
+/* ════════════════════ 2c — wind it back ════════════════════ */
+(function(){
+  var W=340,H=262, NS='http://www.w3.org/2000/svg';
+  var BALL={x:286,y:180}, HEAP={x:W/2,y:220};
+  var svg=document.getElementById('nf-svg'), wrap=document.getElementById('nf-wrap');
+  var magEl=document.getElementById('nf-mag'), lensEl=document.getElementById('nf-lens');
+  var winder=document.getElementById('nf-winder'), ball=document.getElementById('nf-ball');
+  var label=document.getElementById('nf-label');
+  var fill=document.getElementById('nf-fill'), ml=document.getElementById('nf-ml');
+  var hd=document.getElementById('nf-hd'), sub=document.getElementById('nf-sub'), found=document.getElementById('nf-found');
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  var LOST=['a stitch marker, still on duty',
+            'half a skein. no label. never a label',
+            'the good tape measure',
+            'a gauge swatch \u2014 twenty-two to ten, respectable',
+            'one needle. its partner is behind the sofa',
+            'the pattern you came here for'];
+  var cells=[], wound=0, spun=0, dragging=false, complete=false, started=false;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ wound=1; complete=true; }
+  var lastAng=0, lx=0, ly=0, idleSince=performance.now();
+
+  /* the svg scales fluidly, so place the winder proportionally and keep it there */
+  function sc(){ var w=svg.getBoundingClientRect().width; return (w?w:W)/W; }
+  function placeWinder(){
+    var s=sc();
+    winder.style.left=(BALL.x*s-46)+'px'; winder.style.top=(BALL.y*s-46)+'px';
+    label.style.left=(BALL.x*s-52)+'px';  label.style.top=(BALL.y*s+50)+'px';
+  }
+  if(reduce){
+    winder.style.display='none'; label.style.display='none';
+    var mBox=document.querySelector('.nf .meter'), mLab=document.getElementById('nf-ml');
+    if(mBox) mBox.style.display='none';
+    if(mLab) mLab.style.display='none';
+    hd.textContent='This page came undone.';
+    sub.textContent='It is not here any more \u2014 it may have moved, or it may never have existed. Head back to the pattern and we will carry on from there.';
+    found.style.display='none';
+  }
+  placeWinder();
+  addEventListener('resize',placeWinder);
+  addEventListener('load',placeWinder);
+  if(window.ResizeObserver) new ResizeObserver(placeWinder).observe(svg);
+  if(reduce){ winder.classList.add('started'); }
+
+  /* the heap floor + the thread that ties it to the ball */
+  var shadow=document.createElementNS(NS,'ellipse');
+  shadow.setAttribute('cx',HEAP.x); shadow.setAttribute('cy',244);
+  shadow.setAttribute('rx',96); shadow.setAttribute('ry',13);
+  shadow.setAttribute('fill','#3C3833'); shadow.setAttribute('opacity','.07');
+  svg.appendChild(shadow);
+  var thread=document.createElementNS(NS,'path');
+  thread.setAttribute('fill','none'); thread.setAttribute('stroke','#B5715A');
+  thread.setAttribute('stroke-width','3'); thread.setAttribute('stroke-linecap','round');
+  thread.setAttribute('opacity','.75');
+  svg.appendChild(thread);
+
+  /* every stitch is its own piece, sampled from real Fraunces digits */
+  function gauss(){ return (Math.random()+Math.random()+Math.random())/1.5-1; }
+  function build(){
+    var st=document.getElementById('nf-static'); if(st) st.remove();
+    var c=document.createElement('canvas'); c.width=W; c.height=180;
+    var g=c.getContext('2d');
+    g.fillStyle='#000'; g.textAlign='center'; g.textBaseline='alphabetic';
+    g.font='700 138px Fraunces, Georgia, serif';
+    g.fillText('404', W/2, 128);
+    var px=g.getImageData(0,0,W,180).data, SX=10, SY=12;
+    for(var y=6;y<180;y+=SY) for(var x=5;x<W;x+=SX){
+      if(px[((y|0)*W+(x|0))*4+3]<=128) continue;
+      /* fallen position: a mound, densest at the middle */
+      var fx=Math.max(22,Math.min(W-22, HEAP.x+gauss()*74));
+      var fy=Math.max(202,Math.min(240, 214+Math.abs(gauss())*18 + Math.abs(fx-HEAP.x)/8));
+      cells.push({hx:x,hy:y,fx:fx,fy:fy,rot:(Math.random()*2-1)*2.4,delay:Math.random(),el:null});
     }
-  })();
+    cells.forEach(function(p){
+      var el=document.createElementNS(NS,'path');
+      el.setAttribute('d','M -4.4 -3.7 L 0 3.7 L 4.4 -3.7');
+      el.setAttribute('fill','none'); el.setAttribute('stroke','#6F8B79');
+      el.setAttribute('stroke-width','3.1'); el.setAttribute('stroke-linecap','round'); el.setAttribute('stroke-linejoin','round');
+      svg.appendChild(el); p.el=el;
+    });
+  }
+  function pos(p){
+    var t=Math.max(0,Math.min(1,(wound-p.delay*0.55)/0.45));
+    var e=t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    return {x:p.fx+(p.hx-p.fx)*e, y:p.fy+(p.hy-p.fy)*e, e:e};
+  }
+  function paint(){
+    for(var i=0;i<cells.length;i++){
+      var p=cells[i], q=pos(p);
+      p.el.setAttribute('transform','translate('+q.x.toFixed(1)+','+q.y.toFixed(1)+') rotate('+(p.rot*(1-q.e)*30).toFixed(1)+')');
+      p.el.setAttribute('opacity', String(0.48+0.52*q.e));
+    }
+    /* the thread retracts and tightens as the yarn comes home */
+    var slack=(1-wound);
+    var hx=HEAP.x+38, hy=214;
+    var mx=(hx+BALL.x)/2, my=(hy+BALL.y)/2 + 26*slack;
+    thread.setAttribute('d','M '+hx+' '+hy+' Q '+mx+' '+my+', '+BALL.x+' '+BALL.y);
+    thread.setAttribute('opacity', String(0.75*Math.max(0,1-wound*1.15)));
+    shadow.setAttribute('opacity', String(0.07*(1-wound)));
+    shadow.setAttribute('rx', String(96*(1-wound*0.7)));
+    fill.style.width=Math.round(wound*100)+'%';
+    ball.setAttribute('aria-valuenow', String(Math.round(wound*100)));
+    ball.style.transform='rotate('+spun.toFixed(1)+'deg)';
+    if(!complete) ml.textContent='wound · '+Math.round(wound*100)+'%';
+  }
+  if(document.fonts && document.fonts.load){
+    document.fonts.load('700 138px Fraunces').then(function(){ build(); paint(); }).catch(function(){ build(); paint(); });
+  } else { build(); paint(); }
+
+  /* the lens: only offered once winding has begun, and never mid-drag */
+  var lens=makeLens(wrap, magEl, lensEl, function(){
+    var s='<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'">';
+    for(var i=0;i<cells.length;i++){ var q=pos(cells[i]);
+      s+='<path d="M -4.4 -3.7 L 0 3.7 L 4.4 -3.7" fill="none" stroke="#6F8B79" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round" transform="translate('+q.x.toFixed(1)+','+q.y.toFixed(1)+')"/>';
+    }
+    return s+'</svg>';
+  }, 1.85, function(cx,cy){
+    if(complete||dragging) return;
+    if(cy/sc()>196 && !lens.busy){
+      lens.busy=true;
+      found.textContent='In the heap, of all places: '+LOST[Math.floor(Math.random()*LOST.length)]+'.';
+      setTimeout(function(){ lens.busy=false; }, 1200);
+    }
+  });
+  lens.arm(false);
+
+  function offerLens(){
+    if(lens.offered) return; lens.offered=true; lens.arm(true);
+    found.textContent='🔍 something else is caught in that heap — take the glass to it.';
+  }
+
+  /* winding: any drag counts, circling counts most */
+  var TARGET=760;
+  function ang(e){
+    var r=ball.getBoundingClientRect();
+    return Math.atan2(e.clientY-(r.top+r.height/2), e.clientX-(r.left+r.width/2))*180/Math.PI;
+  }
+  function begin(e){
+    if(complete) return;
+    dragging=true; winder.classList.add('dragging','spinning');
+    if(!started){ started=true; winder.classList.add('started'); label.classList.add('gone'); }
+    lastAng=ang(e); lx=e.clientX; ly=e.clientY;
+    lensEl.classList.remove('on'); magEl.style.clipPath='circle(0px at 50% 50%)';
+    try{ball.setPointerCapture(e.pointerId)}catch(err){}
+    e.preventDefault();
+  }
+  function move(e){
+    if(!dragging) return;
+    var dist=Math.hypot(e.clientX-lx, e.clientY-ly); lx=e.clientX; ly=e.clientY;
+    var a=ang(e), d=a-lastAng;
+    while(d>180) d-=360; while(d<-180) d+=360;
+    lastAng=a; spun+=d;
+    wound=Math.min(1, wound + (dist*0.55 + Math.abs(d)*1.7)/TARGET);
+    idleSince=performance.now();
+    paint();
+    if(wound>0.10) offerLens();
+    if(wound>=1 && !complete) finish();
+  }
+  function end(){ if(dragging){ dragging=false; winder.classList.remove('dragging','spinning'); } }
+  function finish(){
+    complete=true; dragging=false;
+    winder.classList.remove('dragging','spinning'); winder.classList.add('wdone');
+    ml.textContent='wound · every last stitch';
+    hd.textContent='All of it, back on the needle.';
+    sub.textContent='Three turns of the wrist and the page is whole again. This is the part of knitting nobody photographs.';
+    found.textContent='You wound the whole thing back. Pearl is quietly impressed, which is the most she ever gets.';
+    lens.arm(false);
+  }
+  ball.addEventListener('pointerdown',begin);
+  addEventListener('pointermove',move);
+  addEventListener('pointerup',end);
+  addEventListener('pointercancel',end);
+  /* keyboard: arrows wind too */
+  ball.addEventListener('keydown',function(e){
+    if(complete) return;
+    var k=e.key, step=0;
+    if(k==='ArrowRight'||k==='ArrowUp') step=0.08;
+    if(k==='ArrowLeft'||k==='ArrowDown') step=-0.08;
+    if(!step) return;
+    e.preventDefault();
+    if(!started){ started=true; winder.classList.add('started'); label.classList.add('gone'); }
+    wound=Math.max(0,Math.min(1,wound+step)); spun+=step*360; idleSince=performance.now(); paint();
+    if(wound>0.10) offerLens();
+    if(wound>=1) finish();
+  });
+
+  /* it keeps slipping while you leave it alone — gently, and never back to nothing */
+  (function drift(now){
+    if(!complete && !dragging && wound>0.06 && now-idleSince>1400){
+      wound=Math.max(0.06, wound-0.0007); paint();
+    }
+    requestAnimationFrame(drift);
+  })(performance.now());
+})();
+
 })();
 </script>
 </body>

@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terms of Use — Slowspun</title>
-<meta name="description" content="Terms of Use for Slowspun — a cozy knitting companion.">
+<title>Updates — Slowspun</title>
+<meta name="description" content="Release notes and the changelog for Slowspun — a cozy knitting companion.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="assets/pearl-logo.png">
 <link rel="apple-touch-icon" href="assets/pearl-logo.png">
 <style>
 @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Fraunces';src:url('assets/fonts/Fraunces-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
 @font-face{font-family:'Spline Sans';src:url('assets/fonts/SplineSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Spline Sans Mono';src:url('assets/fonts/SplineSansMono-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
 
   /* ---- Oat & Sage palette ---- */
   :root{
@@ -30,7 +32,6 @@
     --wrap:1160px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  /* ---- Lamplight: warm dark (espresso ground, cream text) ---- */
   [data-theme="lamplight"]{
     --paper:#221F1B; --paper-deep:#1D1A16; --card:#2B2722; --card2:#342F29;
     --ink:#E4DCCC; --ink-soft:#AEA390; --ink-faint:#897F70;
@@ -40,12 +41,6 @@
     --panel:#2E3A33; --on-accent:#221F1B; --on-panel-soft:#C6BCA6; --foot-bg:#1A1815; --warn2:#D9B36A;
     --cta-hover-bg:#F0E8D6; --cta-hover-ink:#221F1B;
   }
-  [data-theme="lamplight"] .tex-scallop{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 10 Q10 2 20 10' fill='none' stroke='%23E4DCCC' stroke-opacity='0.05' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E")}
-  [data-theme="lamplight"] .tex-dots{background-image:radial-gradient(circle at center, rgba(228,220,204,.05) 1px, transparent 1.7px)}
-  [data-theme="lamplight"] .flip-front,[data-theme="lamplight"] .flip-back{border-color:rgba(228,220,204,.13)}
-  [data-theme="lamplight"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2387A691' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
-  [data-theme="lamplight"] .phone{background:#0F0D0A}
-  /* ---- Colorblind Safe: blue + amber, higher-contrast lines ---- */
   [data-theme="cbsafe"]{
     --paper:#F2EFE9; --paper-deep:#EAE6DC; --card:#FBF9F4; --card2:#F0EDE6;
     --ink:#2B2A28; --ink-soft:#5A5853; --ink-faint:#6E6B63;
@@ -54,7 +49,6 @@
     --cream:#FFFFFF; --cream-soft:#D5E2EC;
     --on-accent:#FFFFFF; --on-panel-soft:#D5E2EC; --foot-bg:#2B2A28; --warn2:#8A5E08;
   }
-  [data-theme="cbsafe"] .ptier-free li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C6E9A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
   html{scroll-behavior:smooth;overflow-x:clip}
   body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
   a{color:var(--sage);text-decoration:none}
@@ -66,7 +60,6 @@
   .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sage)}
   .muted{color:var(--ink-soft)}
 
-
   /* ---- nav ---- */
   .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--panel) 94%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
@@ -76,6 +69,7 @@
   .nav-links{display:none;gap:32px;font-size:.95rem;font-weight:600}
   .nav-links a{color:var(--cream-soft);transition:color .2s;white-space:nowrap}
   .nav-links a:hover{color:#fff}
+  .nav-links a.here{color:var(--gold)}
   .nav-cta{flex:none;white-space:nowrap;background:var(--card);color:var(--ink);font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:999px;transition:background .2s}
   .nav-cta:hover{background:var(--cta-hover-bg,#fff);color:var(--cta-hover-ink,#3C3833)}
   @media(min-width:860px){.nav-links{display:flex}}
@@ -100,6 +94,16 @@
   .nav-burger{display:none;flex:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(247,242,228,.35);background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
   .nav-burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--cream)}
   @media(max-width:859px){.nav-burger{display:flex}html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;display:none}}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(42,54,47,.5);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:98}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px;overflow-y:auto;overscroll-behavior:contain}
+  .drawer.open{transform:none}
+  .drawer .brand{margin-bottom:16px}
+  .drawer a.dlink{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:12px;color:var(--cream);font-weight:600;font-size:1.05rem}
+  .drawer a.dlink:hover{background:rgba(247,242,228,.12);color:#fff}
+  .drawer a.dlink.here{color:var(--gold)}
+  .drawer .nav-cta{margin-top:auto;text-align:center;padding:14px 20px}
+
 
   .cta-mini{display:none}
   @media(max-width:859px){
@@ -158,18 +162,95 @@
   .nav-in .brand{margin-right:auto}
   .nav-in .nav-links{margin-left:auto}
   .brand,.brand-col,.foot-brand{text-align:left}
-  .drawer-backdrop{position:fixed;inset:0;background:rgba(42,54,47,.5);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:98}
-  .drawer-backdrop.open{opacity:1;pointer-events:auto}
-  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,82vw);background:var(--panel);box-shadow:12px 0 40px -20px rgba(0,0,0,.5);transform:translateX(-103%);transition:transform .38s cubic-bezier(.3,.7,.25,1);z-index:99;display:flex;flex-direction:column;gap:4px;padding:22px 22px 28px;overflow-y:auto;overscroll-behavior:contain}
-  .drawer.open{transform:none}
-  .drawer .brand{margin-bottom:16px}
-  .drawer a.dlink{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:12px;color:var(--cream);font-weight:600;font-size:1.05rem}
-  .drawer a.dlink:hover{background:rgba(247,242,228,.12);color:#fff}
-  .drawer .nav-cta{margin-top:auto;text-align:center;padding:14px 20px}
 
+  /* ---- per-card bookmark pull-tab ---- */
+  .card-cord{position:absolute;top:-7px;right:26px;width:24px;height:42px;background:none;border:0;padding:0;cursor:grab;z-index:4;touch-action:none;filter:drop-shadow(0 4px 6px rgba(40,30,15,.28))}
+  .cc-swing{display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;box-sizing:border-box;width:100%;height:100%;background:linear-gradient(180deg,#C97F5F,#B4623F);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 9px),0 100%);box-shadow:inset 0 2px 0 rgba(0,0,0,.12)}
+  .cc-grip{width:10px;height:7px;border-top:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);pointer-events:none}
+  .card-cord:hover .cc-swing{filter:brightness(1.08)}
+  .card-cord.bm-drag{cursor:grabbing}
+  .card-cord.bm-ready .cc-swing{filter:brightness(1.18)}
+  .swatch.latest .card-cord{right:66px}
+
+  /* ---- updates hero ---- */
+  .uv-hero{padding:52px 0 8px;text-align:center}
+  .uv-hero h1{font-size:clamp(2.1rem,5vw,2.9rem);color:var(--ink);margin:12px 0 0}
+  .uv-hero p{max-width:52ch;margin:14px auto 0;color:var(--ink-soft);font-size:1.02rem}
+  .uv-latest{margin:22px auto 0;display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 8px 7px 16px;font-size:.86rem;color:var(--ink-soft)}
+  .uv-latest b{color:var(--ink);font-weight:700}
+  .uv-latest .go{flex:none;white-space:nowrap;font-family:var(--font-mono);font-size:.74rem;font-weight:600;background:var(--sage);color:var(--on-accent);padding:6px 13px;border-radius:999px}
+  .uv-latest span:first-child{white-space:nowrap}
+
+  /* ---- board: pinned swatches on a winding yarn ---- */
+  .uv-board{position:relative;max-width:920px;margin:26px auto 40px;padding:10px 24px 20px}
+  .uv-yarn{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+  .uv-yarn path{fill:none;stroke:var(--clay);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:2 7;opacity:.5}
+  .uv-track{position:relative;z-index:1;display:flex;flex-direction:column;gap:30px}
+  .uv-item{display:flex}
+  .uv-item.l{justify-content:flex-start}
+  .uv-item.r{justify-content:flex-end}
+  .swatch{position:relative;width:min(400px,100%);text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px 15px;cursor:pointer;font:inherit;color:inherit;box-shadow:0 14px 30px -18px rgba(40,30,15,.5);transition:transform .25s cubic-bezier(.34,1.4,.5,1),box-shadow .25s ease}
+  .swatch:hover{transform:translateY(-3px) rotate(0deg) !important;box-shadow:0 22px 44px -20px rgba(40,30,15,.55)}
+  .swatch::before{content:"";position:absolute;top:-9px;left:30px;width:52px;height:17px;background:color-mix(in srgb,var(--gold) 52%,var(--card));opacity:.85;border-radius:2px;transform:rotate(-5deg);box-shadow:0 2px 5px -2px rgba(40,30,15,.4)}
+  .swatch.latest{border-color:color-mix(in srgb,var(--sage) 50%,var(--line))}
+  .s-ribbon{position:absolute;top:12px;right:-6px;background:var(--sage);color:var(--on-accent);font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:6px 0 0 6px;box-shadow:0 5px 12px -6px rgba(40,30,15,.5)}
+  .s-ribbon::after{content:"";position:absolute;right:0;bottom:-5px;border:3px solid var(--sage-deep);border-right-color:transparent;border-bottom-color:transparent}
+  .s-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+  .ver{font-family:var(--font-mono);font-size:.7rem;font-weight:500;color:var(--ink);background:var(--card2);border:1px solid var(--line);padding:3px 9px;border-radius:7px}
+  .dt{font-family:var(--font-mono);font-size:.66rem;color:var(--ink-faint)}
+  .s-title{display:block;font-family:var(--font-display);font-weight:600;font-size:1.12rem;line-height:1.18;color:var(--ink);margin-bottom:9px}
+  .s-lead{display:block;font-family:var(--font-display);font-style:italic;font-size:.85rem;color:var(--sage-deep);line-height:1.4;margin:-4px 0 10px}
+  .s-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .s-open{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-family:var(--font-mono);font-size:.66rem;font-weight:600;color:var(--clay-deep);transition:gap .2s ease}
+  .swatch:hover .s-open{gap:11px}
+  .tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:.6rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;line-height:1.5}
+  .tag.new{background:color-mix(in srgb,var(--sage) 20%,var(--card));color:var(--sage-deep);border:1px solid color-mix(in srgb,var(--sage) 40%,transparent)}
+  .tag.improved{background:color-mix(in srgb,var(--gold) 22%,var(--card));color:var(--warn2);border:1px solid color-mix(in srgb,var(--gold) 55%,transparent)}
+  .tag.fixed{background:color-mix(in srgb,var(--clay) 16%,var(--card));color:var(--clay-deep);border:1px solid color-mix(in srgb,var(--clay) 38%,transparent)}
+  .tag.known{background:var(--card2);color:var(--ink-soft);border:1px solid var(--line)}
+  .tag.milestone{background:color-mix(in srgb,var(--sage) 30%,var(--card2));color:var(--ink);border:1px solid color-mix(in srgb,var(--sage) 55%,transparent);font-weight:600}
+  .tag .ct{opacity:.7;font-weight:600}
+
+  /* reveal */
+  .js .swatch{opacity:0;transform:translateY(20px)}
+  .js .swatch.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.3,.8,.35,1)}
+
+  /* ---- detail sheet ---- */
+  .uv-overlay{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:28px}
+  .uv-overlay[hidden]{display:none}
+  .uv-backdrop{position:absolute;inset:0;background:rgba(42,42,38,.5);backdrop-filter:blur(2px);cursor:pointer}
+  .uv-sheet{position:relative;width:min(640px,94vw);max-height:82vh;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);will-change:transform,clip-path;overflow:hidden}
+  .uv-rod{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:64px;height:6px;border-radius:99px;background:var(--sage-soft);opacity:.8;z-index:2}
+  .uv-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--card2);border:1px solid var(--line);color:var(--ink-soft);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;transition:background .2s,color .2s,transform .2s}
+  .uv-x:hover{background:var(--clay);color:#fff;transform:rotate(90deg)}
+  .uv-head{padding:26px 26px 16px;border-bottom:1px solid var(--line);flex:none}
+  .uv-head .s-row{margin-bottom:8px}
+  .uv-head h2{font-size:1.5rem;color:var(--ink);margin:0}
+  .uv-head .uv-lead{font-family:var(--font-display);font-style:italic;font-size:.95rem;color:var(--sage-deep);line-height:1.45;margin-top:8px}
+  .uv-body{padding:20px 26px 26px;overflow-y:auto;overscroll-behavior:contain}
+  .uv-grp{margin-bottom:20px}
+  .uv-grp:last-child{margin-bottom:0}
+  .uv-gl{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .uv-gl .line{flex:1;height:1px;background:var(--line-soft)}
+  .uv-grp ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .uv-grp li{position:relative;padding-left:18px;font-size:.92rem;color:var(--ink-soft);line-height:1.45}
+  .uv-grp li::before{content:"";position:absolute;left:3px;top:.55em;width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55}
+  .uv-grp li b{color:var(--ink);font-weight:700}
+  .uv-empty{text-align:center;color:var(--ink-faint);font-family:var(--font-display);font-style:italic;padding:40px 0}
+
+  @media(max-width:760px){
+    .uv-board{padding:6px 4px 20px;margin-top:18px}
+    .uv-item,.uv-item.l,.uv-item.r{justify-content:center}
+    .swatch{width:100%;max-width:460px;transform:none !important}
+    .uv-yarn{display:none}
+    .uv-track{gap:20px}
+    .uv-overlay{padding:0}
+    .uv-sheet{width:100%;height:100%;max-height:none;border-radius:0}
+    .uv-head{padding-top:30px}
+  }
 
   /* footer */
-  footer{background:var(--foot-bg);color:#D8CDB8;padding:48px 0 36px;font-size:.9rem}
+  footer{background:var(--foot-bg);color:#D8CDB8;padding:48px 0 36px;font-size:.9rem;margin-top:10px}
   .foot-top{display:flex;flex-wrap:wrap;gap:28px 60px;justify-content:space-between;align-items:center}
   .foot-brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-size:1.3rem;color:#FBF7EE;cursor:pointer;user-select:none}
   .foot-brand:hover{color:#fff}
@@ -177,6 +258,7 @@
   .foot-links{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center}
   .foot-links a{color:#D8CDB8;font-weight:600;transition:color .2s}
   .foot-links a:hover{color:#fff}
+  .foot-links a.here{color:var(--gold)}
   .foot-fine{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#A99C84;font-size:.78rem;line-height:1.7}
   .foot-themes{display:none}
   @media(min-width:920px){
@@ -188,17 +270,13 @@
     .tchip .sw{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.35)}
   }
 
-
   /* motion */
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   @keyframes bob{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-2%) scaleY(1.008)}}
   .brand img,.foot-brand img{transform-origin:50% 100%;animation:bob 6.5s ease-in-out infinite}
-  /* rocking logo (sloth_button port) */
   .rock-wrap{position:relative;display:inline-flex;flex:none}
   .rock-wrap img{transform-origin:50% 80%;animation:none}
   .rock-ring{position:absolute;left:50%;top:50%;width:110%;aspect-ratio:1;border-radius:50%;border:2px solid var(--cream);opacity:.55;transform:translate(-50%,-50%) scale(.45);animation:rockRing .75s ease-out forwards;pointer-events:none}
   @keyframes rockRing{60%{opacity:.5}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
-  /* theme picker */
   .theme-dots{display:inline-flex;gap:8px;align-items:center;margin-top:5px;padding:4px 10px 4px 8px;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:color-mix(in srgb,currentColor 7%,transparent)}
   .tp-label{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,currentColor 78%,transparent);white-space:nowrap}
   .tp-label svg{width:13px;height:13px;flex:none}
@@ -206,66 +284,18 @@
   .tdot:hover{transform:scale(1.15);box-shadow:0 0 0 3px color-mix(in srgb,currentColor 16%,transparent)}
   .tdot[aria-pressed="true"]{border-color:#E6C142;box-shadow:0 0 0 2px rgba(230,193,66,.45)}
   .brand-col{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
-  /* theme iris reveal (view transitions) */
+  .brand-name{color:inherit}
+  .brand-name:hover{color:#fff}
+  .foot-brand .brand-name:hover{color:#fff}
   ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
   ::view-transition-old(root){z-index:1}
   ::view-transition-new(root){z-index:2147483646}
-  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
-  .js .reveal.in{opacity:1;transform:none}
   :focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:6px}
   @media(prefers-reduced-motion:reduce){
     *{scroll-behavior:auto!important}
-    .js .reveal{opacity:1;transform:none;transition:none}
-    .badge,.step,.fcard,.flip-inner,.drawer,.drawer-backdrop{transition:none}
-    .brand img,.foot-brand img,.pearl-stack,.pearl-yarn,.freebox-img img,.fcard img,.fan .phone-c,.fan .yarnball,.yarn-g,.yb,.step-pearl{animation:none!important}
-    .yarn .yarn-string,.yarn .yarn-shadow{stroke-dashoffset:0!important;transition:none!important}
+    .js .swatch{opacity:1;transform:none;transition:none}
+    .brand img,.foot-brand img{animation:none!important}
   }
-
-/* doc */
-.doc{padding:54px 0 72px}
-.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--sage-deep);margin-bottom:14px}
-.doc h1{font-family:var(--font-display);font-weight:600;line-height:1.08;
-  letter-spacing:-0.01em;font-size:clamp(2rem,5vw,2.7rem);color:var(--ink);
-  text-wrap:balance}
-.updated{margin-top:14px;display:inline-block;font-size:.82rem;font-weight:700;
-  color:var(--clay-deep);background:var(--card2);border:1px solid var(--line);
-  padding:5px 12px;border-radius:999px}
-.rule{height:1px;background:var(--line);margin:30px 0 4px}
-
-.doc h2{font-family:var(--font-display);font-weight:600;line-height:1.18;
-  letter-spacing:-0.005em;font-size:1.42rem;color:var(--ink);
-  margin:42px 0 12px;text-wrap:balance}
-.doc h3{font-family:var(--font-display);font-weight:600;font-size:1.12rem;
-  color:var(--ink);margin:26px 0 8px}
-.doc p{margin:0 0 16px;color:var(--ink);text-wrap:pretty}
-.doc ul,.doc ol{margin:0 0 18px;padding-left:1.3em}
-.doc li{margin:0 0 9px;padding-left:.2em}
-.doc li::marker{color:var(--clay)}
-.doc strong{font-weight:800;color:var(--ink)}
-.doc a{font-weight:700;word-break:break-word}
-.doc hr{border:0;height:1px;background:var(--line);margin:34px 0}
-
-/* the plain-language summary blockquote -> soft callout card */
-.doc blockquote{background:var(--card);border:1px solid var(--line);
-  border-left:4px solid var(--sage);border-radius:14px;
-  padding:20px 22px;margin:0 0 28px;color:var(--ink);
-  box-shadow:0 1px 0 rgba(60,56,51,.03)}
-.doc blockquote p{margin:0 0 10px}
-.doc blockquote p:last-child{margin:0}
-.doc blockquote strong{color:var(--sage-deep)}
-
-
-
-/* doc page fit-ins */
-.doc .wrap{max-width:760px}
-.foot-links a.here{color:var(--gold)}
-[data-theme="lamplight"] .updated{color:var(--clay)}
-.brand-name{color:inherit}
-.brand-name:hover{color:#fff}
-.foot-brand .brand-name:hover{color:#fff}
-/* keep the Back button on mobile — it's the only way home */
-@media(max-width:859px){.nav-in .nav-cta{display:inline-block;padding:9px 15px;font-size:.82rem;white-space:nowrap}}
   /* ═══════════ HEADER (redesigned) ═══════════════════════════════════
      One job per cluster: identity left, sections centre, controls right. */
   .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid rgba(247,242,228,.16)}
@@ -399,7 +429,7 @@ window.SLOWSPUN_TESTERS = {
       <a href="index.html#features">Features</a>
       <a href="index.html#pricing">Pricing</a>
       <span class="nav-sep" aria-hidden="true"></span>
-      <a href="updates.html" class="ext">Updates</a>
+      <a href="updates.html" class="ext" aria-current="page">Updates</a>
     </nav>
     <div class="nav-right">
       <div class="theme-wrap">
@@ -419,12 +449,12 @@ window.SLOWSPUN_TESTERS = {
 
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
 <nav class="drawer" id="drawer" aria-label="Menu">
-  <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span>
+  <span class="brand"><img src="assets/pearl-logo.png" alt="" width="34" height="34"><span class="brand-col"><a class="brand-name" href="index.html">Slowspun</a><span class="theme-dots" role="group" aria-label="Color theme"><span class="tp-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.4-.7 1.4-1.4 0-.5-.3-.9-.6-1.2-.3-.3-.4-.6-.4-1 0-.8.6-1.4 1.4-1.4H16a5 5 0 0 0 5-5c0-3.8-4-6.6-9-6.6Z"></path><circle cx="7.5" cy="10.5" r="1.1"></circle><circle cx="12" cy="7.2" r="1.1"></circle><circle cx="16.5" cy="10.5" r="1.1"></circle></svg>Theme</span><button class="tdot" data-theme-id="" style="background:#EBE5D9" title="Oat &amp; Sage" aria-label="Oat and Sage theme"></button><button class="tdot" data-theme-id="lamplight" style="background:#221F1B" title="Lamplight" aria-label="Lamplight dark theme"></button><button class="tdot" data-theme-id="cbsafe" style="background:#2C6E9A" title="Colorblind Safe" aria-label="Colorblind safe theme"></button></span></span></span>
   <a class="dlink" href="index.html#how">How it works</a>
   <a class="dlink" href="index.html#see">Demo</a>
   <a class="dlink" href="index.html#features">Features</a>
   <a class="dlink" href="index.html#pricing">Pricing</a>
-  <a class="dlink" href="updates.html">Updates</a>
+  <a class="dlink here" href="updates.html">Updates</a>
   <a class="dlink" href="index.html">&larr; Back to Slowspun</a>
   <div class="drawer-get cta-row">
     <span class="dg-label">Get the app</span>
@@ -433,61 +463,32 @@ window.SLOWSPUN_TESTERS = {
   </div>
 </nav>
 
-<main class="doc">
-  <div class="wrap">
-    <p class="eyebrow">The agreement</p>
-    <h1>Terms of Use</h1>
-    <span class="updated">Last updated 07 / 23 / 2026</span>
-    <div class="rule"></div>
-    <p>Welcome to Slowspun. These Terms of Use ("Terms") are a legal agreement between you and Quentin Smith ("we," "us," "our") governing your use of the Slowspun application for iOS and Android mobile devices (the "Service"). By downloading, installing, or using the Service, you agree to these Terms, to our End User License Agreement (EULA), and to our Privacy Policy. If you do not agree, do not use the Service.</p>
-<h2>1. What Slowspun does</h2>
-<p>Slowspun is a tool that helps knitters recalculate ("regauge") knitting patterns to their own gauge and provides related calculators and organizational tools. Slowspun is an app for iOS and Android mobile devices — it is not a website or a desktop/computer program.</p>
-<p><strong>The Service provides calculations and estimates to assist you. It does not knit for you and cannot guarantee how any project will turn out.</strong> Results depend on the accuracy of the information you enter (your gauge, measurements, the pattern, and so on) and on your own knitting. <strong>You are responsible for checking the App's output — including swatching and verifying your gauge — before relying on it for a project, materials, or purchases.</strong></p>
-<h2>2. Eligibility</h2>
-<p>You must be at least 13 years old to use the Service. In some regions — including the European Economic Area and the United Kingdom — a higher minimum age may apply for digital consent; where it does, that higher age governs. By using the Service, you confirm that you meet the applicable minimum age.</p>
-<h2>3. Your license to use the Service</h2>
-<p>Your right to use the App software is granted under our EULA, which is incorporated into these Terms. In short: we grant you a limited, personal license to use the App; we do not sell you the software itself.</p>
-<p><strong>Your knitting is yours.</strong> Nothing in these Terms gives us any ownership of the garments or items you knit, or of patterns you create or adapt using the Service. The license restrictions apply to the App software and our content — not to your knitting output. This includes any pattern text you paste into the App: it stays yours, we claim no ownership of it, and because the App runs on your device we do not receive or store it. You are responsible for making sure you have the right to use any pattern or material you enter, and for respecting the rights of its designer or owner.</p>
-<h2>4. Purchases and the full version</h2>
-<p>Some features require a one-time purchase ("full version"). Purchases are made through the Apple App Store or Google Play and are subject to their terms. We do not process payments and never receive or store your payment details. Prices may change for future purchasers; a one-time purchase you have already completed will not be charged again.</p>
-<p><strong>Refunds.</strong> We will refund the full version on request within <strong>30 days of the date of purchase</strong>. After 30 days we do not offer refunds for the full version. Apple and Google also operate their own refund processes, which are separate from ours and granted at their discretion. Nothing in this section limits any rights you may have under the consumer law of your country, including where the App is faulty or does not match its description.</p>
-<h2>5. Acceptable use</h2>
-<p>You agree not to:</p>
-<ul>
-<li>copy, modify, distribute, sell, rent, sublicense, or create derivative works of the Service, except as allowed by law;</li>
-<li>reverse engineer, decompile, or attempt to extract the source code, except to the extent this restriction is prohibited by applicable law;</li>
-<li>remove or alter any copyright, trademark, or other proprietary notices;</li>
-<li>use the Service to break any law or infringe anyone's rights;</li>
-<li>circumvent, disable, or interfere with any purchase, licensing, or access-control feature of the Service, or otherwise obtain access to paid features without purchasing them;</li>
-<li>interfere with or disrupt the Service.</li>
-</ul>
-<h2>6. Intellectual property</h2>
-<p>The Service — including its name, logo, design, original text, and software (other than third-party components, AI-generated components, and your own content) — is owned by Quentin Smith and protected by applicable intellectual property laws. These Terms do not transfer any of our intellectual property to you.</p>
-<p><strong>Feedback.</strong> If you send us feedback, suggestions, or feature ideas, you grant Quentin Smith a perpetual, irrevocable, worldwide, royalty-free right to use them for any purpose, with no obligation to you and without compensation or credit. You confirm that any feedback you send is yours to give and does not violate anyone else's rights.</p>
-<p><strong>Third-party and open-source components.</strong> The App includes third-party and open-source components provided under their own licenses. Those licenses are listed within the App.</p>
-<h2>7. Disclaimers</h2>
-<p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT. We do not warrant that the Service's calculations are error-free or that your projects will succeed. You assume responsibility for verifying results before spending materials or time on a project.</p>
-<h2>8. Limitation of liability</h2>
-<p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, Quentin Smith WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF MATERIALS (INCLUDING YARN), TIME, PROFITS, OR DATA, ARISING FROM YOUR USE OF THE SERVICE. OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SERVICE WILL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP (IF ANY) IN THE 12 MONTHS BEFORE THE CLAIM. Some jurisdictions do not allow certain limitations of liability, so parts of this section may not apply to you.</p>
-<h2>9. Indemnification</h2>
-<p>To the extent permitted by law, you agree to indemnify and hold harmless Quentin Smith from any third-party claims, damages, losses, liabilities, and reasonable legal fees arising out of or related to: (a) your use or misuse of the Service; (b) your violation of these Terms, the EULA, or any applicable law; (c) your violation of anyone else's rights, including the intellectual property rights of a pattern's designer; or (d) any pattern or other material you enter into the Service. We may take over the defense of any claim covered by this section, and you agree to cooperate with us if we do.</p>
-<h2>10. Changes to the Service and these Terms</h2>
-<p>We may modify or discontinue the Service, and we may update these Terms. If we make material changes, we will update the "Last updated" date and, where appropriate, notify you in the App. Continued use after changes means you accept the updated Terms.</p>
-<p><strong>Discontinuation.</strong> If we discontinue the Service, this means we will stop issuing updates and providing support for it. Because the App runs entirely on your device, a copy you have already installed will continue to function for as long as your device supports it. We cannot guarantee ongoing compatibility with future operating system versions, or that the App will remain available to download.</p>
-<h2>11. Termination</h2>
-<p>You may stop using the Service at any time. We may suspend or end your access if you violate these Terms.</p>
-<h2>12. Governing law and disputes</h2>
-<p>These Terms are governed by the laws of the State of Texas, United States, without regard to its conflict-of-laws rules. You and Quentin Smith agree that any dispute arising out of or relating to these Terms or the Service will be brought exclusively in the state or federal courts located in Williamson County, Texas, and you consent to the personal jurisdiction of those courts.</p>
-<h2>13. Miscellaneous</h2>
-<p><strong>Entire agreement.</strong> These Terms, together with the EULA and the Privacy Policy, are the entire agreement between you and Quentin Smith regarding the Service and replace any earlier agreements on that subject.</p>
-<p><strong>Severability.</strong> If any part of these Terms is found unenforceable, it will be limited or removed only to the smallest extent necessary, and the rest will remain in full effect.</p>
-<p><strong>No waiver.</strong> If we do not enforce a provision right away, that is not a waiver of our right to enforce it later.</p>
-<p><strong>Assignment.</strong> You may not transfer your rights or obligations under these Terms without our written consent. We may assign these Terms in connection with a merger, acquisition, or sale of assets, or to a successor in interest.</p>
-<p><strong>Survival.</strong> Provisions that by their nature should continue after these Terms end — including ownership, disclaimers, limitation of liability, and indemnification — will survive.</p>
-<h2>14. Contact</h2>
-<p>Quentin Smith — <strong class="js-em" data-cap="1">Slowspun.app [at] gmail.com</strong> — <a href="https://slowspun.app">Slowspun.app</a></p>
+<main>
+  <section class="uv-hero">
+    <div class="wrap">
+      <p class="eyebrow">Release notes</p>
+      <h1>What Pearl's been knitting</h1>
+      <p>Every stitch of progress, pinned to the yarn. Tap any release to unroll the full changelog.</p>
+      <a class="uv-latest" id="uv-latest" href="#"><span>Latest — <b id="uv-latest-v">…</b></span><span class="go">See what's new</span></a>
+    </div>
+  </section>
+
+  <div class="uv-board">
+    <svg class="uv-yarn" id="uv-yarn" aria-hidden="true" preserveAspectRatio="none"><path id="uv-yarn-path" d=""></path></svg>
+    <div class="uv-track" id="uv-track"></div>
   </div>
 </main>
+
+<!-- DETAIL SHEET -->
+<div class="uv-overlay" id="uv-overlay" hidden>
+  <div class="uv-backdrop" id="uv-backdrop"></div>
+  <div class="uv-sheet" id="uv-sheet" role="dialog" aria-modal="true" aria-labelledby="uv-sheet-title">
+    <span class="uv-rod"></span>
+    <button class="uv-x" id="uv-x" aria-label="Close">✕</button>
+    <div class="uv-head" id="uv-head"></div>
+    <div class="uv-body" id="uv-body"></div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -495,9 +496,9 @@ window.SLOWSPUN_TESTERS = {
       <span class="foot-brand"><img src="assets/pearl-logo.png" alt="" width="36" height="36"><a class="brand-name" href="index.html">Slowspun</a></span>
       <nav class="foot-links">
         <a href="index.html#faq">FAQ</a>
-        <a href="updates.html">Updates</a>
+        <a href="updates.html" class="here">Updates</a>
         <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html" class="here">Terms</a>
+        <a href="terms.html">Terms</a>
         <a href="eula.html">EULA</a>
         <a href="#" class="js-em" style="font-family:var(--font-mono,monospace)">slowspun.app [at] gmail.com</a>
       </nav>
@@ -510,25 +511,233 @@ window.SLOWSPUN_TESTERS = {
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     RELEASES  —  edit this list to publish an update.
+     Newest first. Each entry:
+       version : "1.4.0"
+       date    : "2026-08-01"  (ISO; shown as "1 August 2026")
+       title   : short headline
+       lead    : optional one line in Pearl's voice ("" to omit)
+       milestone / new / improved / fixed / known : arrays of note strings
+         (wrap a lead-in phrase in *asterisks* to bold it)
+     ══════════════════════════════════════════════════════════════════ -->
+<script>
+window.SLOWSPUN_UPDATES = [
+  {
+    version: "Policy",
+    date: "2026-07-24",
+    title: "Support and policy documentation",
+    lead: "I wrote it all down plainly. No small print worth squinting at.",
+    new: [
+      "*In-app support* was added with dedicated routes for bug reports, feature requests, general feedback, and refund inquiries.",
+      "*Refund guidance* was added in-app, linking to store order history."
+    ],
+    improved: [
+      "*The Terms of Use and Privacy Policy* were updated to reflect current application behavior."
+    ],
+    milestone: [
+      "*A thirty-day refund window* from date of purchase was published, with statutory rights preserved.",
+      "*Continuity terms* were published, confirming that an installed copy remains functional if updates cease."
+    ]
+  },
+  {
+    version: "1.0.0",
+    date: "2026-07-23",
+    title: "First release build submitted",
+    lead: "Cast on at last. Slow and steady got us to the shop.",
+    new: [
+      "*Pro unlock* was published as a one-time purchase at $6.99, available across 173 regions."
+    ],
+    improved: [
+      "*Purchase and restore functionality* was verified on physical devices."
+    ],
+    milestone: [
+      "*The first release build* was submitted to Google Play.",
+      "*Regional pricing* was adjusted to reflect local purchasing power."
+    ]
+  },
+  {
+    version: "Marketing",
+    date: "2026-07-22",
+    title: "Promotional asset production",
+    lead: "We've got a trailer now. I'm quicker on screen than I am in person.",
+    new: [
+      "*A promotional video suite* was produced in portrait, landscape, and square formats.",
+      "*Store listing screenshots* were produced for phone and tablet placements.",
+      "*Social preview and channel banners* were produced."
+    ]
+  },
+  {
+    version: "Website",
+    date: "2026-07-17",
+    title: "Website and policies published",
+    lead: "There's a front door now. Wipe your feet — the mat's hand-knitted.",
+    new: [
+      "*slowspun.app* was published on a custom domain with a secure connection.",
+      "*The Privacy Policy, Terms of Use, and End User License Agreement* were published."
+    ],
+    improved: [
+      "*The policy documents* were revised for international consumer-protection compliance."
+    ]
+  },
+  {
+    version: "Review",
+    date: "2026-07-15",
+    title: "Full codebase and asset review",
+    lead: "Every row counted twice. Measure twice, knit once — same idea.",
+    new: [
+      "*Store listing assets* were produced, including the application icon and feature graphic."
+    ],
+    improved: [
+      "*A full review* of the calculation engine, storage, purchasing, and import paths was completed."
+    ],
+    fixed: [
+      "*A rare crash* in shaping calculations was corrected.",
+      "*Import handling* was tightened against oversized and non-standard pattern files."
+    ],
+    milestone: [
+      "*Product scope* was confirmed as knitting only."
+    ]
+  },
+  {
+    version: "Pricing",
+    date: "2026-06-19",
+    title: "Purchase model confirmed",
+    lead: "Pay once, keep it. No loose ends.",
+    milestone: [
+      "*A single one-time unlock* was adopted as the purchase model, with no subscription."
+    ]
+  },
+  {
+    version: "Tools",
+    date: "2026-06-17",
+    title: "Gauge bar and tools update",
+    lead: "Tidier gauge bar, and one more tool in the basket. I'll carry the ones.",
+    new: [
+      "*An increase and decrease calculator* was added to Pro's tools section.",
+      "*An initial marketing page* was produced."
+    ],
+    improved: [
+      "*The gauge bar* was redesigned for larger touch targets and clearer value editing.",
+      "*Unit selection* was consolidated into settings and applied application-wide."
+    ]
+  },
+  {
+    version: "PDF Import",
+    date: "2026-06-14",
+    title: "PDF pattern import",
+    lead: "Hand me a PDF and I'll read it. No retyping.",
+    new: [
+      "*PDF pattern import* was added, reading a pattern straight from a PDF file rather than requiring pasted text.",
+      "*PDF import* was made available in both the free version and Pro."
+    ]
+  },
+  {
+    version: "Slowspun",
+    date: "2026-06-13",
+    title: "Application renamed to Slowspun",
+    lead: "A few names were tried on. This one fit — slow suits me.",
+    milestone: [
+      "*The application was renamed* from Knitpick to Slowspun."
+    ]
+  },
+  {
+    version: "Themes",
+    date: "2026-06-13",
+    title: "Theming and tier architecture",
+    lead: "Nine colorways, all naturally dyed. None of them shout.",
+    new: [
+      "*Nine themes* were added across light, dark, and accessibility groupings, with a light and a dark theme in the free version and every theme in Pro.",
+      "*Free and Pro tiers* were implemented, with unlimited gauge resizing in the free version and everything else in Pro."
+    ],
+    improved: [
+      "*Accessibility themes* were designed against contrast-ratio targets.",
+      "*Loading screens* were consolidated into a single shared component."
+    ]
+  },
+  {
+    version: "App",
+    date: "2026-06-12",
+    title: "Engine ported to Flutter",
+    lead: "The sums fit in a pocket now. That's my kind of commute.",
+    new: [
+      "*A Flutter application* was created."
+    ],
+    improved: [
+      "*The calculation engine, pattern parser, and shaping logic* were ported to Dart."
+    ],
+    milestone: [
+      "*Automated tests* were added to verify calculation output against the reference implementation."
+    ]
+  },
+  {
+    version: "Measurements",
+    date: "2026-06-12",
+    title: "Body measurement sizing",
+    lead: "A pattern guesses at your shape. I'd rather use your own numbers.",
+    new: [
+      "*Body measurement sizing* was added to Pro, resizing a pattern to a knitter's own measurements rather than to the pattern's stated size.",
+      "*Measurement storage* was added to Pro, retaining a single personal measurement profile."
+    ]
+  },
+  {
+    version: "Row Reader",
+    date: "2026-06-11",
+    title: "Row reader added",
+    lead: "I'll keep your place while you knit. The fiddly counts are mine.",
+    new: [
+      "*A row reader* was added to Pro, tracking position through a parsed pattern and cycling repeats.",
+      "*Length tracking* was added, counting progress toward a target measurement.",
+      "*A side counter* was added within the reader for tracking a second sequence alongside the pattern.",
+      "*Keep-screen-awake* was added so the display stays on while the reader is open.",
+      "*Pattern notes and needle changes* were surfaced as inline alerts."
+    ],
+    improved: [
+      "*The reader layout* was adapted for portrait phone use."
+    ]
+  },
+  {
+    version: "Workshop",
+    date: "2026-06-10",
+    title: "Pattern storage and quick tools",
+    lead: "A shelf for your patterns, yarns and numbers. Slow hands, tidy shelves.",
+    new: [
+      "*Saved patterns* were added to Pro, storing resized results for later use.",
+      "*Setups and yarns* were added to Pro for recording project configurations and yarn details.",
+      "*Quick tools* were added to Pro, covering needle size conversion across US, UK and metric, yarn quantity estimation, and stitch counts from a measurement."
+    ]
+  },
+  {
+    version: "Concept",
+    date: "2026-06-04",
+    title: "Development began",
+    lead: "It started as a page of sums for someone who'd rather not do sums. That's my job now.",
+    new: [
+      "*The gauge calculation engine* was implemented."
+    ],
+    milestone: [
+      "*Development began* on a tool for resizing knitting patterns to a knitter's own gauge.",
+      "*The application was designed offline-first*, with no accounts, no analytics, no server, and no data collection.",
+      "*A web prototype* was completed to validate the calculations before application development started."
+    ]
+  }
+];
+</script>
+
 <script>
 (function(){
   var d=document, root=d.documentElement;
+  root.classList.add('js');
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mq=window.matchMedia ? matchMedia('(max-width:760px)') : {matches:false};
 
-  /* ── theme picker: iris reveal (theme_reveal port via View Transitions) ── */
+  /* ── theme picker ── */
   function applyTheme(id){
     if(id) root.setAttribute('data-theme',id); else root.removeAttribute('data-theme');
     try{localStorage.setItem('ss-theme',id)}catch(e){}
     var __tc=d.querySelector('meta[name="theme-color"]');
     if(__tc) __tc.setAttribute('content', id==='lamplight'?'#2E3A33':id==='cbsafe'?'#2C6E9A':'#6F8B79');
     d.querySelectorAll('.tdot,.tchip,.tt-row').forEach(function(b){ b.setAttribute('aria-pressed', String((b.getAttribute('data-theme-id')||'')===id)); });
-  }
-  var burger=d.getElementById('burger'), drawer=d.getElementById('drawer'), dback=d.getElementById('drawer-backdrop');
-  if(burger&&drawer&&dback){
-    function setDrawer(o){ drawer.classList.toggle('open',o); dback.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); }
-    burger.addEventListener('click',function(){ setDrawer(!drawer.classList.contains('open')); });
-    dback.addEventListener('click',function(){ setDrawer(false); });
-    addEventListener('keydown',function(e){ if(e.key==='Escape') setDrawer(false); });
   }
   d.querySelectorAll('.tdot,.tchip,.tt-row').forEach(function(b){
     b.addEventListener('click',function(ev){
@@ -539,67 +748,202 @@ window.SLOWSPUN_TESTERS = {
       var vt=document.startViewTransition(function(){ applyTheme(id); });
       vt.ready.then(function(){
         var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+2;
-        root.animate(
-          {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
-          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'}
-        );
+        root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},
+          {duration:560,easing:'cubic-bezier(.645,.045,.355,1)',pseudoElement:'::view-transition-new(root)'});
       }).catch(function(){});
     });
   });
   applyTheme(root.getAttribute('data-theme')||'');
 
-  /* ── rocking Pearl logos (sloth_button port): idle rock + tap energy + spark rings ── */
+  /* ── drawer ── */
+  var burger=d.getElementById('burger'), drawer=d.getElementById('drawer'), dback=d.getElementById('drawer-backdrop');
+  function setDrawer(o){ drawer.classList.toggle('open',o); dback.classList.toggle('open',o); burger.setAttribute('aria-expanded',String(o)); }
+  if(burger){ burger.addEventListener('click',function(){ setDrawer(!drawer.classList.contains('open')); }); dback.addEventListener('click',function(){ setDrawer(false); }); }
+
+  /* ── email obfuscation ── */
+  (function(){
+    var A='slowspun.app', D='gmail'+'.com';
+    d.querySelectorAll('.js-em,.js-em-href').forEach(function(el){
+      var tag=el.getAttribute('data-tag'), local=A+(tag?'+'+tag:'');
+      if(el.classList.contains('js-em')){ var shown=(el.getAttribute('data-cap')==='1'?'S'+A.slice(1):A)+(tag?'+'+tag:''); el.textContent=shown+'\u0040'+D; }
+      if(el.tagName==='A') el.setAttribute('href','mail'+'to:'+local+'\u0040'+D);
+    });
+  })();
+
+  /* ── rocking Pearl logos ── */
   if(!reduce){
     var rockers=[];
     d.querySelectorAll('.brand>img,.foot-brand>img').forEach(function(img){
       var wrap=d.createElement('span'); wrap.className='rock-wrap';
       img.parentNode.insertBefore(wrap,img); wrap.appendChild(img);
-      var st={img:img,wrap:wrap,energy:0,phase:0};
-      rockers.push(st);
+      var st={img:img,wrap:wrap,energy:0,phase:0}; rockers.push(st);
       var host=img.closest('.brand,.foot-brand')||wrap;
       host.addEventListener('click',function(ev){
-        if(ev.target.closest('.tdot,.brand-name')) return;               /* theme dots do their own thing */
-        st.energy=Math.min(1,st.energy+0.4);            /* ~3 taps to cap */
-        if(wrap.querySelectorAll('.rock-ring').length<12){
-          var ring=d.createElement('span'); ring.className='rock-ring';
-          ring.addEventListener('animationend',function(){ ring.remove(); });
-          wrap.appendChild(ring);
-        }
+        if(ev.target.closest('.tdot,.brand-name')) return;
+        st.energy=Math.min(1,st.energy+0.4);
+        if(wrap.querySelectorAll('.rock-ring').length<12){ var ring=d.createElement('span'); ring.className='rock-ring'; ring.addEventListener('animationend',function(){ring.remove();}); wrap.appendChild(ring); }
       });
     });
-    if(rockers.length){
-      var last=null;
-      (function tick(now){
-        var t=now/1000, dt=last===null?0:Math.min(.05,t-last); last=t;
-        for(var i=0;i<rockers.length;i++){
-          var st=rockers[i];
-          if(st.energy>0) st.energy=Math.max(0,st.energy-dt/1.4);  /* bleed back to idle */
-          var idle=-3*Math.cos(t/4.5*2*Math.PI);                   /* ±3°, ~4.5s */
-          st.phase+=dt*(1.5*(1+st.energy*1.8))*2*Math.PI;          /* freq grows with energy */
-          var deg=idle+Math.sin(st.phase)*st.energy*15;            /* amplitude up to ±15° */
-          st.img.style.transform='rotate('+deg+'deg)';
-        }
-        requestAnimationFrame(tick);
-      })(performance.now());
-    }
+    if(rockers.length){ var last=null; (function tick(now){ var t=now/1000, dt=last===null?0:Math.min(.05,t-last); last=t;
+      for(var i=0;i<rockers.length;i++){ var st=rockers[i]; if(st.energy>0) st.energy=Math.max(0,st.energy-dt/1.4);
+        var idle=-3*Math.cos(t/4.5*2*Math.PI); st.phase+=dt*(1.5*(1+st.energy*1.8))*2*Math.PI;
+        st.img.style.transform='rotate('+(idle+Math.sin(st.phase)*st.energy*15)+'deg)'; }
+      requestAnimationFrame(tick); })(performance.now()); }
   }
-})();
-</script>
-<script>
-/* CDN email-obfuscation workaround (Cloudflare / IONOS CDN rewrites literal
-   addresses in served HTML into "[email protected]"). Addresses are assembled
-   here at load time instead, so the proxy never sees one to rewrite. */
-(function(){
-  var A='slowspun.app', D='gmail'+'.com';
-  document.querySelectorAll('.js-em,.js-em-href').forEach(function(el){
-    var tag=el.getAttribute('data-tag');
-    var local=A+(tag?'+'+tag:'');
-    if(el.classList.contains('js-em')){
-      var shown=(el.getAttribute('data-cap')==='1'?'S'+A.slice(1):A)+(tag?'+'+tag:'');
-      el.textContent=shown+'\u0040'+D;
-    }
-    if(el.tagName==='A') el.setAttribute('href','mail'+'to:'+local+'\u0040'+D);
+
+  /* ── render releases ── */
+  var DATA=window.SLOWSPUN_UPDATES||[];
+  var track=d.getElementById('uv-track');
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function fmtDate(iso){ var p=String(iso).split('-'); if(p.length<3) return iso; var dt=new Date(+p[0],+p[1]-1,+p[2]); if(isNaN(dt)) return iso; return MONTHS[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear(); }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmtNote(s){ return esc(s).replace(/\*([^*]+)\*/g,'<b>$1</b>'); }
+  var GROUPS=[['milestone','Milestone'],['new','New'],['improved','Improved'],['fixed','Fixed'],['known','Known issues']];
+  function slug(v){ return 'v'+String(v).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function verLabel(v){ return /^[0-9]/.test(String(v)) ? 'v'+v : String(v); }
+
+  /* per-card bookmark: pull down (or tap) to open that release */
+  function attachCord(cord, rel, swatch){
+    if(!cord) return;
+    var BASE=42,MAXPULL=34,TRIGGER=18,pull=0,dragging=false,moved=false,sy=0,spring=null;
+    function setPull(p){ pull=p; cord.style.height=(BASE+p)+'px'; cord.classList.toggle('bm-ready',p>=TRIGGER); }
+    function springBack(){ var from=BASE+pull; setPull(0); if(reduce||!cord.animate) return; if(spring) spring.cancel(); spring=cord.animate([{height:from+'px'},{height:(BASE-5)+'px',offset:.55},{height:(BASE+2)+'px',offset:.8},{height:BASE+'px'}],{duration:440,easing:'cubic-bezier(.3,.7,.4,1)'}); }
+    function fire(){ openSheet(rel, swatch); }
+    cord.addEventListener('pointerdown',function(e){ dragging=true;moved=false;sy=e.clientY; if(spring){spring.cancel();spring=null;} cord.classList.add('bm-drag'); try{cord.setPointerCapture(e.pointerId)}catch(err){} e.preventDefault(); e.stopPropagation(); });
+    cord.addEventListener('pointermove',function(e){ if(!dragging)return; var dy=e.clientY-sy; if(Math.abs(dy)>4)moved=true; setPull(Math.max(0,Math.min(MAXPULL,dy*0.9))); });
+    function relC(){ if(!dragging)return; dragging=false; cord.classList.remove('bm-drag'); var go=(pull>=TRIGGER)||!moved; springBack(); if(go) fire(); }
+    cord.addEventListener('pointerup',relC); cord.addEventListener('pointercancel',relC);
+    cord.addEventListener('click',function(e){ e.stopPropagation(); });
+    cord.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); fire(); } });
+  }
+
+  DATA.forEach(function(rel,i){
+    var item=d.createElement('div');
+    item.className='uv-item '+(i%2?'r':'l');
+    var chips='';
+    GROUPS.forEach(function(g){ var arr=rel[g[0]]; if(arr&&arr.length){ chips+='<span class="tag '+g[0]+'">'+g[1].split(' ')[0]+' <span class="ct">'+arr.length+'</span></span>'; } });
+    var b=d.createElement('button');
+    b.className='swatch'+(i===0?' latest':'');
+    b.type='button';
+    b.id=slug(rel.version);
+    b.style.setProperty('--rot',(i%2? '1.4deg':'-1.4deg'));
+    b.style.transform='rotate('+(i%2? '1.4deg':'-1.4deg')+')';
+    b.innerHTML=(i===0?'<span class="s-ribbon">Latest</span>':'')+
+      '<span class="s-row"><span class="ver">'+esc(verLabel(rel.version))+'</span><span class="dt">'+fmtDate(rel.date)+'</span></span>'+
+      '<span class="s-title">'+esc(rel.title)+'</span>'+
+      (rel.lead?'<span class="s-lead">“'+esc(rel.lead)+'”</span>':'')+
+      '<span class="s-tags">'+chips+'</span>'+
+      '<span class="s-open">Read the notes →</span>'+
+      '<span class="card-cord" role="button" tabindex="0" aria-label="Pull to open '+esc(verLabel(rel.version))+' notes"><span class="cc-swing"><span class="cc-grip"></span></span></span>';
+    b.addEventListener('click',function(){ openSheet(rel,b); });
+    item.appendChild(b);
+    track.appendChild(item);
+    attachCord(b.querySelector('.card-cord'), rel, b);
   });
+
+  /* latest chip */
+  if(DATA[0]){
+    d.getElementById('uv-latest-v').textContent=verLabel(DATA[0].version);
+    d.getElementById('uv-latest').addEventListener('click',function(ev){ ev.preventDefault(); var el=d.getElementById(slug(DATA[0].version)); openSheet(DATA[0], el); });
+  }
+
+  /* ── winding yarn path through the swatch tapes ── */
+  var svg=d.getElementById('uv-yarn'), path=d.getElementById('uv-yarn-path'), board=track.parentNode;
+  function drawYarn(){
+    if(mq.matches){ return; }
+    var sw=[].slice.call(track.querySelectorAll('.swatch'));
+    if(sw.length<2){ path.setAttribute('d',''); return; }
+    var br=board.getBoundingClientRect();
+    svg.setAttribute('viewBox','0 0 '+br.width+' '+br.height);
+    var pts=sw.map(function(s){ var r=s.getBoundingClientRect(); return {x:r.left-br.left+34+26, y:r.top-br.top}; });
+    var dd='M '+pts[0].x+' '+pts[0].y;
+    for(var i=1;i<pts.length;i++){ var a=pts[i-1], c=pts[i]; var my=(a.y+c.y)/2; dd+=' C '+a.x+' '+my+', '+c.x+' '+my+', '+c.x+' '+c.y; }
+    path.setAttribute('d',dd);
+  }
+
+  /* ── reveal on scroll + (re)draw yarn ── */
+  var swatches=[].slice.call(track.querySelectorAll('.swatch'));
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.15});
+    swatches.forEach(function(s){ io.observe(s); });
+  } else { swatches.forEach(function(s){ s.classList.add('in'); }); }
+  addEventListener('load',drawYarn); addEventListener('resize',drawYarn); setTimeout(drawYarn,120);
+
+  /* ── detail sheet + unroll animation ── */
+  var overlay=d.getElementById('uv-overlay'), backdrop=d.getElementById('uv-backdrop'),
+      sheet=d.getElementById('uv-sheet'), headEl=d.getElementById('uv-head'), bodyEl=d.getElementById('uv-body'),
+      xBtn=d.getElementById('uv-x');
+  var lastFocus=null, anim=null;
+
+  function build(rel){
+    headEl.innerHTML='<span class="s-row"><span class="ver">'+esc(verLabel(rel.version))+'</span><span class="dt">'+fmtDate(rel.date)+'</span></span>'+
+      '<h2 id="uv-sheet-title">'+esc(rel.title)+'</h2>'+
+      (rel.lead?'<p class="uv-lead">“'+esc(rel.lead)+'”</p>':'');
+    var html='';
+    GROUPS.forEach(function(g){ var arr=rel[g[0]]; if(arr&&arr.length){
+      html+='<div class="uv-grp"><div class="uv-gl"><span class="tag '+g[0]+'">'+g[1]+'</span><span class="line"></span></div><ul>';
+      arr.forEach(function(n){ html+='<li>'+fmtNote(n)+'</li>'; });
+      html+='</ul></div>';
+    }});
+    bodyEl.innerHTML=html||'<p class="uv-empty">Notes coming soon.</p>';
+    bodyEl.scrollTop=0;
+  }
+
+  function openSheet(rel,origin){
+    build(rel);
+    lastFocus=d.activeElement;
+    overlay.hidden=false;
+    if(anim){ anim.cancel(); anim=null; }
+    backdrop.animate([{opacity:0},{opacity:1}],{duration:360,easing:'ease',fill:'forwards'});
+    if(reduce){ sheet.style.opacity=1; xBtn.focus(); return; }
+    if(mq.matches){
+      sheet.animate([{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:360,easing:'cubic-bezier(.3,.8,.35,1)',fill:'forwards'});
+      xBtn.focus(); return;
+    }
+    /* desktop: unroll gently out of the clicked swatch */
+    var sr=sheet.getBoundingClientRect();
+    var o=(origin&&origin.getBoundingClientRect)?origin.getBoundingClientRect():sr;
+    var dx=(o.left+o.width/2)-(sr.left+sr.width/2);
+    var dy=(o.top+o.height/2)-(sr.top+sr.height/2);
+    anim=sheet.animate([
+      {transform:'translate('+dx+'px,'+dy+'px) scale(.5)', clipPath:'inset(0 0 100% 0)', opacity:.3, offset:0},
+      {transform:'translate('+(dx*0.16)+'px,'+(dy*0.16)+'px) scale(.94)', clipPath:'inset(0 0 8% 0)', opacity:1, offset:.6},
+      {transform:'translate(0,0) scale(1)', clipPath:'inset(0 0 0 0)', opacity:1, offset:1}
+    ],{duration:900,easing:'cubic-bezier(.19,1,.28,1)',fill:'both'});
+    anim.finished.then(function(){ anim=null; }).catch(function(){});
+    xBtn.focus();
+  }
+
+  function closeSheet(origin){
+    if(anim){ anim.cancel(); anim=null; }
+    backdrop.animate([{opacity:1},{opacity:0}],{duration:300,easing:'ease',fill:'forwards'});
+    function done(){ overlay.hidden=true; sheet.style.opacity=''; if(lastFocus&&lastFocus.focus){ try{lastFocus.focus();}catch(e){} } }
+    if(reduce){ done(); return; }
+    if(mq.matches){ sheet.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(16px)'}],{duration:300,easing:'ease',fill:'forwards'}).finished.then(done).catch(done); return; }
+    var o=curOrigin?curOrigin.getBoundingClientRect():null, sr=sheet.getBoundingClientRect();
+    var dx=o?(o.left+o.width/2)-(sr.left+sr.width/2):0, dy=o?(o.top+o.height/2)-(sr.top+sr.height/2):-40;
+    var a=sheet.animate([
+      {transform:'translate(0,0) scale(1)', clipPath:'inset(0 0 0 0)', opacity:1},
+      {transform:'translate('+(dx*0.16)+'px,'+(dy*0.16)+'px) scale(.94)', clipPath:'inset(0 0 8% 0)', opacity:.9, offset:.4},
+      {transform:'translate('+dx+'px,'+dy+'px) scale(.5)', clipPath:'inset(0 0 100% 0)', opacity:0}
+    ],{duration:600,easing:'cubic-bezier(.5,0,.5,1)',fill:'forwards'});
+    a.finished.then(done).catch(done);
+  }
+
+  var curOrigin=null;
+  var _open=openSheet;
+  openSheet=function(rel,origin){ curOrigin=origin||null; _open(rel,origin); };
+  backdrop.addEventListener('click',function(){ closeSheet(); });
+  xBtn.addEventListener('click',function(){ closeSheet(); });
+  addEventListener('keydown',function(e){ if(e.key==='Escape' && !overlay.hidden){ closeSheet(); } });
+
+  /* deep-link: /updates.html#v1-4-0 opens that release */
+  function openFromHash(){
+    var h=(location.hash||'').replace('#',''); if(!h) return;
+    var idx=-1; DATA.forEach(function(r,i){ if(slug(r.version)===h) idx=i; });
+    if(idx>=0){ var el=d.getElementById(h); openSheet(DATA[idx], el); }
+  }
+  addEventListener('load',function(){ setTimeout(openFromHash,200); });
   /* ── drawer store badges: driven by SLOWSPUN_STORES ── */
   (function(){
     var cfg=window.SLOWSPUN_STORES||{};

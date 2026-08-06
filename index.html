@@ -331,7 +331,10 @@
   .badge-paper:hover{color:var(--ink);box-shadow:0 14px 26px -14px rgba(40,30,15,.35)}
   /* store availability states (driven by SLOWSPUN_STORES in <head>) */
   .badge-soon{pointer-events:none;cursor:default}
-  .badge-soon>svg,.badge-soon .b-text{opacity:.55}
+  /* pre-launch: Play reads ready (full contrast + SOON), App Store stays quiet */
+  .badge-soon[data-store="appstore"]>svg,.badge-soon[data-store="appstore"] .b-text{opacity:.5}
+  /* App Store: greyed out, but no SOON tag */
+  .badge-soon[data-store="appstore"]::after{content:none;display:none}
   .badge-soon::after{content:"soon";position:absolute;top:-9px;right:-7px;background:var(--gold);color:#3C3833;font-size:.56rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
     /* desktop: make the SOON tag unmissable (mobile keeps the quiet tag) */
   @media(min-width:920px){
@@ -618,14 +621,28 @@
   .sec-head a.not-out{text-decoration:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
   .sec-head a.not-out:hover{transform:translateY(-2px);box-shadow:0 16px 32px -20px rgba(40,30,15,.55);color:var(--on-accent)}
   [data-theme="lamplight"] .sec-head a.not-out:hover{color:var(--cream)}
-  .no-cue{display:block;margin:9px auto 0;font-weight:700;white-space:nowrap;width:fit-content;border-bottom:1.5px solid color-mix(in srgb,currentColor 45%,transparent);padding-bottom:2px}
+  .no-cue{display:flex;align-items:center;justify-content:center;gap:10px;margin:9px auto 0;font-weight:700;white-space:nowrap;width:fit-content;border-bottom:1.5px solid color-mix(in srgb,currentColor 45%,transparent);padding-bottom:2px}
   .sec-head a.not-out:hover .no-cue{border-bottom-color:currentColor}
   .no-arw{display:inline-block;transition:transform .18s ease}
   .sec-head a.not-out:hover .no-arw{transform:translateX(3px)}
+  /* hero copy of the availability pill: same pill, sat on the dark panel */
+  /* the hero CTA stack shrinks to its widest child (the badge row) so the
+     join button below can stretch to exactly that width */
+  .cta-stack{display:flex;flex-direction:column;align-items:stretch;width:fit-content;max-width:100%}
+  .hero-join{contain:inline-size;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;padding:14px 24px;border-radius:14px;background:var(--pine-deep,#2A362F);color:var(--cream);font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 14px 30px -18px rgba(0,0,0,.6);transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .hero-join:hover{transform:translateY(-2px);color:#fff;background:color-mix(in srgb,var(--pine-deep,#2A362F) 88%,#000);box-shadow:0 18px 34px -18px rgba(0,0,0,.7)}
+  /* lamplight's panel is already near-pine: go darker with a sage edge so the slab still reads */
+  [data-theme="lamplight"] .hero-join{background:var(--foot-bg);color:var(--cream);border:1.5px solid var(--sage)}
+  [data-theme="lamplight"] .hero-join:hover{background:color-mix(in srgb,var(--sage) 18%,var(--foot-bg));color:var(--cream)}
+  .hero-join .arw{transition:transform .18s ease}
+  .hero-join:hover .arw{transform:translateX(3px)}
+  .hero-join:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+  .cta-note+.cta-note{margin-top:8px}
+  @media(max-width:640px){.hero-join{padding:13px 18px;font-size:.95rem}}
   /* the tester band follows pricing directly — one gap, not two stacked paddings */
   #testers{padding-top:0}
   /* same treatment for the tester CTA: cream on dark reads crisper than dark on light sage */
-  [data-theme="lamplight"] .t-cta{background:var(--wash);color:var(--cream);border:2px solid var(--sage);padding:11px 24px}
+  [data-theme="lamplight"] .t-cta{background:var(--foot-bg);color:var(--cream);border:1.5px solid var(--sage);padding:13px 25px;border-radius:14px}
   [data-theme="lamplight"] .t-cta:hover{background:color-mix(in srgb,var(--sage) 22%,var(--wash))}
   [data-theme="lamplight"] .t-cta:hover{color:var(--cream)}
   .price-note{text-align:center;color:var(--ink-soft);font-family:var(--font-display);font-style:italic;font-size:.94rem;margin-top:10px}
@@ -917,12 +934,12 @@
   .get-band .cta-note{justify-content:center}
   .get-band p{margin-left:auto;margin-right:auto;max-width:52ch}
   /* tester recruitment band */
-  .testers{max-width:660px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 28px 32px}
+  .testers{position:relative;max-width:660px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 28px 32px}
   .testers img{width:84px;height:84px;margin:0 auto 12px}
   .testers h2{font-size:clamp(1.45rem,3vw,1.9rem)}
   .testers p{color:var(--ink-soft);margin:12px auto 0;font-size:1.02rem;max-width:46ch}
-  .t-cta{display:inline-flex;align-items:center;white-space:nowrap;gap:9px;margin-top:22px;background:var(--sage-deep);color:var(--on-accent);font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:999px;transition:transform .18s,box-shadow .18s}
-  .t-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -16px rgba(40,30,15,.5);color:var(--on-accent)}
+  .t-cta{display:inline-flex;align-items:center;white-space:nowrap;gap:10px;margin-top:22px;background:var(--pine-deep,#2A362F);color:var(--cream);font-weight:800;font-size:.95rem;padding:14px 26px;border-radius:14px;transition:transform .18s,box-shadow .18s,background .18s}
+  .t-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -16px rgba(40,30,15,.5);color:#fff;background:color-mix(in srgb,var(--pine-deep,#2A362F) 88%,#000)}
   .t-cta .arw{transition:transform .18s}
   .t-cta:hover .arw{transform:translateX(3px)}
   .t-cta:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
@@ -1042,8 +1059,8 @@ window.SLOWSPUN_PRICING = {
   <a class="dlink" href="updates.html">Updates</a>
   <div class="drawer-get cta-row">
     <span class="dg-label">Get the app</span>
-    <a class="badge badge-solid" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
-    <a class="badge badge-ghost" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="19" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#F7F2E4"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#F7F2E4" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#F7F2E4" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#F7F2E4" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
+    <a class="badge badge-ghost" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
+    <a class="badge badge-solid" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="19" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="currentColor"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="currentColor" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="currentColor" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="currentColor" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
   </div>
 </nav>
 
@@ -1055,10 +1072,14 @@ window.SLOWSPUN_PRICING = {
       <span class="hero-tag">A cozy knitting companion</span>
       <h1>Knitting your patterns to <span class="accent">your</span> gauge.</h1>
       <p class="lede">Paste in a pattern, tell Pearl your swatch, and she works out every stitch and row so it comes out your size — at your tension, in your yarn. No frogging. No notebook full of sums.</p>
+      <div class="cta-stack">
       <div class="cta-row">
-        <a class="badge badge-solid" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
-        <a class="badge badge-ghost" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#F7F2E4"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#F7F2E4" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#F7F2E4" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#F7F2E4" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
+        <a class="badge badge-ghost" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
+        <a class="badge badge-solid" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="currentColor"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="currentColor" fill-opacity=".82"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="currentColor" fill-opacity=".65"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="currentColor" fill-opacity=".5"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
       </div>
+      <a class="hero-join" id="not-out-hero" href="#">Join the test<span class="arw" aria-hidden="true">→</span></a>
+      </div>
+      <div class="cta-note" id="hero-caveat">Not out yet — Android first.</div>
       <div class="cta-note">Free to regauge. Pro is a one-time unlock — never a subscription.</div>
     </div>
     <div class="fan reveal">
@@ -1114,8 +1135,8 @@ window.SLOWSPUN_PRICING = {
       <h2 style="font-size:clamp(1.6rem,3vw,2rem);margin-top:10px">Your gauge. Your patterns.<br>No&nbsp;math.</h2>
       <p class="muted" style="margin-top:12px">Watched Pearl work? She's ready when you are — free to regauge, no account needed.</p>
       <div class="cta-row">
-        <a class="badge badge-ink" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
-        <a class="badge badge-paper" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="#56705F"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="#6F8B79"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="#B5715A"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="#965A45"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
+        <a class="badge badge-paper" data-store="appstore" href="#" aria-label="Download on the App Store"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.957 4.45z"/></svg><span class="b-text"><span class="b-top">Download on the</span><span class="b-main">App Store</span></span></a>
+        <a class="badge badge-ink" data-store="play" href="#" aria-label="Get it on Google Play"><svg width="21" height="23" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 2.1C3.2 2.3 3 2.6 3 3.1v17.8c0 .5.2.8.5 1L13 12 3.5 2.1z" fill="currentColor"/><path d="M16.8 8.6 13 12 3.5 2.1c.35-.2.78-.2 1.15.02L16.8 8.6z" fill="currentColor"/><path d="M20.5 10.7c.62.36.62 1.27 0 1.63l-3.7 2.1L13 12l3.8-3.4 3.7 2.1z" fill="currentColor"/><path d="M16.8 15.4 4.65 21.88c-.37.22-.8.22-1.15.02L13 12l3.8 3.4z" fill="currentColor"/></svg><span class="b-text"><span class="b-top">GET IT ON</span><span class="b-main">Google Play</span></span></a>
       </div>
       <div class="cta-note">Free to regauge. Pro is a one-time unlock — never a subscription.</div>
     </div>
@@ -1175,7 +1196,7 @@ window.SLOWSPUN_PRICING = {
     <div class="sec-head center reveal" id="pricing" style="margin-top:48px">
       <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Free to use. Pro if you love it.</h2>
       <p>No subscription, ever. Pro is a one-time unlock — pay once, it's yours.</p>
-      <a class="not-out" id="not-out-cta" href="#"><span class="no-dot" aria-hidden="true"></span><span><b>Not out yet</b> — Slowspun is in closed testing. Android first.</span><span class="no-cue">Join the test<span class="no-arw" aria-hidden="true"> →</span></span></a>
+      <a class="not-out" id="not-out-cta" href="#"><span class="no-dot" aria-hidden="true"></span><span><b>Not out yet</b> — Slowspun is in closed testing. Android first.</span></a>
     </div>
     <div class="price" style="margin-top:34px">
       <div class="ptier ptier-free reveal">
@@ -1224,7 +1245,7 @@ window.SLOWSPUN_PRICING = {
       <img src="assets/pearl-swatch.webp" alt="" width="84" height="84" loading="lazy">
       <h2>Want it early?</h2>
       <p>Slowspun needs a handful of testers before it can launch — two weeks on your phone, Android only.</p>
-      <a class="t-cta" id="tester-cta" href="#">Join the test <span class="arw" aria-hidden="true">→</span></a>
+      <a class="t-cta" id="tester-cta" href="#">Join the test<span class="arw" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -1874,11 +1895,11 @@ window.SLOWSPUN_PRICING = {
       a.style.strokeDasharray=(len*0.16).toFixed(1)+' '+(len-len*0.16).toFixed(1);
       a.style.setProperty('--peri',(-len).toFixed(1)+'px');
     }
-    /* one traveling arc at a time: the testing pill while the test is live,
+    /* one traveling arc at a time: the tester card while the test is live,
        otherwise the Pro card (during a promo). */
     var inTest=!!(window.SLOWSPUN_TESTERS||{}).testing;
     function drawOrbits(){
-      if(inTest){ buildOrbit(d.getElementById('not-out-cta'),24); }
+      if(inTest){ buildOrbit(d.querySelector('.testers'),22); }
       else if(promoOn && pro){ buildOrbit(pro,22); }
     }
     drawOrbits(); addEventListener('load',drawOrbits);
@@ -1891,17 +1912,18 @@ window.SLOWSPUN_PRICING = {
     var url=T.formUrl||'';
     var mail='mail'+'to:slowspun.app+tester\u0040'+'gmail'+'.com?subject='+encodeURIComponent('Slowspun tester sign-up');
     var onIndex=!!d.getElementById('testers');
-    var np=d.getElementById('not-out-cta'), band=d.getElementById('testers');
+    var nps=[d.getElementById('not-out-cta'),d.getElementById('not-out-hero')].filter(Boolean), np=nps[0], band=d.getElementById('testers');
     if(T.testing){
       d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
         p.textContent='Join the test';
         p.setAttribute('href', onIndex ? '#testers' : 'index.html#testers');
       });
-      if(np){ np.setAttribute('href', url||mail); if(url){ np.target='_blank'; np.rel='noopener'; } }
+      nps.forEach(function(n){ n.setAttribute('href', url||mail); if(url){ n.target='_blank'; n.rel='noopener'; } });
     } else {
       /* launched: drop the availability pill and the tester band, point every
          CTA at the download section, hand the arc back to the Pro card. */
-      if(np) np.remove();
+      nps.forEach(function(n){ n.remove(); });
+      var hc=d.getElementById('hero-caveat'); if(hc) hc.remove();
       if(band) band.remove();
       d.querySelectorAll('.get-pill:not(.ghost)').forEach(function(p){
         p.textContent='Get the app';
